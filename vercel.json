@@ -53,19 +53,6 @@
       ]
     },
     {
-      "source": "/(.*)\\.(?:js|css|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot)$",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        },
-        {
-          "key": "X-Static-Asset",
-          "value": "true"
-        }
-      ]
-    },
-    {
       "source": "/(.*)",
       "headers": [
         {
