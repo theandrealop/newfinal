@@ -32,8 +32,7 @@ const nextConfig = {
   
   // Configurazioni per migliorare il build process
   experimental: {
-    // Cache ottimizzata per fetch durante build
-    fetchCache: 'default-cache',
+    // staleTimes rimane, fetchCache va rimosso
     staleTimes: {
       dynamic: 60, // 1 minuto per contenuto dinamico
       static: 300, // 5 minuti per contenuto statico
@@ -55,8 +54,7 @@ const nextConfig = {
   // - /_next/static/* → Cache-Control: public, max-age=31536000, immutable
   // - /api/* → Cache-Control: no-cache, no-store, must-revalidate
   
-  // Ottimizzazioni per build time
-  swcMinify: true,
+  // swcMinify non più supportato, lo rimuovo
   compress: true,
   
   // Gestione errori durante build
