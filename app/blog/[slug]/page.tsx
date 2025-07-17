@@ -7,17 +7,8 @@ import { generateVersionHash, getCurrentVersion, addCacheBustingParams } from '@
 
 // Genera i parametri statici per il build
 export async function generateStaticParams() {
-  try {
-    // Ottieni solo i primi 5 post per la generazione statica
-    const posts = await getAllPosts(5)
-    return posts.posts.map((post) => ({
-      slug: post.slug,
-    }))
-  } catch (error) {
-    console.error('Error generating static params for blog posts:', error)
-    // In caso di errore, ritorna array vuoto per evitare che il build fallisca
-    return []
-  }
+  // Nessun post statico, tutto on-demand
+  return []
 }
 
 // Resto del tuo codice esistente...
