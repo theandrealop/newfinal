@@ -8,8 +8,8 @@ import { generateVersionHash, getCurrentVersion, addCacheBustingParams } from '@
 // Genera i parametri statici per il build
 export async function generateStaticParams() {
   try {
-    // Ottieni tutti i post per la generazione statica
-    const posts = await getAllPosts(1000) // Ottieni fino a 1000 post
+    // Ottieni solo i primi 5 post per la generazione statica
+    const posts = await getAllPosts(5)
     return posts.posts.map((post) => ({
       slug: post.slug,
     }))
@@ -43,7 +43,7 @@ async function BlogPostPageContent({ params }: { params: Promise<{ slug: string 
       <meta httpEquiv="Pragma" content="no-cache" />
       <meta httpEquiv="Expires" content="0" />
       <meta name="article-version" content={generateVersionHash(post.content)} />
-      <meta name="article-modified" content={post.modifiedDate || new Date().toISOString()} />
+      <meta name="article-modified" content={post.date || new Date().toISOString()} />
       <meta name="cache-bust" content={Date.now().toString()} />
       
       <BlogPostContent post={post} />
@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const articleVersion = generateVersionHash(post.content)
-  const lastModified = post.modifiedDate || new Date().toISOString()
+  const lastModified = post.date || new Date().toISOString()
 
   return {
     title: post.title,
