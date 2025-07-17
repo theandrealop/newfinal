@@ -11,6 +11,7 @@ import { OrganizationSchema, WebsiteSchema } from "@/components/structured-data"
 import { ClientCacheBuster, DynamicBlogMetaTags } from "@/components/client-cache-buster"
 import { LightThemeEnforcer } from "@/components/light-theme-enforcer"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -123,6 +124,7 @@ export default function RootLayout({
           <ClientCacheBuster />
           <LightThemeEnforcer />
           <SpeedInsights />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
