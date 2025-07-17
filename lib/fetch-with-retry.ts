@@ -253,9 +253,9 @@ export async function fetchGraphQLWithRetry(
     },
     body: JSON.stringify({ query, variables })
   }, {
-    maxRetries: 5, // Più tentativi per GraphQL
-    baseDelay: 1500, // Delay più lungo per GraphQL
-    maxDelay: 45000,
+    maxRetries: 4, // Limito i tentativi per evitare build troppo lunghe
+    baseDelay: 3000, // Delay più lungo per ridurre il rischio di rate limiting
+    maxDelay: 60000, // Delay massimo aumentato
     ...retryOptions
   })
 
