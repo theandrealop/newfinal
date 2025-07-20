@@ -23,6 +23,13 @@ const socials = [
     ),
   },
   {
+    name: "X",
+    href: "https://x.com/puntifurbi",
+    svg: (
+      <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>X</title><path d="M17.53 3.03c.36-.36.94-.36 1.3 0l2.14 2.14c.36.36.36.94 0 1.3l-4.97 4.97 4.97 4.97c.36.36.36.94 0 1.3l-2.14 2.14c-.36.36-.94.36-1.3 0l-4.97-4.97-4.97 4.97c-.36.36-.94.36-1.3 0l-2.14-2.14c-.36-.36-.36-.94 0-1.3l4.97-4.97-4.97-4.97c-.36-.36-.36-.94 0-1.3l2.14-2.14c.36-.36.94-.36 1.3 0l4.97 4.97 4.97-4.97z"/></svg>
+    ),
+  },
+  {
     name: "LinkedIn",
     href: "https://www.linkedin.com/company/puntifurbi/",
     svg: (
@@ -33,9 +40,9 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-gray-200 bg-cream dark:bg-[#0a0d14]" aria-label="Footer con link ai social">
+    <footer className="w-full border-t border-gray-200 bg-white" aria-label="Footer con link ai social">
       <div className="max-w-5xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <span className="text-lg font-semibold text-dark-green dark:text-white">Seguici sui social</span>
+        <span className="text-lg font-semibold text-dark-green">Seguici sui social</span>
         <nav aria-label="Social media" className="flex gap-3">
           {socials.map((social) => (
             <a
@@ -45,7 +52,7 @@ export function Footer() {
               rel="noopener noreferrer"
               title={`Visita il profilo ${social.name}`}
               aria-label={social.name}
-              className="rounded-full bg-white dark:bg-[#181c23] shadow-md p-2 transition hover:scale-110 hover:bg-light-green dark:hover:bg-[#232a36] focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="rounded-full bg-cream shadow-md p-2 transition hover:scale-110 hover:bg-light-green focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               {social.svg}
               <span className="sr-only">{social.name}</span>
