@@ -47,18 +47,8 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       {/* Title */}
       <h1 className="text-3xl md:text-4xl font-bold mb-4 text-dark-green">{post.title}</h1>
 
-      {/* Meta */}
-      <div className="flex items-center gap-4 mb-8 text-muted-foreground">
-        <span>Di {post.author.node.name}</span>
-        <span>•</span>
-        <span>{formatDate(post.date)}</span>
-      </div>
-
-      {/* Content */}
-      <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: processContentLinks(post.content) }} />
-
       {/* Social Sharing */}
-      <section className="mt-8 pt-8 border-t" aria-label="Condividi l’articolo">
+      <section className="mb-8" aria-label="Condividi l’articolo">
         <h3 className="text-lg font-semibold mb-4">Condividi su:</h3>
         <div className="flex flex-wrap gap-3">
           {/* Facebook */}
@@ -123,6 +113,16 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
           </a>
         </div>
       </section>
+
+      {/* Meta */}
+      <div className="flex items-center gap-4 mb-8 text-muted-foreground">
+        <span>Di {post.author.node.name}</span>
+        <span>•</span>
+        <span>{formatDate(post.date)}</span>
+      </div>
+
+      {/* Content */}
+      <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: processContentLinks(post.content) }} />
 
       {/* Tags */}
       {post.tags.nodes.length > 0 && (

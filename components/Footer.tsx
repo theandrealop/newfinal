@@ -23,20 +23,20 @@ const socials = [
     ),
   },
   {
-    name: "X",
-    href: "https://x.com/puntifurbi",
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/puntifurbi/",
     svg: (
-      <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>X (Twitter)</title><path d="M22.162 0H1.838C.822 0 0 .822 0 1.838v20.324C0 23.178.822 24 1.838 24h20.324C23.178 24 24 23.178 24 22.162V1.838C24 .822 23.178 0 22.162 0zM7.548 20.452H3.545V9.545h4.003v10.907zm-2.002-12.36c-1.281 0-2.32-1.04-2.32-2.32 0-1.281 1.039-2.32 2.32-2.32 1.281 0 2.32 1.039 2.32 2.32 0 1.28-1.039 2.32-2.32 2.32zm15.454 12.36h-4.003v-5.604c0-1.336-.025-3.057-1.865-3.057-1.865 0-2.151 1.454-2.151 2.957v5.704h-4.003V9.545h3.845v1.489h.055c.536-1.014 1.845-2.084 3.797-2.084 4.061 0 4.808 2.674 4.808 6.146v5.356z"/></svg>
+      <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.849-3.037-1.851 0-2.132 1.445-2.132 2.939v5.667H9.358V9h3.414v1.561h.049c.476-.899 1.637-1.849 3.37-1.849 3.602 0 4.267 2.368 4.267 5.455v6.285zM5.337 7.433c-1.144 0-2.069-.926-2.069-2.068 0-1.143.925-2.069 2.069-2.069 1.143 0 2.068.926 2.068 2.069 0 1.142-.925 2.068-2.068 2.068zm1.777 13.019H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.723v20.549C0 23.229.792 24 1.771 24h20.451C23.2 24 24 23.229 24 22.271V1.723C24 .771 23.2 0 22.225 0z"/></svg>
     ),
   },
 ]
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-gray-200 bg-white dark:bg-gray-950" aria-label="Footer con link ai social">
-      <div className="max-w-5xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <span className="text-lg font-semibold">Seguici sui social</span>
-        <nav aria-label="Social media" className="flex gap-4">
+    <footer className="w-full border-t border-gray-200 bg-cream dark:bg-[#0a0d14]" aria-label="Footer con link ai social">
+      <div className="max-w-5xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <span className="text-lg font-semibold text-dark-green dark:text-white">Seguici sui social</span>
+        <nav aria-label="Social media" className="flex gap-3">
           {socials.map((social) => (
             <a
               key={social.name}
@@ -45,7 +45,7 @@ export function Footer() {
               rel="noopener noreferrer"
               title={`Visita il profilo ${social.name}`}
               aria-label={social.name}
-              className="transition-colors hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
+              className="rounded-full bg-white dark:bg-[#181c23] shadow-md p-2 transition hover:scale-110 hover:bg-light-green dark:hover:bg-[#232a36] focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               {social.svg}
               <span className="sr-only">{social.name}</span>
