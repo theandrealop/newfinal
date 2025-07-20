@@ -223,29 +223,6 @@ export default function ComeFunzionaPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <div className="flex flex-wrap justify-center lg:justify-start space-x-6">
-              <a href="#" className="text-sm hover:opacity-70 transition-opacity text-dark-green">
-                Privacy
-              </a>
-              <a href="#" className="text-sm hover:opacity-70 transition-opacity text-dark-green">
-                Termini
-              </a>
-              <a href="#" className="text-sm hover:opacity-70 transition-opacity text-dark-green">
-                Cookie
-              </a>
-              <a href="#" className="text-sm hover:opacity-70 transition-opacity text-dark-green">
-                Contatti
-              </a>
-            </div>
-            <div className="text-sm text-gray-600">
-              © 2025 Punti Furbi. Tutti i diritti riservati.
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

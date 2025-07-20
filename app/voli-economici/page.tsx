@@ -440,45 +440,6 @@ const manualOffers = [
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <div className="flex flex-wrap justify-center lg:justify-start space-x-6">
-              <a href="#" className="text-sm hover:opacity-70 transition-opacity text-dark-green">
-                Privacy
-              </a>
-              <a href="#" className="text-sm hover:opacity-70 transition-opacity text-dark-green">
-                Termini
-              </a>
-              <a href="#" className="text-sm hover:opacity-70 transition-opacity text-dark-green">
-                Contatti
-              </a>
-            </div>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors"
-              >
-                <span className="text-xs font-bold">f</span>
-              </a>
-              <a
-                href="#"
-                className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors"
-              >
-                <span className="text-xs font-bold">t</span>
-              </a>
-              <a
-                href="#"
-                className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors"
-              >
-                <span className="text-xs font-bold">in</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
-      
       {/* Newsletter Popup */}
       <NewsletterPopup 
         isOpen={showNewsletterPopup} 

@@ -27,6 +27,9 @@ async function BlogPostPageContent({ params }: { params: Promise<{ slug: string 
     console.error('Error fetching related posts:', error)
   }
 
+  const canonicalUrl = `https://www.puntifurbi.com/blog/${slug}/`
+  const postWithCanonical = { ...post, canonicalUrl }
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       {/* Cache busting meta tags specifici per l'articolo */}
@@ -37,7 +40,7 @@ async function BlogPostPageContent({ params }: { params: Promise<{ slug: string 
       <meta name="article-modified" content={post.date || new Date().toISOString()} />
       <meta name="cache-bust" content={Date.now().toString()} />
       
-      <BlogPostContent post={post} />
+      <BlogPostContent post={postWithCanonical} />
       {relatedPosts.length > 0 && (
         <div className="mt-12">
           <h2 className="text-2xl font-bold mb-6">Post Correlati</h2>
@@ -77,17 +80,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
+  const canonicalUrl = `https://www.puntifurbi.com/blog/${slug}/`
   const articleVersion = generateVersionHash(post.content)
   const lastModified = post.date || new Date().toISOString()
 
   return {
     title: post.title,
     description: post.excerpt || post.title,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt || post.title,
+      url: canonicalUrl,
       images: post.featuredImage ? [post.featuredImage.node.sourceUrl] : [],
       modifiedTime: lastModified,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt || post.title,
+      images: post.featuredImage ? [post.featuredImage.node.sourceUrl] : [],
     },
     // Cache busting metadata
     other: {
