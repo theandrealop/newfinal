@@ -49,7 +49,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
 
       {/* Social Sharing */}
       <section className="mb-8" aria-label="Condividi l’articolo">
-        <h3 className="text-lg font-semibold mb-4">Condividi su:</h3>
+        <span className="block text-lg font-semibold mb-4">Condividi su:</span>
         <div className="flex flex-wrap gap-3">
           {/* Facebook */}
           <a
@@ -60,7 +60,8 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             title="Condividi su Facebook"
             className="transition-colors hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded flex items-center gap-2"
           >
-            <svg width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><title>Facebook</title><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+            {/* SVG Facebook ufficiale */}
+            <svg width="32" height="32" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 32 32"><title>Facebook</title><path d="M29 0H3C1.343 0 0 1.343 0 3v26c0 1.657 1.343 3 3 3h13V20h-4v-5h4v-3.5C16 8.57 18.014 7 20.5 7c1.104 0 2.5.196 2.5.196V11h-1.41C20.36 11 20 11.672 20 12.5V15h5l-1 5h-4v12h6c1.657 0 3-1.343 3-3V3c0-1.657-1.343-3-3-3z"/></svg>
             <span className="sr-only">Facebook</span>
           </a>
           {/* WhatsApp */}
@@ -72,20 +73,9 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             title="Condividi su WhatsApp"
             className="transition-colors hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 rounded flex items-center gap-2"
           >
-            <svg width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.363.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.617h-.001a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.991c-.003 5.451-4.437 9.885-9.888 9.885m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .06 5.433.058 12.084c0 2.13.557 4.21 1.615 6.033L.057 24l6.063-1.606a11.93 11.93 0 0 0 5.929 1.515h.005c6.554 0 11.889-5.432 11.891-12.083a11.86 11.86 0 0 0-3.48-8.414"/></svg>
+            {/* SVG WhatsApp ufficiale */}
+            <svg width="32" height="32" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 32 32"><title>WhatsApp</title><path d="M16 3C9.373 3 4 8.373 4 15c0 2.65.86 5.1 2.33 7.13L4 29l7.13-2.33A11.93 11.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.93 0-3.77-.5-5.36-1.44l-.38-.22-4.23 1.38 1.38-4.23-.22-.38A9.97 9.97 0 0 1 6 15c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.07-6.1c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.62.14-.19.28-.74.91-.91 1.09-.17.18-.33.2-.6.07-.28-.14-1.18-.44-2.25-1.38-.83-.74-1.39-1.65-1.56-1.93-.17-.28-.02-.43.12-.57.13-.13.29-.34.43-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.62-1.5-.85-2.06-.22-.54-.44-.47-.6-.48-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.95.97-.95 2.37 0 1.4 1.02 2.75 1.16 2.94.14.19 1.99 3.04 4.83 4.15.67.29 1.19.47 1.6.6.67.21 1.28.18 1.76.11.54-.08 1.65-.68 1.89-1.34.23-.66.23-1.22.16-1.34-.07-.12-.25-.18-.53-.32z"/></svg>
             <span className="sr-only">WhatsApp</span>
-          </a>
-          {/* X (Twitter) */}
-          <a
-            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(post.canonicalUrl || post.link)}&text=${encodeURIComponent(post.title)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Condividi su X"
-            title="Condividi su X"
-            className="transition-colors hover:text-black focus:outline-none focus:ring-2 focus:ring-black rounded flex items-center gap-2"
-          >
-            <svg width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><title>X (Twitter)</title><path d="M22.162 0H1.838C.822 0 0 .822 0 1.838v20.324C0 23.178.822 24 1.838 24h20.324C23.178 24 24 23.178 24 22.162V1.838C24 .822 23.178 0 22.162 0zM7.548 20.452H3.545V9.545h4.003v10.907zm-2.002-12.36c-1.281 0-2.32-1.04-2.32-2.32 0-1.281 1.039-2.32 2.32-2.32 1.281 0 2.32 1.039 2.32 2.32 0 1.28-1.039 2.32-2.32 2.32zm15.454 12.36h-4.003v-5.604c0-1.336-.025-3.057-1.865-3.057-1.865 0-2.151 1.454-2.151 2.957v5.704h-4.003V9.545h3.845v1.489h.055c.536-1.014 1.845-2.084 3.797-2.084 4.061 0 4.808 2.674 4.808 6.146v5.356z"/></svg>
-            <span className="sr-only">X</span>
           </a>
           {/* LinkedIn */}
           <a
@@ -96,8 +86,22 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             title="Condividi su LinkedIn"
             className="transition-colors hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800 rounded flex items-center gap-2"
           >
-            <svg width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.849-3.037-1.851 0-2.132 1.445-2.132 2.939v5.667H9.358V9h3.414v1.561h.049c.476-.899 1.637-1.849 3.37-1.849 3.602 0 4.267 2.368 4.267 5.455v6.285zM5.337 7.433c-1.144 0-2.069-.926-2.069-2.068 0-1.143.925-2.069 2.069-2.069 1.143 0 2.068.926 2.068 2.069 0 1.142-.925 2.068-2.068 2.068zm1.777 13.019H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.723v20.549C0 23.229.792 24 1.771 24h20.451C23.2 24 24 23.229 24 22.271V1.723C24 .771 23.2 0 22.225 0z"/></svg>
+            {/* SVG LinkedIn ufficiale */}
+            <svg width="32" height="32" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 32 32"><title>LinkedIn</title><path d="M27 3H5C3.343 3 2 4.343 2 6v20c0 1.657 1.343 3 3 3h22c1.657 0 3-1.343 3-3V6c0-1.657-1.343-3-3-3zM12 25H8V13h4v12zm-2-13.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm15 13.5h-4v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2V25h-4V13h4v1.5c.553-.832 1.553-1.5 2.5-1.5 1.933 0 3.5 1.567 3.5 3.5V25z"/></svg>
             <span className="sr-only">LinkedIn</span>
+          </a>
+          {/* X (Twitter) */}
+          <a
+            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(post.canonicalUrl || post.link)}&text=${encodeURIComponent(post.title)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Condividi su X (Twitter)"
+            title="Condividi su X (Twitter)"
+            className="transition-colors hover:text-black focus:outline-none focus:ring-2 focus:ring-black rounded flex items-center gap-2"
+          >
+            {/* SVG X ufficiale */}
+            <svg width="32" height="32" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 32 32"><title>X (Twitter)</title><image href="https://cdn.freelogovectors.net/wp-content/uploads/2023/07/twitter_x-logo-freelogovectors.net_.png" width="32" height="32"/></svg>
+            <span className="sr-only">X (Twitter)</span>
           </a>
           {/* Telegram */}
           <a
@@ -108,9 +112,23 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             title="Condividi su Telegram"
             className="transition-colors hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded flex items-center gap-2"
           >
-            <svg width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><title>Telegram</title><path d="M12 0C5.371 0 0 5.371 0 12c0 6.629 5.371 12 12 12s12-5.371 12-12c0-6.629-5.371-12-12-12zm5.707 8.293l-1.414 8.485c-.104.624-.441.779-.892.485l-2.475-1.828-1.194 1.151c-.132.132-.242.242-.495.242l.177-2.507 4.566-4.127c.199-.177-.043-.276-.308-.099l-5.654 3.561-2.436-.761c-.529-.165-.539-.529.11-.779l9.51-3.671c.441-.165.826.099.684.771z"/></svg>
+            {/* SVG Telegram ufficiale */}
+            <svg width="32" height="32" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 32 32"><title>Telegram</title><path d="M16 3C8.82 3 3 8.82 3 16c0 7.18 5.82 13 13 13s13-5.82 13-13c0-7.18-5.82-13-13-13zm5.98 8.29l-2.47 10.44c-.18.77-.65.96-1.31.6l-3.63-2.68-1.75 1.69c-.15.15-.28.28-.57.28l.21-3.68 6.7-6.06c.29-.26-.06-.41-.44-.15l-8.3 5.23-3.58-1.12c-.78-.24-.8-.78.18-1.15l13.99-5.41c.65-.25 1.22.15 1.01 1.09z"/></svg>
             <span className="sr-only">Telegram</span>
           </a>
+          {/* Copia link */}
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(post.canonicalUrl || post.link)
+            }}
+            aria-label="Copia link dell'articolo"
+            title="Copia link dell'articolo"
+            className="transition-colors hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded flex items-center gap-2"
+          >
+            {/* SVG link/copy */}
+            <svg width="32" height="32" fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 32 32"><title>Copia link</title><path d="M18.364 13.636a1 1 0 0 1 1.414 1.414l-6.364 6.364a4 4 0 1 1-5.656-5.656l4.243-4.243a4 4 0 0 1 5.656 5.656l-1.414 1.414a1 1 0 1 1-1.414-1.414l1.414-1.414a2 2 0 1 0-2.828-2.828l-4.243 4.243a2 2 0 1 0 2.828 2.828l6.364-6.364z"/></svg>
+            <span className="sr-only">Copia link</span>
+          </button>
         </div>
       </section>
 
