@@ -2,7 +2,12 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "host": "www.puntifurbi.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.puntifurbi.com"
+        }
+      ],
       "destination": "https://puntifurbi.com/:path*",
       "permanent": true
     }
