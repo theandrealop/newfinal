@@ -12,6 +12,7 @@ import { ClientCacheBuster, DynamicBlogMetaTags } from "@/components/client-cach
 import { LightThemeEnforcer } from "@/components/light-theme-enforcer"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import Footer from "@/components/Footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -28,9 +29,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://www.puntifurbi.com"),
+  metadataBase: new URL("https://puntifurbi.com"),
   alternates: {
-    canonical: "https://www.puntifurbi.com/",
+    canonical: "https://puntifurbi.com/",
   },
   icons: {
     icon: [
@@ -115,6 +116,7 @@ export default function RootLayout({
           <div className="relative flex min-h-screen flex-col">
             <SiteNavigation />
             <main className="flex-1">{children}</main>
+            <Footer />
           </div>
           <Toaster />
           <GoogleTagManager />
