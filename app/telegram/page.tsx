@@ -46,7 +46,7 @@ export default function TelegramLandingPage() {
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1318107162989095');
+          fbq('init', '752764100671245');
           fbq('track', 'PageView');
         `}
               </Script>
