@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { Send, Users, Bell, Zap, Star, MessageCircle } from "lucide-react"
+import { Users, Bell, Zap, Star } from "lucide-react"
 import Image from "next/image"
 import Head from "next/head"
 import Script from "next/script"
@@ -46,7 +46,7 @@ export default function TelegramLandingPage() {
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', 'YOUR_PIXEL_ID'); // Sostituire con il vero Pixel ID
+          fbq('init', '1318107162989095');
           fbq('track', 'PageView');
         `}
               </Script>
@@ -104,7 +104,13 @@ export default function TelegramLandingPage() {
             <div className="text-center space-y-8">
               {/* Badge */}
               <div className="inline-flex items-center px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm">
-                <MessageCircle className="w-5 h-5 text-[#229ED9] mr-2" />
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/640px-Telegram_logo.svg.png"
+                  alt="Telegram Logo"
+                  width={20}
+                  height={20}
+                  className="mr-2"
+                />
                 <span className="text-sm font-medium text-gray-700">
                   Canale Telegram Ufficiale
                 </span>
@@ -131,7 +137,13 @@ export default function TelegramLandingPage() {
                   onClick={handleTelegramClick}
                   className="group relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-[#229ED9] to-[#0088cc] text-white text-2xl font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 shadow-xl"
                 >
-                  <Send className="w-8 h-8 group-hover:translate-x-1 transition-transform" />
+                  <Image
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/640px-Telegram_logo.svg.png"
+                    alt="Telegram Logo"
+                    width={32}
+                    height={32}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
                   Unisciti al canale Telegram
                   <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
@@ -310,7 +322,13 @@ export default function TelegramLandingPage() {
               onClick={handleTelegramClick}
               className="group relative inline-flex items-center gap-4 px-12 py-6 bg-white text-[#483cff] text-2xl font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 shadow-xl"
             >
-              <Send className="w-8 h-8 group-hover:translate-x-1 transition-transform" />
+              <Image
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/640px-Telegram_logo.svg.png"
+                alt="Telegram Logo"
+                width={32}
+                height={32}
+                className="group-hover:translate-x-1 transition-transform"
+              />
               Entra nel canale Telegram ora
             </button>
             
