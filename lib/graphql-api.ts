@@ -1,6 +1,6 @@
 import { fetchGraphQLWithRetry, getFallbackBlogData } from './fetch-with-retry'
 
-const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || "https://pff-815f04.ingress-florina.ewp.live/graphql"
+const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || "https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql"
 
 export interface BlogPost {
   id: string
