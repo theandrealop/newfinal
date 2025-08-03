@@ -13,7 +13,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'pff-815f04.ingress-florina.ewp.live',
+        hostname: 'punti-furbi-815f04.ingress-daribow.ewp.live',
         port: '',
         pathname: '/wp-content/uploads/**',
       },

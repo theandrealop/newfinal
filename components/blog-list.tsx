@@ -30,7 +30,7 @@ export function BlogList({
       console.log("🚀 BlogList: Caricando più posts con retry logic...")
       
       // Client-side GraphQL fetch con retry logic
-      const WORDPRESS_API_URL = "https://pff-815f04.ingress-florina.ewp.live/graphql"
+      const WORDPRESS_API_URL = "https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql"
       
       const query = `
         query GetAllPosts($first: Int!, $after: String) {
