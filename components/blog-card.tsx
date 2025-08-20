@@ -1,10 +1,10 @@
 import Link from "next/link"
-import type { BlogPost } from "@/lib/graphql-api"
+import type { WPPost } from "@/lib/wp"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
 interface BlogCardProps {
-  post: BlogPost
+  post: WPPost
 }
 
 export function BlogCard({ post }: BlogCardProps) {
@@ -19,10 +19,10 @@ export function BlogCard({ post }: BlogCardProps) {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <Link href={`/blog/${post.slug}`}>
-        {post.featuredImage && (
+        {post.featuredImage?.node?.sourceUrl && (
           <div className="aspect-video overflow-hidden">
             <img
-              src={post.featuredImage.node.sourceUrl || "/placeholder.svg"}
+              src={post.featuredImage.node.sourceUrl}
               alt={post.featuredImage.node.altText || post.title}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
@@ -30,7 +30,7 @@ export function BlogCard({ post }: BlogCardProps) {
         )}
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-2 mb-3">
-            {post.categories.nodes.slice(0, 2).map((category) => (
+            {post.categories?.nodes?.slice(0, 2).map((category) => (
               <Badge key={category.slug} variant="secondary" className="text-xs">
                 {category.name}
               </Badge>
@@ -42,7 +42,7 @@ export function BlogCard({ post }: BlogCardProps) {
           <div className="text-muted-foreground mb-4 line-clamp-3" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
 
           <div className="flex items-center justify-between text-sm text-muted-foreground">
-            <span>{post.author.node.name}</span>
+            <span>{post.author?.node?.name || 'Autore sconosciuto'}</span>
             <span>{formatDate(post.date)}</span>
           </div>
         </CardContent>

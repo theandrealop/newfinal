@@ -1,11 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import type { BlogPost } from "@/lib/graphql-api"
+import type { WPPost } from "@/lib/wp"
 import { BlogList } from "./blog-list"
 
 interface BlogPageClientProps {
-  initialPosts: BlogPost[]
+  initialPosts: WPPost[]
   hasNextPage: boolean
   endCursor: string | null
   error?: string

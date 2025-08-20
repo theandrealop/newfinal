@@ -1,13 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import type { BlogPost } from "@/lib/graphql-api"
+import type { WPPost } from "@/lib/wp"
 import { BlogCard } from "./blog-card"
 import { Button } from "@/components/ui/button"
 import { fetchGraphQLWithRetry } from "@/lib/fetch-with-retry"
 
 interface BlogListProps {
-  initialPosts: BlogPost[]
+  initialPosts: WPPost[]
   hasNextPage: boolean
   endCursor: string | null
 }
@@ -30,7 +30,7 @@ export function BlogList({
       console.log("🚀 BlogList: Caricando più posts con retry logic...")
       
       // Client-side GraphQL fetch con retry logic
-      const WORDPRESS_API_URL = "https://pff-815f04.ingress-florina.ewp.live/graphql"
+      const WORDPRESS_API_URL = process.env.NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT || "https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql"
       
       const query = `
         query GetAllPosts($first: Int!, $after: String) {
@@ -71,16 +71,16 @@ export function BlogList({
       }
       
       // Sort new posts by date (most recent first)
-      const newPosts = data.posts.nodes.sort((a: BlogPost, b: BlogPost) => {
+      const newPosts = data.posts.nodes.sort((a: WPPost, b: WPPost) => {
         return new Date(b.date).getTime() - new Date(a.date).getTime()
       })
       
       console.log(`✅ BlogList: Caricati ${newPosts.length} nuovi posts`)
       
-      setPosts((prevPosts: BlogPost[]) => {
+      setPosts((prevPosts: WPPost[]) => {
         const combined = [...prevPosts, ...newPosts]
         // Re-sort the entire array to maintain order
-        return combined.sort((a: BlogPost, b: BlogPost) => {
+        return combined.sort((a: WPPost, b: WPPost) => {
           return new Date(b.date).getTime() - new Date(a.date).getTime()
         })
       })
