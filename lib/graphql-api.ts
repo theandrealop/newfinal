@@ -287,3 +287,118 @@ export async function getRelatedPosts(categories: any[]): Promise<any[]> {
     return []
   }
 }
+
+// --- eSIM specific functions ---
+
+/**
+ * Fetches eSIM articles from WordPress category
+ */
+export async function fetchEsimArticles(): Promise<any[]> {
+  const query = `
+    query GetEsimArticles {
+      posts(
+        first: 6,
+        where: { 
+          status: PUBLISH,
+          categoryName: "esim"
+        }
+      ) {
+        nodes {
+          id
+          title
+          slug
+          excerpt
+          date
+          author {
+            node {
+              name
+            }
+          }
+          featuredImage {
+            node {
+              sourceUrl
+              altText
+            }
+          }
+        }
+      }
+    }
+  `
+
+  try {
+    console.log("🚀 fetchEsimArticles: Caricando articoli eSIM...")
+    const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query)
+    
+    if (data?.posts?.nodes) {
+      const articles = data.posts.nodes.sort((a: any, b: any) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      })
+      
+      console.log(`✅ fetchEsimArticles: ${articles.length} articoli eSIM caricati`)
+      return articles
+    }
+    
+    console.warn("⚠️ fetchEsimArticles: Nessun articolo eSIM trovato")
+    return []
+  } catch (error) {
+    console.error("💥 fetchEsimArticles: Errore caricamento articoli eSIM:", error)
+    return []
+  }
+}
+
+/**
+ * Fetches eSIM guides from WordPress category
+ */
+export async function fetchEsimGuides(): Promise<any[]> {
+  const query = `
+    query GetEsimGuides {
+      posts(
+        first: 3,
+        where: { 
+          status: PUBLISH,
+          categoryName: "esim",
+          tagSlugAnd: ["guida"]
+        }
+      ) {
+        nodes {
+          id
+          title
+          slug
+          excerpt
+          date
+          author {
+            node {
+              name
+            }
+          }
+          featuredImage {
+            node {
+              sourceUrl
+              altText
+            }
+          }
+        }
+      }
+    }
+  `
+
+  try {
+    console.log("🚀 fetchEsimGuides: Caricando guide eSIM...")
+    const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query)
+    
+    if (data?.posts?.nodes) {
+      const guides = data.posts.nodes.sort((a: any, b: any) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      })
+      
+      console.log(`✅ fetchEsimGuides: ${guides.length} guide eSIM caricate`)
+      return guides
+    }
+    
+    console.warn("⚠️ fetchEsimGuides: Nessuna guida eSIM trovata")
+    return []
+  } catch (error) {
+    console.error("💥 fetchEsimGuides: Errore caricamento guide eSIM:", error)
+    return []
+  }
+}

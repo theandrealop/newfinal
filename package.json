@@ -7,6 +7,7 @@
     "build:export": "next build",
     "build:test": "node scripts/test-build.js",
     "build:kinsta": "npm run build:test && npm run build",
+    "build:esim-data": "node scripts/build-esim-data.js",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",

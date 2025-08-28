@@ -18,6 +18,7 @@ export function SiteNavigation() {
     { href: "/", label: "Home" },
     { href: "/come-funziona", label: "Come funziona" },
     { href: "/voli-economici", label: "Voli economici" },
+    { href: "/esim", label: "eSIM" },
     { href: "/blog", label: "Blog" },
     { href: "/premium", label: "Premium" },
     { href: "/elite", label: "Elite" },

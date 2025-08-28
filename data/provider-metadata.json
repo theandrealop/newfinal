@@ -1,0 +1,72 @@
+[
+  {
+    "id": "airalo",
+    "name": "Airalo",
+    "logo": "/images/providers/airalo-logo.png",
+    "description": "Airalo è uno dei principali provider di eSIM globali, con copertura in oltre 190 paesi. Offre piani regionali e globali con attivazione istantanea.",
+    "website": "https://airalo.com"
+  },
+  {
+    "id": "holafly",
+    "name": "Holafly",
+    "logo": "/images/providers/holafly-logo.png",
+    "description": "Holafly specializzato in eSIM per viaggiatori, con piani illimitati e supporto multilingua. Ideale per soggiorni prolungati.",
+    "website": "https://holafly.com"
+  },
+  {
+    "id": "nomad",
+    "name": "Nomad",
+    "logo": "/images/providers/nomad-logo.png",
+    "description": "Nomad offre eSIM trasferibili e piani flessibili. Perfetto per viaggiatori che cambiano spesso destinazione.",
+    "website": "https://nomad.com"
+  },
+  {
+    "id": "truphone",
+    "name": "Truphone",
+    "logo": "/images/providers/truphone-logo.png",
+    "description": "Truphone è un provider consolidato con eSIM globali e piani business. Ottima copertura in Europa e Nord America.",
+    "website": "https://truphone.com"
+  },
+  {
+    "id": "gigsky",
+    "name": "GigSky",
+    "logo": "/images/providers/gigsky-logo.png",
+    "description": "GigSky offre eSIM per oltre 190 paesi con attivazione immediata. Interfaccia semplice e supporto 24/7.",
+    "website": "https://gigsky.com"
+  },
+  {
+    "id": "esimdb",
+    "name": "eSIMdb",
+    "logo": "/images/providers/esimdb-logo.png",
+    "description": "eSIMdb è un aggregatore che confronta offerte di diversi provider. Ideale per trovare la migliore tariffa.",
+    "website": "https://esimdb.com"
+  },
+  {
+    "id": "simoptions",
+    "name": "SimOptions",
+    "logo": "/images/providers/simoptions-logo.png",
+    "description": "SimOptions offre eSIM di operatori locali in tutto il mondo. Prezzi competitivi e copertura locale.",
+    "website": "https://simoptions.com"
+  },
+  {
+    "id": "ubigi",
+    "name": "Ubigi",
+    "logo": "/images/providers/ubigi-logo.png",
+    "description": "Ubigi specializzato in eSIM per Europa e Asia. Ottimi piani per viaggi business e turistici.",
+    "website": "https://ubigi.com"
+  },
+  {
+    "id": "esimgo",
+    "name": "eSIMGo",
+    "logo": "/images/providers/esimgo-logo.png",
+    "description": "eSIMGo offre piani regionali e globali con attivazione istantanea. Interfaccia intuitiva e prezzi trasparenti.",
+    "website": "https://esimgo.com"
+  },
+  {
+    "id": "alosim",
+    "name": "AloSIM",
+    "logo": "/images/providers/alosim-logo.png",
+    "description": "AloSIM è un provider emergente con eSIM per oltre 170 paesi. Prezzi competitivi e supporto clienti reattivo.",
+    "website": "https://alosim.com"
+  }
+]
