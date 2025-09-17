@@ -12,11 +12,11 @@ Copia `.env.example` in `.env.local` e configura:
 
 ```bash
 # WordPress GraphQL Configuration
-WP_GRAPHQL_ENDPOINT=http://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql
-WP_REST_ENDPOINT=http://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-json/wp/v2
+WP_GRAPHQL_ENDPOINT=https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql
+WP_REST_ENDPOINT=https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-json/wp/v2
 
 # Public variables (available on client-side)
-NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT=http://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql
+NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT=https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql
 NEXT_PUBLIC_SITE_URL=https://puntifurbi.com
 ```
 

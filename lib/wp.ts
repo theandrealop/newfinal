@@ -13,8 +13,8 @@ export type WPPost = {
   author?: { node: { name: string } };
 };
 
-const WP_GRAPHQL_ENDPOINT = process.env.WP_GRAPHQL_ENDPOINT || "http://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql";
-const WP_REST_ENDPOINT = process.env.WP_REST_ENDPOINT || "http://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-json/wp/v2";
+const WP_GRAPHQL_ENDPOINT = process.env.WP_GRAPHQL_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql";
+const WP_REST_ENDPOINT = process.env.WP_REST_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-json/wp/v2";
 
 async function postJSON(body: unknown, signal?: AbortSignal) {
   const ctrl = new AbortController();
