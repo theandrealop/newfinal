@@ -28,7 +28,13 @@ async function postJSON(body: unknown, signal?: AbortSignal) {
       signal: signal ?? ctrl.signal,
       next: { revalidate: 60, tags: ['posts'] },
     });
-    if (!res.ok) throw new Error(`WPGraphQL HTTP ${res.status}`);
+    if (!res.ok) {
+      if (res.status === 429) {
+        console.log('⚠️ GraphQL rate limited, aspetto prima del fallback...');
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      }
+      throw new Error(`WPGraphQL HTTP ${res.status}`);
+    }
     return (await res.json()) as any;
   } finally {
     clearTimeout(timeout);
@@ -61,12 +67,21 @@ export async function getLatestPosts(limit = 10): Promise<WPPost[]> {
     console.log(`✅ GraphQL: ${nodes.length} posts caricati`);
     return nodes as WPPost[];
   } catch (err) {
-    console.error('[WPGraphQL] fallback REST per errore:', (err as Error).message);
+    const errorMsg = (err as Error).message;
+    console.error('[WPGraphQL] fallback REST per errore:', errorMsg);
+    
+    // Se è rate limiting, aspetta un po' di più prima del fallback
+    if (errorMsg.includes('429')) {
+      console.log('⏳ Rate limiting rilevato, attendo prima del fallback REST...');
+      await new Promise(resolve => setTimeout(resolve, 3000));
+    }
+    
     return await getLatestPostsREST(limit);
   }
 }
 
 async function getLatestPostsREST(limit = 10): Promise<WPPost[]> {
+  console.log(`🔧 DEBUG: WP_REST_ENDPOINT = ${WP_REST_ENDPOINT}`);
   const url = `${WP_REST_ENDPOINT}/posts?per_page=${limit}&_fields=id,slug,title,excerpt,date,link,featured_media,author&_embed`;
   console.log(`🔄 Fallback REST: ${url}`);
   
