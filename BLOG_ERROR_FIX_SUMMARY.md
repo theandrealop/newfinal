@@ -175,7 +175,7 @@ node test-blog-fix.js
 
 ### Verifica Endpoint GraphQL
 ```bash
-curl -s "https://pff-815f04.ingress-florina.ewp.live/graphql" \
+curl -s "http://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql" \
   -H "Content-Type: application/json" \
   -d '{"query":"query { posts(first: 1) { nodes { title } } }"}'
 ```

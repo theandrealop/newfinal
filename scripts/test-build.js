@@ -60,7 +60,7 @@ async function testGraphQLEndpoint() {
   try {
     // Usa fetch nativo di Node.js (disponibile da Node 18+)
     const fetch = globalThis.fetch;
-    const response = await fetch('https://pff-815f04.ingress-florina.ewp.live/graphql', {
+    const response = await fetch('http://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ async function simulateRateLimiting() {
   const promises = [];
   for (let i = 0; i < 5; i++) {
     promises.push(
-      fetch('https://pff-815f04.ingress-florina.ewp.live/graphql', {
+      fetch('http://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
