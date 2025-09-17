@@ -13,8 +13,9 @@ export type WPPost = {
   author?: { node: { name: string } };
 };
 
-const WP_GRAPHQL_ENDPOINT = process.env.WP_GRAPHQL_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql";
-const WP_REST_ENDPOINT = process.env.WP_REST_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-json/wp/v2";
+// TEMPORARY: Hardcoded per assicurarsi che usi il dominio corretto
+const WP_GRAPHQL_ENDPOINT = "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql";
+const WP_REST_ENDPOINT = "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-json/wp/v2";
 
 async function postJSON(body: unknown, signal?: AbortSignal) {
   const ctrl = new AbortController();
@@ -24,9 +25,8 @@ async function postJSON(body: unknown, signal?: AbortSignal) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
-      cache: 'no-store', // evita riuso di errori dopo purge
       signal: signal ?? ctrl.signal,
-      next: { revalidate: 60, tags: ['posts'] },
+      next: { revalidate: 300, tags: ['posts'] }, // 5 minuti di cache
     });
     if (!res.ok) {
       if (res.status === 429) {
@@ -81,13 +81,11 @@ export async function getLatestPosts(limit = 10): Promise<WPPost[]> {
 }
 
 async function getLatestPostsREST(limit = 10): Promise<WPPost[]> {
-  console.log(`🔧 DEBUG: WP_REST_ENDPOINT = ${WP_REST_ENDPOINT}`);
   const url = `${WP_REST_ENDPOINT}/posts?per_page=${limit}&_fields=id,slug,title,excerpt,date,link,featured_media,author&_embed`;
   console.log(`🔄 Fallback REST: ${url}`);
   
   const res = await fetch(url, { 
-    cache: 'no-store', 
-    next: { revalidate: 60, tags: ['posts'] } 
+    next: { revalidate: 300, tags: ['posts'] } // 5 minuti di cache
   });
   if (!res.ok) throw new Error('WP REST HTTP ' + res.status);
   const posts = await res.json();

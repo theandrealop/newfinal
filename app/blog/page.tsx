@@ -80,9 +80,7 @@ export default function BlogPage() {
 export const metadata = {
   title: "Blog - Punti Furbi",
   description: "Scopri i nostri articoli su viaggi, punti fedeltà e offerte esclusive.",
-  other: {
-    'Cache-Control': 'max-age=300, must-revalidate', // Meno aggressivo: 5 minuti
-    'Pragma': 'no-cache',
-    'Expires': '0'
-  }
 }
+
+// Configura il revalidation per questa pagina
+export const revalidate = 300 // 5 minuti
