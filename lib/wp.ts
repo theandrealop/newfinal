@@ -75,6 +75,10 @@ async function getLatestPostsREST(limit = 10): Promise<WPPost[]> {
     cache: 'force-cache',
     next: { revalidate: 60, tags: ['posts'] } 
   });
+  if (res.status === 404) {
+    console.warn('[WP REST] 404 Not Found su endpoint posts. Ritorno array vuoto per non bloccare il blog.');
+    return [] as WPPost[];
+  }
   if (!res.ok) throw new Error('WP REST HTTP ' + res.status);
   const posts = await res.json();
   
