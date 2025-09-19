@@ -1,13 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import type { WPPost } from "@/lib/wp"
+import type { BlogPost } from "@/lib/graphql-api"
 import { BlogCard } from "./blog-card"
 import { Button } from "@/components/ui/button"
 import { fetchGraphQLWithRetry } from "@/lib/fetch-with-retry"
 
 interface BlogListProps {
-  initialPosts: WPPost[]
+  initialPosts: BlogPost[]
   hasNextPage: boolean
   endCursor: string | null
 }
@@ -71,16 +71,16 @@ export function BlogList({
       }
       
       // Sort new posts by date (most recent first)
-      const newPosts = data.posts.nodes.sort((a: WPPost, b: WPPost) => {
+      const newPosts = data.posts.nodes.sort((a: BlogPost, b: BlogPost) => {
         return new Date(b.date).getTime() - new Date(a.date).getTime()
       })
       
       console.log(`✅ BlogList: Caricati ${newPosts.length} nuovi posts`)
       
-      setPosts((prevPosts: WPPost[]) => {
+      setPosts((prevPosts: BlogPost[]) => {
         const combined = [...prevPosts, ...newPosts]
         // Re-sort the entire array to maintain order
-        return combined.sort((a: WPPost, b: WPPost) => {
+        return combined.sort((a: BlogPost, b: BlogPost) => {
           return new Date(b.date).getTime() - new Date(a.date).getTime()
         })
       })

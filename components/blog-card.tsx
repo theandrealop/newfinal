@@ -1,10 +1,10 @@
 import Link from "next/link"
-import type { WPPost } from "@/lib/wp"
+import type { BlogPost } from "@/lib/graphql-api"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
 interface BlogCardProps {
-  post: WPPost
+  post: BlogPost
 }
 
 export function BlogCard({ post }: BlogCardProps) {

@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { getLatestPosts } from "@/lib/wp"
+import { getAllPosts } from "@/lib/graphql-api"
 import { BlogPageClient } from "@/components/blog-page-client"
 import { Skeleton } from "@/components/ui/skeleton"
 
@@ -43,15 +43,15 @@ function BlogSkeleton() {
 async function BlogPageContent() {
   try {
     console.log("🚀 BlogPageContent: Iniziando caricamento posts...")
-    const posts = await getLatestPosts(12)
+    const { posts, hasNextPage, endCursor } = await getAllPosts(12)
     console.log("✅ BlogPageContent: Posts caricati con successo:", posts.length)
 
     // Passa i dati al Client Component
     return (
       <BlogPageClient 
         initialPosts={posts} 
-        hasNextPage={false} 
-        endCursor={null}
+        hasNextPage={hasNextPage} 
+        endCursor={endCursor}
       />
     )
   } catch (error) {
