@@ -13,8 +13,8 @@ export type WPPost = {
   author?: { node: { name: string } };
 };
 
-const WP_GRAPHQL_ENDPOINT = process.env.WP_GRAPHQL_ENDPOINT || "https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql";
-const WP_REST_ENDPOINT = process.env.WP_REST_ENDPOINT || "https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-json/wp/v2";
+const WP_GRAPHQL_ENDPOINT = process.env.WP_GRAPHQL_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql";
+const WP_REST_ENDPOINT = process.env.WP_REST_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-json/wp/v2";
 
 async function postJSON(body: unknown, signal?: AbortSignal) {
   const ctrl = new AbortController();
@@ -24,7 +24,8 @@ async function postJSON(body: unknown, signal?: AbortSignal) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
-      cache: 'no-store', // evita riuso di errori dopo purge
+      // Allow static generation with ISR; avoid dynamic no-store on /blog
+      cache: 'force-cache',
       signal: signal ?? ctrl.signal,
       next: { revalidate: 60, tags: ['posts'] },
     });
@@ -71,7 +72,7 @@ async function getLatestPostsREST(limit = 10): Promise<WPPost[]> {
   console.log(`🔄 Fallback REST: ${url}`);
   
   const res = await fetch(url, { 
-    cache: 'no-store', 
+    cache: 'force-cache',
     next: { revalidate: 60, tags: ['posts'] } 
   });
   if (!res.ok) throw new Error('WP REST HTTP ' + res.status);
