@@ -40,7 +40,7 @@ export function EsimComparison() {
         satisfaction: 8.8
       },
       reviewUrl: '/recensioni/airalo',
-      websiteUrl: 'https://airalo.com'
+      websiteUrl: 'https://airalo.pxf.io/vPKRry'
     },
     {
       name: 'Holafly',
@@ -58,7 +58,7 @@ export function EsimComparison() {
         satisfaction: 9.0
       },
       reviewUrl: '/recensioni/holafly',
-      websiteUrl: 'https://holafly.com'
+      websiteUrl: 'https://finanza.me/holafly'
     },
     {
       name: 'Yesim',
@@ -112,7 +112,7 @@ export function EsimComparison() {
         satisfaction: 8.2
       },
       reviewUrl: '/recensioni/ubigi',
-      websiteUrl: 'https://ubigi.com'
+      websiteUrl: 'https://finanza.me/ubigi'
     }
   ]
 

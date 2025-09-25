@@ -40,6 +40,9 @@ export default function EsimPage() {
       
       <div className="container mx-auto px-4 py-8">
         <EsimSmartFilter />
+        <div className="mt-8">
+          <EsimComparisonTable />
+        </div>
       </div>
 
       <EsimStats />
@@ -49,22 +52,6 @@ export default function EsimPage() {
       <EsimVideoSection />
       
       <EsimHowItWorks />
-      
-      <div id="esim-comparison" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Confronta Offerte eSIM
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Trova l'offerta migliore per la tua destinazione. Confronta prezzi, durata e GB 
-              tra i principali provider eSIM del mercato.
-            </p>
-          </div>
-          
-          <EsimComparisonTable />
-        </div>
-      </div>
       
       <EsimComparison />
       

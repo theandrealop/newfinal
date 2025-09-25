@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { ArrowUpDown, ExternalLink, Star, TrendingDown } from 'lucide-react'
+import { ArrowUpDown, ExternalLink, Star, TrendingDown, Copy, Check, Tag } from 'lucide-react'
 import { esimService } from '@/lib/esim-service'
 import { EsimOffer, EsimFilter } from '@/types/esim'
 
@@ -15,13 +15,8 @@ export function EsimComparisonTable() {
   const [filters, setFilters] = useState<EsimFilter>({})
   const [sortBy, setSortBy] = useState<'prezzo' | 'durata' | 'gb'>('prezzo')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
-  const [selectedCountry, setSelectedCountry] = useState<string>('all')
-  const [selectedDuration, setSelectedDuration] = useState<number | undefined>()
-  const [selectedGB, setSelectedGB] = useState<number | string | undefined>()
-
-  const countries = esimService.getAvailableCountries()
-  const durations = esimService.getAvailableDurations()
-  const gbOptions = esimService.getAvailableGB()
+  const [copiedCodes, setCopiedCodes] = useState<Set<string>>(new Set())
+  const [hasSearched, setHasSearched] = useState(false)
 
   // Ascolta i cambiamenti dei filtri dal componente principale
   useEffect(() => {
@@ -29,32 +24,8 @@ export function EsimComparisonTable() {
       const newFilters = event.detail as EsimFilter
       console.log('Filtri ricevuti nella tabella:', newFilters)
       
-      // Aggiorna i filtri locali
-      setSelectedCountry(newFilters.paese || 'all')
-      
-             // Gestione durata per i nuovi filtri
-       if (newFilters.durata) {
-         setSelectedDuration(newFilters.durata)
-       } else if (newFilters.durataMin && newFilters.durataMax) {
-         // Mappa i range di durata ai valori del select
-         if (newFilters.durataMin === 1 && newFilters.durataMax === 7) {
-           setSelectedDuration(7) // "Meno di una settimana"
-         } else if (newFilters.durataMin === 7 && newFilters.durataMax === 14) {
-           setSelectedDuration(10) // "1-2 settimane"
-         } else if (newFilters.durataMin === 15 && newFilters.durataMax === 29) {
-           setSelectedDuration(15) // "15-29 giorni"
-         } else if (newFilters.durataMin === 30) {
-           setSelectedDuration(30) // "30 giorni o più"
-         }
-       }
-      
-      // Gestione GB per i nuovi filtri
-      if (newFilters.gb) {
-        setSelectedGB(newFilters.gb)
-      } else if (newFilters.gbMin) {
-        // Mappa i GB minimi ai valori del select
-        setSelectedGB(newFilters.gbMin)
-      }
+      // Applica i filtri direttamente
+      setHasSearched(true)
       
       // Applica i filtri
       const filteredOffers = esimService.filterOffers(newFilters)
@@ -66,89 +37,14 @@ export function EsimComparisonTable() {
     // Ascolta l'evento custom
     window.addEventListener('esimFiltersChanged', handleFiltersChanged as EventListener)
 
-    // Carica i filtri dal localStorage all'avvio
-    const savedFilters = localStorage.getItem('esimFilters')
-    if (savedFilters) {
-      try {
-        const parsedFilters = JSON.parse(savedFilters) as EsimFilter
-        console.log('Filtri caricati dal localStorage:', parsedFilters)
-        
-        setSelectedCountry(parsedFilters.paese || 'all')
-        
-                 // Gestione durata per i nuovi filtri
-         if (parsedFilters.durata) {
-           setSelectedDuration(parsedFilters.durata)
-         } else if (parsedFilters.durataMin && parsedFilters.durataMax) {
-           // Mappa i range di durata ai valori del select
-           if (parsedFilters.durataMin === 1 && parsedFilters.durataMax === 7) {
-             setSelectedDuration(7) // "Meno di una settimana"
-           } else if (parsedFilters.durataMin === 7 && parsedFilters.durataMax === 14) {
-             setSelectedDuration(10) // "1-2 settimane"
-           } else if (parsedFilters.durataMin === 15 && parsedFilters.durataMax === 29) {
-             setSelectedDuration(15) // "15-29 giorni"
-           } else if (parsedFilters.durataMin === 30) {
-             setSelectedDuration(30) // "30 giorni o più"
-           }
-         }
-        
-        // Gestione GB per i nuovi filtri
-        if (parsedFilters.gb) {
-          setSelectedGB(parsedFilters.gb)
-        } else if (parsedFilters.gbMin) {
-          // Mappa i GB minimi ai valori del select
-          setSelectedGB(parsedFilters.gbMin)
-        }
-        
-        const filteredOffers = esimService.filterOffers(parsedFilters)
-        const sortedOffers = sortOffers(filteredOffers, sortBy, sortOrder)
-        setOffers(sortedOffers)
-        setFilters(parsedFilters)
-      } catch (error) {
-        console.error('Errore nel parsing dei filtri dal localStorage:', error)
-      }
-    }
+    // Non caricare automaticamente i filtri dal localStorage all'avvio
+    // L'utente deve premere "Confronta eSIM" per vedere i risultati
 
     return () => {
       window.removeEventListener('esimFiltersChanged', handleFiltersChanged as EventListener)
     }
   }, [sortBy, sortOrder])
 
-  useEffect(() => {
-    const newFilters: EsimFilter = {}
-    if (selectedCountry && selectedCountry !== 'all') newFilters.paese = selectedCountry
-    
-         // Gestione durata per i nuovi filtri
-     if (selectedDuration) {
-       if (selectedDuration === 7) {
-         newFilters.durataMin = 1
-         newFilters.durataMax = 7  // Cambiato da 6 a 7 per includere "meno di una settimana"
-       } else if (selectedDuration === 10) {
-         newFilters.durataMin = 7
-         newFilters.durataMax = 14
-       } else if (selectedDuration === 15) {
-         newFilters.durataMin = 15
-         newFilters.durataMax = 29
-       } else if (selectedDuration === 30) {
-         newFilters.durataMin = 30
-       } else {
-         newFilters.durata = selectedDuration
-       }
-     }
-    
-    // Gestione GB per i nuovi filtri
-    if (selectedGB) {
-      if (selectedGB === 'illimitati') {
-        newFilters.gb = 'illimitati'
-      } else if (typeof selectedGB === 'number') {
-        newFilters.gbMin = selectedGB
-      }
-    }
-
-    const filteredOffers = esimService.filterOffers(newFilters)
-    const sortedOffers = sortOffers(filteredOffers, sortBy, sortOrder)
-    setOffers(sortedOffers)
-    setFilters(newFilters)
-  }, [selectedCountry, selectedDuration, selectedGB, sortBy, sortOrder])
 
   const sortOffers = (offers: EsimOffer[], sortBy: string, order: 'asc' | 'desc') => {
     return [...offers].sort((a, b) => {
@@ -208,13 +104,13 @@ export function EsimComparisonTable() {
 
   const getProviderWebsite = (provider: string) => {
     const websites: Record<string, string> = {
-      'Airalo': 'https://airalo.com',
-      'Holafly': 'https://holafly.com',
+      'Airalo': 'https://airalo.pxf.io/vPKRry',
+      'Holafly': 'https://finanza.me/holafly',
       'Saily': 'https://saily.com',
-      'Ubigi': 'https://ubigi.com',
+      'Ubigi': 'https://finanza.me/ubigi',
       'Nomad': 'https://nomad.com',
       'Jetpac': 'https://jetpac.com',
-      'eSIM4Travel': 'https://esim4travel.com',
+      'eSIM4Travel': 'https://finanza.me/esim4travel',
       'Maya': 'https://maya.com',
       'aloSIM': 'https://alosim.com',
       'Sim Local': 'https://simlocal.com',
@@ -224,6 +120,31 @@ export function EsimComparisonTable() {
     return websites[provider] || '#'
   }
 
+  // Funzioni per il codice promozionale HolaFly
+  const isHolaflyOffer = (provider: string) => {
+    return provider.toLowerCase().includes('holafly')
+  }
+
+  const getDiscountedPrice = (originalPrice: number) => {
+    return originalPrice * 0.95 // 5% di sconto
+  }
+
+  const copyPromoCode = async (offerId: string) => {
+    try {
+      await navigator.clipboard.writeText('FINANZAPERSONALE')
+      setCopiedCodes(prev => new Set(prev).add(offerId))
+      setTimeout(() => {
+        setCopiedCodes(prev => {
+          const newSet = new Set(prev)
+          newSet.delete(offerId)
+          return newSet
+        })
+      }, 2000)
+    } catch (err) {
+      console.error('Errore nella copia:', err)
+    }
+  }
+
 
 
   const isCheapest = (offer: EsimOffer) => {
@@ -231,119 +152,18 @@ export function EsimComparisonTable() {
     return countryOffers.length > 0 && offer.prezzo === Math.min(...countryOffers.map(o => o.prezzo))
   }
 
-  // Funzioni helper per mostrare i filtri applicati
-  const getDurationDisplayText = () => {
-    if (!selectedDuration) return "Tutte le durate"
-    
-    // Mappa i valori numerici ai testi dei nuovi filtri
-    if (selectedDuration === 7) return "Meno di una settimana"
-    if (selectedDuration === 10) return "1-2 settimane"
-    if (selectedDuration === 15) return "15-29 giorni"
-    if (selectedDuration === 30) return "30 giorni o più"
-    
-    return `${selectedDuration} giorni`
-  }
-
-  const getGBDisplayText = () => {
-    if (!selectedGB) return "Tutti i GB"
-    
-    if (selectedGB === 'illimitati') return "Dati illimitati"
-    if (typeof selectedGB === 'number') {
-      if (selectedGB >= 5) return `${selectedGB}+ GB`
-      return `${selectedGB} GB`
-    }
-    
-    return selectedGB.toString()
-  }
 
   return (
     <div className="space-y-6">
-      {/* Filtri */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <TrendingDown className="w-5 h-5" />
-            Filtra e Confronta Offerte eSIM
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="text-sm font-medium mb-2 block">Paese</label>
-              <Select value={selectedCountry} onValueChange={setSelectedCountry}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Seleziona paese" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Tutti i paesi</SelectItem>
-                  {countries.map(country => (
-                    <SelectItem key={country} value={country}>
-                      {country}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-                         <div>
-               <label className="text-sm font-medium mb-2 block">Quanto dura il tuo viaggio?</label>
-               <Select 
-                 value={selectedDuration?.toString() || 'all'} 
-                 onValueChange={(value) => setSelectedDuration(value === 'all' ? undefined : parseInt(value))}
-               >
-                 <SelectTrigger>
-                   <SelectValue placeholder={getDurationDisplayText()} />
-                 </SelectTrigger>
-                 <SelectContent>
-                   <SelectItem value="all">Tutte le durate</SelectItem>
-                   <SelectItem value="7">Meno di una settimana</SelectItem>
-                   <SelectItem value="10">1-2 settimane</SelectItem>
-                   <SelectItem value="15">15-29 giorni</SelectItem>
-                   <SelectItem value="30">30 giorni o più</SelectItem>
-                 </SelectContent>
-               </Select>
-             </div>
-
-                         <div>
-               <label className="text-sm font-medium mb-2 block">Di quanti dati hai bisogno?</label>
-               <Select 
-                 value={selectedGB?.toString() || 'all'} 
-                 onValueChange={(value) => {
-                   if (value === 'all') {
-                     setSelectedGB(undefined)
-                   } else if (value === 'illimitati') {
-                     setSelectedGB('illimitati')
-                   } else {
-                     setSelectedGB(parseInt(value))
-                   }
-                 }}
-               >
-                 <SelectTrigger>
-                   <SelectValue placeholder={getGBDisplayText()} />
-                 </SelectTrigger>
-                 <SelectContent>
-                   <SelectItem value="all">Mostra tutto</SelectItem>
-                   <SelectItem value="5">5 GB o più</SelectItem>
-                   <SelectItem value="10">10 GB o più</SelectItem>
-                   <SelectItem value="20">20 GB o più</SelectItem>
-                   <SelectItem value="50">50 GB o più</SelectItem>
-                   <SelectItem value="100">100 GB o più</SelectItem>
-                   <SelectItem value="illimitati">Dati illimitati</SelectItem>
-                 </SelectContent>
-               </Select>
-             </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Risultati a CARD */}
-      <Card>
-        <CardHeader>
-          <CardTitle>
-            Risultati ({offers.length} offerte trovate)
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+      {/* Risultati a CARD - Mostra solo se l'utente ha fatto una ricerca */}
+      {hasSearched && (
+        <Card>
+          <CardHeader>
+            <CardTitle>
+              Risultati ({offers.length} offerte trovate)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
           {offers.length > 0 ? (
             <div className="space-y-6">
               {offers.map((offer, index) => {
@@ -381,16 +201,56 @@ export function EsimComparisonTable() {
 
                       {/* Right: price and CTA */}
                       <div className="w-full md:w-80">
-                        <div className="rounded-lg border bg-slate-50 p-3">
-                          <div className="flex items-center justify-between">
-                            <div className="text-sm text-gray-600">Prezzo</div>
-                            <div className="text-xl font-bold text-gray-900">€ {offer.prezzo.toFixed(2)}</div>
+                        {isHolaflyOffer(offer.provider) ? (
+                          <div className="space-y-3">
+                            {/* Codice promozionale HolaFly */}
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                              <div className="flex items-center gap-2 mb-2">
+                                <Tag className="w-4 h-4 text-blue-600" />
+                                <span className="text-sm font-medium text-blue-800">
+                                  Ottieni uno sconto del 5% con questo codice.
+                                </span>
+                              </div>
+                              <div className="flex items-center justify-between mb-2">
+                                <span className="text-sm text-gray-600 line-through">€ {offer.prezzo.toFixed(2)}</span>
+                                <span className="text-lg font-bold text-gray-900">€ {getDiscountedPrice(offer.prezzo).toFixed(2)}</span>
+                              </div>
+                              <div className="flex items-center justify-between bg-white border border-gray-200 rounded px-3 py-2">
+                                <span className="font-mono text-sm font-medium">FINANZAPERSONALE</span>
+                                <button
+                                  onClick={() => copyPromoCode(`${offer.provider}-${offer.paese}-${index}`)}
+                                  className="text-blue-600 hover:text-blue-800 text-sm underline"
+                                >
+                                  {copiedCodes.has(`${offer.provider}-${offer.paese}-${index}`) ? (
+                                    <span className="flex items-center gap-1">
+                                      <Check className="w-3 h-3" />
+                                      Copiato
+                                    </span>
+                                  ) : (
+                                    'Copia'
+                                  )}
+                                </button>
+                              </div>
+                            </div>
+                            
+                            <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white" onClick={() => window.open(getProviderWebsite(offer.provider), '_blank')}>
+                              Vai a {offer.provider}
+                            </Button>
                           </div>
-                        </div>
+                        ) : (
+                          <div className="space-y-3">
+                            <div className="rounded-lg border bg-slate-50 p-3">
+                              <div className="flex items-center justify-between">
+                                <div className="text-sm text-gray-600">Prezzo</div>
+                                <div className="text-xl font-bold text-gray-900">€ {offer.prezzo.toFixed(2)}</div>
+                              </div>
+                            </div>
 
-                        <Button className="w-full mt-3 bg-[#03464b] hover:bg-[#02363a] text-white" onClick={() => window.open(getProviderWebsite(offer.provider), '_blank')}>
-                          Vai a {offer.provider}
-                        </Button>
+                            <Button className="w-full bg-[#03464b] hover:bg-[#02363a] text-white" onClick={() => window.open(getProviderWebsite(offer.provider), '_blank')}>
+                              Vai a {offer.provider}
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -403,9 +263,10 @@ export function EsimComparisonTable() {
               <Button
                 variant="outline"
                 onClick={() => {
-                  setSelectedCountry('all')
-                  setSelectedDuration(undefined)
-                  setSelectedGB(undefined)
+                  localStorage.removeItem('esimFilters')
+                  setHasSearched(false)
+                  setOffers([])
+                  setFilters({})
                 }}
                 className="mt-4"
               >
@@ -413,8 +274,9 @@ export function EsimComparisonTable() {
               </Button>
             </div>
           )}
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      )}
     </div>
   )
 }

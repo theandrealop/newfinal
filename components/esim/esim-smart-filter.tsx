@@ -87,10 +87,14 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
       if (onCompare) {
         onCompare(offers)
       } else {
-        const comparisonSection = document.getElementById('esim-comparison')
-        if (comparisonSection) {
-          comparisonSection.scrollIntoView({ behavior: 'smooth' })
-        }
+        // Scroll leggermente in basso per mostrare i risultati
+        setTimeout(() => {
+          const currentPosition = window.pageYOffset
+          window.scrollTo({
+            top: currentPosition + 200, // Scroll di 200px verso il basso
+            behavior: 'smooth'
+          })
+        }, 100)
       }
     } catch (error) {
       console.error('Errore nel confronto:', error)
