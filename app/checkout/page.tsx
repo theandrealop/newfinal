@@ -7,7 +7,7 @@ import { useGoogleTagManager } from "@/components/google-tag-manager"
 import { useSearchParams } from "next/navigation"
 import { PlanSelector } from "@/components/plan-selector"
 import { pricingPlans, getPlanById, formatPrice } from "@/lib/pricing"
-import Breadcrumb from '@/components/Breadcrumb'
+import { CheckoutBreadcrumb } from '@/components/Breadcrumb'
 
 // Forza la pagina a essere dinamica per evitare errori di prerendering
 export const dynamic = 'force-dynamic'
@@ -178,7 +178,7 @@ export default function CheckoutPage() {
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-8">
-        <Breadcrumb plan={selectedPlan} />
+        <CheckoutBreadcrumb plan={selectedPlan} />
         <div className="text-center mb-8">
           <h1 className="text-3xl lg:text-4xl font-bold text-dark-green mb-4">
             Completa il tuo ordine

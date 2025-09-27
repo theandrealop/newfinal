@@ -10,6 +10,11 @@ interface BreadcrumbProps {
 }
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
+  // Protezione contro items undefined
+  if (!items || !Array.isArray(items)) {
+    return null
+  }
+
   return (
     <nav className="mb-8">
       <ol className="flex items-center space-x-2 text-sm">

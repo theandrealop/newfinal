@@ -4,8 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronRight, Globe, Tag, FileText, Search } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { NewsletterPopup } from "@/components/newsletter-popup"
 
@@ -15,13 +14,13 @@ export function SiteNavigation() {
   const pathname = usePathname()
 
   const navigationItems = [
-    { href: "/", label: "Home" },
-    { href: "/come-funziona", label: "Come funziona" },
-    { href: "/voli-economici", label: "Voli economici" },
-    { href: "/esim", label: "eSIM" },
-    { href: "/blog", label: "Blog" },
-    { href: "/premium", label: "Premium" },
-    { href: "/elite", label: "Elite" },
+    { href: "/", label: "Home", icon: null },
+    { href: "/come-funziona", label: "Come funziona", icon: FileText },
+    { href: "/voli-economici", label: "Voli economici", icon: Globe },
+    { href: "/esim", label: "eSIM", icon: Search },
+    { href: "/blog", label: "Blog", icon: FileText },
+    { href: "/premium", label: "Premium", icon: Tag },
+    { href: "/elite", label: "Elite", icon: Tag },
   ]
 
   const isActive = (href: string) => {
@@ -79,42 +78,98 @@ export function SiteNavigation() {
             </div>
 
             {/* Mobile Navigation */}
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="sm">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-80 px-2">
-                <SheetTitle className="sr-only">Menu</SheetTitle>
-                <nav className="flex flex-col space-y-4 mt-6">
-                  {navigationItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`text-base font-medium transition-colors hover:text-primary truncate`}
-                      style={{color:'#1a2e22'}}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                  <Button
-                    onClick={() => {
-                      setIsOpen(false)
-                      handleNewsletterClick()
-                    }}
-                    className="px-6 py-2 rounded-full bg-[#483cff] text-white font-semibold hover:opacity-90 transition-opacity shadow-lg mt-4"
-                  >
-                    Iscriviti
-                  </Button>
-                </nav>
-              </SheetContent>
-            </Sheet>
+            <div className="md:hidden">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={() => setIsOpen(true)}
+                className="p-2"
+              >
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </div>
           </div>
         </div>
       </header>
+
+      {/* Modern Mobile Menu Overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
+          />
+          
+          {/* Menu Panel */}
+          <div className="fixed inset-y-0 right-0 w-80 bg-white shadow-2xl">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+              <div className="flex items-center space-x-3">
+                <Image
+                  src="/images/logo.png"
+                  alt="Punti Furbi"
+                  width={32}
+                  height={32}
+                  className="h-8 w-auto"
+                />
+                <span className="text-lg font-semibold text-gray-900">Punti Furbi</span>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsOpen(false)}
+                className="p-2"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+
+
+            {/* Navigation Items */}
+            <nav className="flex-1 py-4">
+              {navigationItems.map((item) => {
+                const IconComponent = item.icon
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center justify-between px-6 py-4 text-gray-700 hover:bg-gray-50 transition-colors ${
+                      isActive(item.href) ? 'bg-blue-50 text-blue-700' : ''
+                    }`}
+                  >
+                    <div className="flex items-center space-x-3">
+                      {IconComponent && <IconComponent className="h-5 w-5" />}
+                      <span className="font-medium">{item.label}</span>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </Link>
+                )
+              })}
+            </nav>
+
+            {/* Footer Actions */}
+            <div className="border-t border-gray-100 p-6 space-y-3">
+              <Button
+                onClick={() => {
+                  setIsOpen(false)
+                  handleNewsletterClick()
+                }}
+                className="w-full bg-[#483cff] hover:bg-[#3a30d1] text-white font-semibold py-3 rounded-lg shadow-lg"
+              >
+                Iscriviti alla Newsletter
+              </Button>
+              <div className="text-center">
+                <span className="text-xs text-gray-500">
+                  © 2024 Punti Furbi. Tutti i diritti riservati.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       
       {/* Newsletter Popup */}
       {showNewsletterPopup && (
