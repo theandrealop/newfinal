@@ -2,7 +2,7 @@
 
 export function EsimHero() {
   return (
-    <section className="py-12 md:py-16 relative overflow-hidden">
+    <section className="pt-8 pb-12 md:pb-16 relative overflow-hidden">
       {/* Background image with blur for readability */}
       <div
         className="absolute inset-0"

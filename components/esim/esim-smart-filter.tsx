@@ -87,13 +87,23 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
       if (onCompare) {
         onCompare(offers)
       } else {
-        // Scroll leggermente in basso per mostrare i risultati
+        // Scroll verso i risultati
         setTimeout(() => {
-          const currentPosition = window.pageYOffset
-          window.scrollTo({
-            top: currentPosition + 200, // Scroll di 200px verso il basso
-            behavior: 'smooth'
-          })
+          const resultsElement = document.querySelector('[data-esim-results]')
+          if (resultsElement) {
+            resultsElement.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start',
+              inline: 'nearest'
+            })
+          } else {
+            // Fallback: scroll più significativo
+            const currentPosition = window.pageYOffset
+            window.scrollTo({
+              top: currentPosition + 400, // Scroll di 400px verso il basso
+              behavior: 'smooth'
+            })
+          }
         }, 100)
       }
     } catch (error) {
@@ -196,9 +206,24 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
               Provider partner
             </p>
             <div className="flex justify-center items-center gap-6 flex-wrap">
-              {['Airalo', 'Holafly', 'Saily', 'Ubigi', 'Nomad'].map(provider => (
-                <div key={provider} className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                  <span className="text-xs font-medium text-gray-600">{provider}</span>
+              {[
+                { name: 'Airalo', logo: '/images/providers/airalo-logo.png' },
+                { name: 'Holafly', logo: '/images/providers/holafly-logo.png' },
+                { name: 'Saily', logo: '/images/providers/saily-logo.png' },
+                { name: 'Ubigi', logo: '/images/providers/ubigi-logo.png' },
+                { name: 'Nomad', logo: '/images/providers/nomad-logo.png' }
+              ].map(provider => (
+                <div key={provider.name} className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                  <img 
+                    src={provider.logo} 
+                    alt={provider.name} 
+                    className="w-12 h-12 object-contain"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                    }}
+                  />
+                  <span className="text-xs font-medium text-gray-600 hidden">{provider.name}</span>
                 </div>
               ))}
             </div>

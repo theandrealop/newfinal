@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Breadcrumb from '@/components/Breadcrumb'
 import { EsimHero } from '@/components/esim/esim-hero'
 import { EsimSmartFilter } from '@/components/esim/esim-smart-filter'
 import { EsimWhyUse } from '@/components/esim/esim-why-use'
@@ -8,7 +7,6 @@ import { EsimHowItWorks } from '@/components/esim/esim-how-it-works'
 import { EsimComparison } from '@/components/esim/esim-comparison'
 import { EsimReviews } from '@/components/esim/esim-reviews'
 import { EsimRelatedGuides } from '@/components/esim/esim-related-guides'
-import { EsimGeographicSelector } from '@/components/esim/esim-geographic-selector'
 import { EsimTrustSection } from '@/components/esim/esim-trust-section'
 import { EsimComparisonTable } from '@/components/esim/esim-comparison-table'
 import { EsimStats } from '@/components/esim/esim-stats'
@@ -27,13 +25,6 @@ export const metadata: Metadata = {
 export default function EsimPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Breadcrumb 
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'eSIM', href: '/esim' }
-        ]} 
-      />
-      
       <div className="hidden md:block">
         <EsimHero />
       </div>
@@ -59,7 +50,6 @@ export default function EsimPage() {
       
       <EsimRelatedGuides />
       
-      <EsimGeographicSelector />
       
       <EsimTrustSection />
     </div>

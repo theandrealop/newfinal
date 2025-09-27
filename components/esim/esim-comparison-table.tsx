@@ -157,7 +157,7 @@ export function EsimComparisonTable() {
     <div className="space-y-6">
       {/* Risultati a CARD - Mostra solo se l'utente ha fatto una ricerca */}
       {hasSearched && (
-        <Card>
+        <Card data-esim-results>
           <CardHeader>
             <CardTitle>
               Risultati ({offers.length} offerte trovate)

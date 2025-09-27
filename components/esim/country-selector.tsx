@@ -16,15 +16,18 @@ const countryFlagClasses: Record<string, string> = {
   'Australia': 'flag-au',
   'Brasile': 'flag-br',
   'Emirati Arabi': 'flag-ae',
+  'Emirati Arabi Uniti': 'flag-ae',
   'Francia': 'flag-fr',
   'Giappone': 'flag-jp',
   'Indonesia': 'flag-id',
   'Italia': 'flag-it',
   'Marocco': 'flag-ma',
   'Spagna': 'flag-es',
+  'Sri Lanka': 'flag-lk',
   'Stati Uniti': 'flag-us',
   'Sudafrica': 'flag-za',
   'Thailandia': 'flag-th',
+  'Tailandia': 'flag-th',
   'Turchia': 'flag-tr'
 }
 
@@ -39,15 +42,20 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries }:
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setShowDropdown(false)
-        setSearchTerm('')
+        if (!searchTerm) {
+          setSearchTerm('')
+        }
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside)
+    if (showDropdown) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [])
+  }, [showDropdown, searchTerm])
 
   const filteredCountries = useMemo(() => {
     if (!searchTerm) return countries
@@ -70,7 +78,9 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries }:
     setShowDropdown(false)
   }
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (e?: React.MouseEvent) => {
+    e?.preventDefault()
+    e?.stopPropagation()
     setShowDropdown(!showDropdown)
     if (!showDropdown) {
       setSearchTerm('')
@@ -118,7 +128,11 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries }:
                   setShowDropdown(true)
                 }}
                 className={`border-0 focus:ring-0 text-gray-600 italic ${selectedCountry ? 'pl-16' : 'pl-10'} cursor-pointer`}
-                onClick={() => setShowDropdown(true)}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setShowDropdown(true)
+                }}
                 readOnly={!!(selectedCountry && !searchTerm)}
               />
               
@@ -139,7 +153,7 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries }:
                 variant="ghost"
                 size="sm"
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 h-6 w-6 hover:bg-gray-100 rounded-full"
-                onClick={toggleDropdown}
+                onClick={(e) => toggleDropdown(e)}
               >
                 <ChevronDown className={`w-3 h-3 text-gray-400 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
               </Button>

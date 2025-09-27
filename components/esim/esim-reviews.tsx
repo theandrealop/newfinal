@@ -54,7 +54,7 @@ const fallbackArticles: EsimArticle[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/holafly-vs-airalo.png',
+        sourceUrl: 'https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-content/uploads/2025/08/holafly-vs-airalo.png',
         altText: 'Confronto Airalo vs Holafly eSIM'
       } 
     }
