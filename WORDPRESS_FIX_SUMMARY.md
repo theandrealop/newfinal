@@ -29,11 +29,12 @@ Il sito Next.js di puntifurbi.com non stava più fetchando gli articoli dal Word
 
 ```bash
 # WordPress GraphQL Configuration
-WP_GRAPHQL_ENDPOINT=https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql
-WP_REST_ENDPOINT=https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-json/wp/v2
+WP_GRAPHQL_ENDPOINT=https://puntifurbi.wasmer.app/graphql
+WP_REST_ENDPOINT=https://puntifurbi.wasmer.app/wp-json/wp/v2
 
 # Public variables (client-side)
-NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT=https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql
+NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT=https://puntifurbi.wasmer.app/graphql
+NEXT_PUBLIC_WP_REST_ENDPOINT=https://puntifurbi.wasmer.app/wp-json/wp/v2
 NEXT_PUBLIC_SITE_URL=https://puntifurbi.com
 ```
 
@@ -52,7 +53,7 @@ app/blog/page.tsx (Server Component)
 
 ### ✅ Endpoint GraphQL
 ```bash
-curl -sS "https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql" \
+curl -sS "https://puntifurbi.wasmer.app/graphql" \
   -H 'Content-Type: application/json' \
   --data '{"query":"{posts(first:3,where:{status:PUBLISH}){nodes{title uri}}}"}'
 ```
@@ -60,7 +61,7 @@ curl -sS "https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql" \
 
 ### ✅ Endpoint REST Fallback
 ```bash
-curl -sS "https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-json/wp/v2/posts?per_page=3"
+curl -sS "https://puntifurbi.wasmer.app/wp-json/wp/v2/posts?per_page=3"
 ```
 **Risultato**: 3 post pubblicati trovati
 
@@ -74,9 +75,10 @@ curl https://puntifurbi.com/api/health/content
 
 ### 1. Imposta Variabili Ambiente in Vercel
 ```bash
-WP_GRAPHQL_ENDPOINT=https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql
-WP_REST_ENDPOINT=https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-json/wp/v2
-NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT=https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql
+WP_GRAPHQL_ENDPOINT=https://puntifurbi.wasmer.app/graphql
+WP_REST_ENDPOINT=https://puntifurbi.wasmer.app/wp-json/wp/v2
+NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT=https://puntifurbi.wasmer.app/graphql
+NEXT_PUBLIC_WP_REST_ENDPOINT=https://puntifurbi.wasmer.app/wp-json/wp/v2
 NEXT_PUBLIC_SITE_URL=https://puntifurbi.com
 ```
 

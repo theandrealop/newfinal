@@ -1,6 +1,11 @@
 import { fetchGraphQLWithRetry, getFallbackBlogData } from './fetch-with-retry'
+import { 
+  getPostsFromREST, 
+  getPostBySlugFromREST, 
+  getRelatedPostsFromREST 
+} from './wordpress-rest-api'
 
-const WORDPRESS_API_URL = process.env.WP_GRAPHQL_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql"
+const WORDPRESS_API_URL = process.env.WP_GRAPHQL_ENDPOINT || "https://puntifurbi.wasmer.app/graphql"
 
 export interface BlogPost {
   id: string
@@ -53,63 +58,78 @@ export interface PaginatedPostsResult {
 
 // --- new util -----------------------------------------------------------
 /**
- * Fetches a paginated list of published posts, mirroring the old API
- * (`getAllPosts`) that other components import.
+ * Fetches a paginated list of published posts using REST API as primary method
  */
 export async function getAllPosts(first = 10, after?: string): Promise<PaginatedPostsResult> {
-  const query = `
-    query GetAllPosts($first: Int!, $after: String) {
-      posts(first: $first, after: $after, where: { status: PUBLISH }) {
-        nodes {
-          id
-          title
-          slug
-          excerpt
-          date
-          author { node { name } }
-          categories { nodes { name slug } }
-          featuredImage { node { sourceUrl altText } }
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
+  try {
+    console.log("🚀 getAllPosts: Iniziando fetch con REST API...")
+    
+    // Convert GraphQL cursor to page number for REST API
+    const page = after ? parseInt(after) + 1 : 1
+    
+    const result = await getPostsFromREST(page, first)
+    
+    console.log(`✅ getAllPosts: ${result.posts.length} posts caricati con successo via REST API`)
+    return {
+      posts: result.posts,
+      hasNextPage: result.hasNextPage,
+      endCursor: result.hasNextPage ? page.toString() : null,
+    }
+  } catch (error) {
+    console.error("💥 getAllPosts: Errore REST API, provando GraphQL fallback:", error)
+    
+    // Fallback to GraphQL
+    const query = `
+      query GetAllPosts($first: Int!, $after: String) {
+        posts(first: $first, after: $after, where: { status: PUBLISH }) {
+          nodes {
+            id
+            title
+            slug
+            excerpt
+            date
+            author { node { name } }
+            categories { nodes { name slug } }
+            featuredImage { node { sourceUrl altText } }
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
         }
       }
-    }
-  `
+    `
 
-  try {
-    console.log("🚀 getAllPosts: Iniziando fetch con retry logic...")
-    const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query, { first, after })
-    
-    if (!data || !data.posts) {
-      console.warn("⚠️ No posts data received, usando fallback")
+    try {
+      const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query, { first, after })
+      
+      if (!data || !data.posts) {
+        console.warn("⚠️ GraphQL fallback failed, usando dati statici")
+        const fallbackData = getFallbackBlogData()
+        return {
+          posts: fallbackData.posts.nodes,
+          hasNextPage: fallbackData.posts.pageInfo.hasNextPage,
+          endCursor: fallbackData.posts.pageInfo.endCursor,
+        }
+      }
+
+      const posts = (data.posts.nodes || []).sort((a: BlogPost, b: BlogPost) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      })
+
+      return {
+        posts,
+        hasNextPage: data.posts.pageInfo?.hasNextPage || false,
+        endCursor: data.posts.pageInfo?.endCursor || null,
+      }
+    } catch (graphqlError) {
+      console.error("💥 getAllPosts: Anche GraphQL fallback fallito, usando dati statici:", graphqlError)
       const fallbackData = getFallbackBlogData()
       return {
         posts: fallbackData.posts.nodes,
-        hasNextPage: fallbackData.posts.pageInfo.hasNextPage,
-        endCursor: fallbackData.posts.pageInfo.endCursor,
+        hasNextPage: false,
+        endCursor: null,
       }
-    }
-
-    // Sort posts by date (most recent first) on client side
-    const posts = (data.posts.nodes || []).sort((a: BlogPost, b: BlogPost) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime()
-    })
-
-    console.log(`✅ getAllPosts: ${posts.length} posts caricati con successo`)
-    return {
-      posts,
-      hasNextPage: data.posts.pageInfo?.hasNextPage || false,
-      endCursor: data.posts.pageInfo?.endCursor || null,
-    }
-  } catch (error) {
-    console.error("💥 getAllPosts: Errore durante fetch, usando fallback:", error)
-    const fallbackData = getFallbackBlogData()
-    return {
-      posts: fallbackData.posts.nodes,
-      hasNextPage: false,
-      endCursor: null,
     }
   }
 }
@@ -121,62 +141,85 @@ async function fetchGraphQL(query: string, variables: any = {}) {
 }
 
 export async function getBlogPosts(first = 10): Promise<BlogPost[]> {
-  const query = `
-    query GetPosts($first: Int!) {
-      posts(first: $first, where: { status: PUBLISH }) {
-        nodes {
-          id
-          title
-          slug
-          excerpt
-          date
-          author {
-            node {
-              name
+  try {
+    console.log("🚀 getBlogPosts: Iniziando fetch con REST API...")
+    const result = await getPostsFromREST(1, first)
+    
+    console.log(`✅ getBlogPosts: ${result.posts.length} posts caricati con successo via REST API`)
+    return result.posts
+  } catch (error) {
+    console.error("💥 getBlogPosts: Errore REST API, provando GraphQL fallback:", error)
+    
+    // Fallback to GraphQL
+    const query = `
+      query GetPosts($first: Int!) {
+        posts(first: $first, where: { status: PUBLISH }) {
+          nodes {
+            id
+            title
+            slug
+            excerpt
+            date
+            author {
+              node {
+                name
+              }
             }
-          }
-          categories {
-            nodes {
-              name
-              slug
+            categories {
+              nodes {
+                name
+                slug
+              }
             }
-          }
-          featuredImage {
-            node {
-              sourceUrl
-              altText
+            featuredImage {
+              node {
+                sourceUrl
+                altText
+              }
             }
           }
         }
       }
-    }
-  `
+    `
 
-  try {
-    console.log("🚀 getBlogPosts: Iniziando fetch con retry logic...")
-    const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query, { first })
-    
-    if (!data?.posts?.nodes) {
-      console.warn("⚠️ getBlogPosts: No posts data, usando fallback")
+    try {
+      const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query, { first })
+      
+      if (!data?.posts?.nodes) {
+        console.warn("⚠️ getBlogPosts: GraphQL fallback failed, usando dati statici")
+        const fallbackData = getFallbackBlogData()
+        return fallbackData.posts.nodes
+      }
+      
+      const posts = data.posts.nodes.sort((a: BlogPost, b: BlogPost) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      })
+      
+      return posts
+    } catch (graphqlError) {
+      console.error("💥 getBlogPosts: Anche GraphQL fallback fallito, usando dati statici:", graphqlError)
       const fallbackData = getFallbackBlogData()
       return fallbackData.posts.nodes
     }
-    
-    // Sort posts by date (most recent first) on client side
-    const posts = data.posts.nodes.sort((a: BlogPost, b: BlogPost) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime()
-    })
-    
-    console.log(`✅ getBlogPosts: ${posts.length} posts caricati con successo`)
-    return posts
-  } catch (error) {
-    console.error("💥 getBlogPosts: Errore durante fetch, usando fallback:", error)
-    const fallbackData = getFallbackBlogData()
-    return fallbackData.posts.nodes
   }
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  try {
+    console.log(`🚀 getPostBySlug: Caricando post "${slug}" con REST API...`)
+    const post = await getPostBySlugFromREST(slug)
+    
+    if (post) {
+      console.log(`✅ getPostBySlug: Post "${slug}" caricato con successo via REST API`)
+      return post
+    }
+    
+    console.warn(`⚠️ getPostBySlug: Post "${slug}" non trovato via REST API, provando GraphQL...`)
+  } catch (error) {
+    console.error(`💥 getPostBySlug: Errore REST API per "${slug}", provando GraphQL:`, error)
+  }
+
+  // Fallback to GraphQL
   const query = `
     query GetPostBySlug($slug: ID!) {
       post(id: $slug, idType: SLUG) {
@@ -214,11 +257,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   `
 
   try {
-    console.log(`🚀 getPostBySlug: Caricando post "${slug}" con retry logic...`)
     const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query, { slug })
     
     if (data?.post) {
-      console.log(`✅ getPostBySlug: Post "${slug}" caricato con successo`)
+      console.log(`✅ getPostBySlug: Post "${slug}" caricato con successo via GraphQL`)
       return data.post
     }
     
@@ -243,7 +285,21 @@ export async function getRelatedPosts(categories: any[]): Promise<any[]> {
     return []
   }
 
-  // FIX: Query GraphQL corretta per WordPress con ordinamento per data
+  try {
+    console.log('🚀 getRelatedPosts: Caricando post correlati con REST API per categoria:', categoryIds[0])
+    const posts = await getRelatedPostsFromREST(categoryIds[0])
+    
+    if (posts.length > 0) {
+      console.log('✅ getRelatedPosts: Post correlati trovati via REST API:', posts.length)
+      return posts
+    }
+    
+    console.log('⚠️ getRelatedPosts: Nessun post correlato trovato via REST API, provando GraphQL...')
+  } catch (error) {
+    console.error('💥 getRelatedPosts: Errore REST API, provando GraphQL:', error)
+  }
+
+  // Fallback to GraphQL
   const query = `
     query GetRelatedPosts($categoryId: ID!) {
       category(id: $categoryId) {
@@ -267,16 +323,14 @@ export async function getRelatedPosts(categories: any[]): Promise<any[]> {
   `
 
   try {
-    // Usa solo la prima categoria per semplicità
     const variables = {
       categoryId: categoryIds[0]
     }
 
-    console.log('🚀 getRelatedPosts: Caricando post correlati con retry logic per categoria:', categoryIds[0])
     const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query, variables)
     
     if (data?.category?.posts?.nodes) {
-      console.log('✅ getRelatedPosts: Post correlati trovati:', data.category.posts.nodes.length)
+      console.log('✅ getRelatedPosts: Post correlati trovati via GraphQL:', data.category.posts.nodes.length)
       return data.category.posts.nodes
     }
     
@@ -291,114 +345,136 @@ export async function getRelatedPosts(categories: any[]): Promise<any[]> {
 // --- eSIM specific functions ---
 
 /**
- * Fetches eSIM articles from WordPress category
+ * Fetches eSIM articles from WordPress category using REST API
  */
 export async function fetchEsimArticles(): Promise<any[]> {
-  const query = `
-    query GetEsimArticles {
-      posts(
-        first: 6,
-        where: { 
-          status: PUBLISH,
-          categoryName: "esim"
-        }
-      ) {
-        nodes {
-          id
-          title
-          slug
-          excerpt
-          date
-          author {
-            node {
-              name
-            }
+  try {
+    console.log("🚀 fetchEsimArticles: Caricando articoli eSIM con REST API...")
+    const result = await getPostsFromREST(1, 6, 'esim')
+    
+    console.log(`✅ fetchEsimArticles: ${result.posts.length} articoli eSIM caricati via REST API`)
+    return result.posts
+  } catch (error) {
+    console.error("💥 fetchEsimArticles: Errore REST API, provando GraphQL fallback:", error)
+    
+    // Fallback to GraphQL
+    const query = `
+      query GetEsimArticles {
+        posts(
+          first: 6,
+          where: { 
+            status: PUBLISH,
+            categoryName: "esim"
           }
-          featuredImage {
-            node {
-              sourceUrl
-              altText
+        ) {
+          nodes {
+            id
+            title
+            slug
+            excerpt
+            date
+            author {
+              node {
+                name
+              }
+            }
+            featuredImage {
+              node {
+                sourceUrl
+                altText
+              }
             }
           }
         }
       }
-    }
-  `
+    `
 
-  try {
-    console.log("🚀 fetchEsimArticles: Caricando articoli eSIM...")
-    const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query)
-    
-    if (data?.posts?.nodes) {
-      const articles = data.posts.nodes.sort((a: any, b: any) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime()
-      })
+    try {
+      const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query)
       
-      console.log(`✅ fetchEsimArticles: ${articles.length} articoli eSIM caricati`)
-      return articles
+      if (data?.posts?.nodes) {
+        const articles = data.posts.nodes.sort((a: any, b: any) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime()
+        })
+        
+        console.log(`✅ fetchEsimArticles: ${articles.length} articoli eSIM caricati via GraphQL`)
+        return articles
+      }
+      
+      console.warn("⚠️ fetchEsimArticles: Nessun articolo eSIM trovato")
+      return []
+    } catch (graphqlError) {
+      console.error("💥 fetchEsimArticles: Anche GraphQL fallback fallito:", graphqlError)
+      return []
     }
-    
-    console.warn("⚠️ fetchEsimArticles: Nessun articolo eSIM trovato")
-    return []
-  } catch (error) {
-    console.error("💥 fetchEsimArticles: Errore caricamento articoli eSIM:", error)
-    return []
   }
 }
 
 /**
- * Fetches eSIM guides from WordPress category
+ * Fetches eSIM guides from WordPress category using REST API
  */
 export async function fetchEsimGuides(): Promise<any[]> {
-  const query = `
-    query GetEsimGuides {
-      posts(
-        first: 3,
-        where: { 
-          status: PUBLISH,
-          categoryName: "esim",
-          tagSlugAnd: ["guida"]
-        }
-      ) {
-        nodes {
-          id
-          title
-          slug
-          excerpt
-          date
-          author {
-            node {
-              name
-            }
+  try {
+    console.log("🚀 fetchEsimGuides: Caricando guide eSIM con REST API...")
+    // Per ora usiamo la stessa logica degli articoli eSIM, 
+    // in futuro possiamo implementare filtri per tag specifici
+    const result = await getPostsFromREST(1, 3, 'esim')
+    
+    console.log(`✅ fetchEsimGuides: ${result.posts.length} guide eSIM caricate via REST API`)
+    return result.posts
+  } catch (error) {
+    console.error("💥 fetchEsimGuides: Errore REST API, provando GraphQL fallback:", error)
+    
+    // Fallback to GraphQL
+    const query = `
+      query GetEsimGuides {
+        posts(
+          first: 3,
+          where: { 
+            status: PUBLISH,
+            categoryName: "esim",
+            tagSlugAnd: ["guida"]
           }
-          featuredImage {
-            node {
-              sourceUrl
-              altText
+        ) {
+          nodes {
+            id
+            title
+            slug
+            excerpt
+            date
+            author {
+              node {
+                name
+              }
+            }
+            featuredImage {
+              node {
+                sourceUrl
+                altText
+              }
             }
           }
         }
       }
-    }
-  `
+    `
 
-  try {
-    console.log("🚀 fetchEsimGuides: Caricando guide eSIM...")
-    const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query)
-    
-    if (data?.posts?.nodes) {
-      const guides = data.posts.nodes.sort((a: any, b: any) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime()
-      })
+    try {
+      const data = await fetchGraphQLWithRetry(WORDPRESS_API_URL, query)
       
-      console.log(`✅ fetchEsimGuides: ${guides.length} guide eSIM caricate`)
-      return guides
+      if (data?.posts?.nodes) {
+        const guides = data.posts.nodes.sort((a: any, b: any) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime()
+        })
+        
+        console.log(`✅ fetchEsimGuides: ${guides.length} guide eSIM caricate via GraphQL`)
+        return guides
+      }
+      
+      console.warn("⚠️ fetchEsimGuides: Nessuna guida eSIM trovata")
+      return []
+    } catch (graphqlError) {
+      console.error("💥 fetchEsimGuides: Anche GraphQL fallback fallito:", graphqlError)
+      return []
     }
-    
-    console.warn("⚠️ fetchEsimGuides: Nessuna guida eSIM trovata")
-    return []
-  } catch (error) {
-    console.error("💥 fetchEsimGuides: Errore caricamento guide eSIM:", error)
-    return []
   }
 }

@@ -54,7 +54,7 @@ const fallbackArticles: EsimArticle[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-content/uploads/2025/08/holafly-vs-airalo.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/holafly-vs-airalo.png',
         altText: 'Confronto Airalo vs Holafly eSIM'
       } 
     }
@@ -80,7 +80,7 @@ const fallbackArticles: EsimArticle[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/saily-esim-recensione.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/saily-esim-recensione.png',
         altText: 'Saily eSIM Recensione'
       } 
     }
@@ -106,7 +106,7 @@ const fallbackArticles: EsimArticle[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/ubigi-esim-recensione.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/ubigi-esim-recensione.png',
         altText: 'Ubigi eSIM Recensione'
       } 
     }
@@ -132,7 +132,7 @@ const fallbackArticles: EsimArticle[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/nomad-esim-recensione.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/nomad-esim-recensione.png',
         altText: 'Nomad eSIM Recensione'
       } 
     }
@@ -158,7 +158,7 @@ const fallbackArticles: EsimArticle[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/come-scegliere-esim.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/come-scegliere-esim.png',
         altText: 'Come scegliere eSIM'
       } 
     }
@@ -184,7 +184,7 @@ const fallbackArticles: EsimArticle[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/esim-vs-sim-fisica.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/esim-vs-sim-fisica.png',
         altText: 'eSIM vs SIM Fisica'
       } 
     }
@@ -198,12 +198,14 @@ export function EsimReviews() {
   useEffect(() => {
     const loadEsimArticles = async () => {
       try {
-        // Temporaneamente disabilito il fetch GraphQL per evitare errori
-        // const esimArticles = await fetchEsimArticles()
-        // setArticles(esimArticles)
-        
-        // Usa contenuti di fallback
-        setArticles(fallbackArticles)
+        // Prova prima con la REST API
+        const esimArticles = await fetchEsimArticles()
+        if (esimArticles && esimArticles.length > 0) {
+          setArticles(esimArticles)
+        } else {
+          // Fallback: usa contenuti di esempio se il fetch fallisce
+          setArticles(fallbackArticles)
+        }
       } catch (error) {
         console.error('Errore nel caricamento degli articoli eSIM:', error)
         // Fallback: mostra articoli di esempio se il fetch fallisce

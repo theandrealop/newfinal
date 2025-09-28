@@ -1,4 +1,5 @@
 import 'server-only';
+import { getPostsFromREST } from './wordpress-rest-api';
 
 type WPImage = { node?: { sourceUrl?: string | null; altText?: string | null } | null };
 export type WPPost = {
@@ -13,8 +14,8 @@ export type WPPost = {
   author?: { node: { name: string } };
 };
 
-const WP_GRAPHQL_ENDPOINT = process.env.WP_GRAPHQL_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql";
-const WP_REST_ENDPOINT = process.env.WP_REST_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/wp-json/wp/v2";
+const WP_GRAPHQL_ENDPOINT = process.env.WP_GRAPHQL_ENDPOINT || "https://puntifurbi.wasmer.app/graphql";
+const WP_REST_ENDPOINT = process.env.WP_REST_ENDPOINT || "https://puntifurbi.wasmer.app/wp-json/wp/v2";
 
 async function postJSON(body: unknown, signal?: AbortSignal) {
   const ctrl = new AbortController();
@@ -37,6 +38,32 @@ async function postJSON(body: unknown, signal?: AbortSignal) {
 }
 
 export async function getLatestPosts(limit = 10): Promise<WPPost[]> {
+  try {
+    console.log(`🔍 Fetching ${limit} posts from REST API...`);
+    const result = await getPostsFromREST(1, limit);
+    
+    // Converti i post dal formato BlogPost al formato WPPost
+    const wpPosts: WPPost[] = result.posts.map(post => ({
+      id: post.id,
+      title: post.title,
+      slug: post.slug,
+      uri: `/blog/${post.slug}`,
+      date: post.date,
+      excerpt: post.excerpt,
+      featuredImage: post.featuredImage,
+      categories: post.categories,
+      author: post.author
+    }));
+    
+    console.log(`✅ REST API: ${wpPosts.length} posts caricati`);
+    return wpPosts;
+  } catch (err) {
+    console.error('[REST API] fallback GraphQL per errore:', (err as Error).message);
+    return await getLatestPostsGraphQL(limit);
+  }
+}
+
+async function getLatestPostsGraphQL(limit = 10): Promise<WPPost[]> {
   const query = `query Posts($first:Int!){
     posts(where:{status:PUBLISH}, first:$first){
       nodes{ 

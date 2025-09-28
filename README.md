@@ -11,12 +11,13 @@ Il sito utilizza WordPress come CMS headless tramite GraphQL (WPGraphQL) con fal
 Copia `.env.example` in `.env.local` e configura:
 
 ```bash
-# WordPress GraphQL Configuration
-WP_GRAPHQL_ENDPOINT=https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql
-WP_REST_ENDPOINT=https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-json/wp/v2
+# WordPress API Configuration
+WP_GRAPHQL_ENDPOINT=https://puntifurbi.wasmer.app/graphql
+WP_REST_ENDPOINT=https://puntifurbi.wasmer.app/wp-json/wp/v2
 
 # Public variables (available on client-side)
-NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT=https://punti-furbi-815f04.ingress-daribow.ewp.live/graphql
+NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT=https://puntifurbi.wasmer.app/graphql
+NEXT_PUBLIC_WP_REST_ENDPOINT=https://puntifurbi.wasmer.app/wp-json/wp/v2
 NEXT_PUBLIC_SITE_URL=https://puntifurbi.com
 ```
 

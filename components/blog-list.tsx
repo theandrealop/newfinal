@@ -27,65 +27,94 @@ export function BlogList({
 
     setLoading(true)
     try {
-      console.log("🚀 BlogList: Caricando più posts con retry logic...")
+      console.log("🚀 BlogList: Caricando più posts con REST API...")
       
-      // Client-side GraphQL fetch con retry logic
-      const WORDPRESS_API_URL = process.env.NEXT_PUBLIC_WP_GRAPHQL_ENDPOINT || "https://new-punti-furbi-draft-815f04.ingress-florina.ewp.live/graphql"
+      // Converti il cursor in numero di pagina per la REST API
+      const currentPage = endCursor ? parseInt(endCursor) + 1 : 2
       
-      const query = `
-        query GetAllPosts($first: Int!, $after: String) {
-          posts(first: $first, after: $after, where: { status: PUBLISH }) {
-            nodes {
-              id
-              title
-              slug
-              excerpt
-              date
-              author { node { name } }
-              categories { nodes { name slug } }
-              featuredImage { node { sourceUrl altText } }
-            }
-            pageInfo {
-              hasNextPage
-              endCursor
-            }
-          }
-        }
-      `
+      // Usa la REST API direttamente
+      const WORDPRESS_REST_URL = process.env.NEXT_PUBLIC_WP_REST_ENDPOINT || "https://puntifurbi.wasmer.app/wp-json/wp/v2"
+      
+      const params = new URLSearchParams({
+        page: currentPage.toString(),
+        per_page: '12',
+        _embed: 'true',
+        status: 'publish'
+      })
 
-      // Usa il nuovo sistema di retry
-      const data = await fetchGraphQLWithRetry(
-        WORDPRESS_API_URL,
-        query,
-        { first: 12, after: endCursor },
-        {
-          maxRetries: 3, // Meno retry per load more
-          baseDelay: 1000,
-          maxDelay: 10000
-        }
-      )
+      const url = `${WORDPRESS_REST_URL}/posts?${params.toString()}`
+      console.log(`📡 Fetching: ${url}`)
+
+      const response = await fetch(url, {
+        cache: 'force-cache',
+        next: { revalidate: 60, tags: ['posts'] }
+      })
+
+      if (!response.ok) {
+        throw new Error(`REST API HTTP ${response.status}: ${response.statusText}`)
+      }
+
+      const newPostsData = await response.json()
+      const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1')
       
-      if (!data?.posts?.nodes) {
+      if (!Array.isArray(newPostsData) || newPostsData.length === 0) {
         console.warn("⚠️ BlogList: Nessun dato ricevuto per load more")
+        setHasNextPage(false)
         return
       }
       
+      // Converti i post nel formato BlogPost
+      const newPosts: BlogPost[] = newPostsData.map((wpPost: any) => {
+        const categories = wpPost._embedded?.['wp:term']?.filter((term: any) => term.taxonomy === 'category') || []
+        const author = wpPost._embedded?.author?.[0] || { name: 'Autore sconosciuto' }
+        const featuredImage = wpPost._embedded?.['wp:featuredmedia']?.[0]
+
+        return {
+          id: wpPost.id.toString(),
+          title: wpPost.title.rendered,
+          slug: wpPost.slug,
+          excerpt: wpPost.excerpt.rendered.replace(/<[^>]*>/g, ''),
+          content: wpPost.content.rendered,
+          date: wpPost.date,
+          author: {
+            node: {
+              name: author.name
+            }
+          },
+          categories: {
+            nodes: categories.map((cat: any) => ({
+              name: cat.name,
+              slug: cat.slug
+            }))
+          },
+          tags: {
+            nodes: []
+          },
+          featuredImage: featuredImage ? {
+            node: {
+              sourceUrl: featuredImage.source_url,
+              altText: featuredImage.alt_text || wpPost.title.rendered
+            }
+          } : undefined
+        }
+      })
+      
       // Sort new posts by date (most recent first)
-      const newPosts = data.posts.nodes.sort((a: BlogPost, b: BlogPost) => {
+      const sortedNewPosts = newPosts.sort((a: BlogPost, b: BlogPost) => {
         return new Date(b.date).getTime() - new Date(a.date).getTime()
       })
       
-      console.log(`✅ BlogList: Caricati ${newPosts.length} nuovi posts`)
+      console.log(`✅ BlogList: Caricati ${sortedNewPosts.length} nuovi posts via REST API`)
       
       setPosts((prevPosts: BlogPost[]) => {
-        const combined = [...prevPosts, ...newPosts]
+        const combined = [...prevPosts, ...sortedNewPosts]
         // Re-sort the entire array to maintain order
         return combined.sort((a: BlogPost, b: BlogPost) => {
           return new Date(b.date).getTime() - new Date(a.date).getTime()
         })
       })
-      setHasNextPage(data.posts.pageInfo?.hasNextPage || false)
-      setEndCursor(data.posts.pageInfo?.endCursor || null)
+      setHasNextPage(currentPage < totalPages)
+      setEndCursor(currentPage < totalPages ? currentPage.toString() : null)
     } catch (error) {
       console.error("💥 BlogList: Errore caricamento più posts:", error)
       
@@ -93,7 +122,7 @@ export function BlogList({
       if (error instanceof Error) {
         if (error.message.includes('429') || error.message.includes('rate limit')) {
           console.log("🚫 Rate limiting rilevato, disabilito temporaneamente il load more")
-          // Potresti disabilitare temporaneamente il pulsante qui
+          setHasNextPage(false)
         }
       }
     } finally {

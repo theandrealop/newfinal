@@ -54,7 +54,7 @@ const fallbackGuides: EsimGuide[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/guida-completa-esim.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/guida-completa-esim.png',
         altText: 'Guida Completa eSIM'
       } 
     }
@@ -80,7 +80,7 @@ const fallbackGuides: EsimGuide[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/esim-europa.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/esim-europa.png',
         altText: 'eSIM Europa'
       } 
     }
@@ -106,7 +106,7 @@ const fallbackGuides: EsimGuide[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/esim-asia.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/esim-asia.png',
         altText: 'eSIM Asia'
       } 
     }
@@ -132,7 +132,7 @@ const fallbackGuides: EsimGuide[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/risparmiare-esim.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/risparmiare-esim.png',
         altText: 'Risparmiare con eSIM'
       } 
     }
@@ -158,7 +158,7 @@ const fallbackGuides: EsimGuide[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/esim-business.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/esim-business.png',
         altText: 'eSIM Business'
       } 
     }
@@ -184,7 +184,7 @@ const fallbackGuides: EsimGuide[] = [
     },
     featuredImage: { 
       node: { 
-        sourceUrl: 'https://punti-furbi-815f04.ingress-daribow.ewp.live/wp-content/uploads/2025/08/troubleshooting-esim.png',
+        sourceUrl: 'https://puntifurbi.wasmer.app/wp-content/uploads/2025/08/troubleshooting-esim.png',
         altText: 'Troubleshooting eSIM'
       } 
     }
@@ -198,12 +198,14 @@ export function EsimRelatedGuides() {
   useEffect(() => {
     const loadEsimGuides = async () => {
       try {
-        // Temporaneamente disabilito il fetch GraphQL per evitare errori
-        // const esimGuides = await fetchEsimGuides()
-        // setGuides(esimGuides)
-        
-        // Usa contenuti di fallback
-        setGuides(fallbackGuides)
+        // Prova prima con la REST API
+        const esimGuides = await fetchEsimGuides()
+        if (esimGuides && esimGuides.length > 0) {
+          setGuides(esimGuides)
+        } else {
+          // Fallback: usa contenuti di esempio se il fetch fallisce
+          setGuides(fallbackGuides)
+        }
       } catch (error) {
         console.error('Errore nel caricamento delle guide eSIM:', error)
         // Fallback: mostra guide di esempio se il fetch fallisce
