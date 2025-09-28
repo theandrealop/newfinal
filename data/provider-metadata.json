@@ -4,7 +4,7 @@
     "name": "Airalo",
     "logo": "/images/providers/airalo-logo.png",
     "description": "Airalo è uno dei principali provider di eSIM globali, con copertura in oltre 190 paesi. Offre piani regionali e globali con attivazione istantanea.",
-    "website": "https://airalo.pxf.io/vPKRry"
+    "website": "https://finanza.me/airalo"
   },
   {
     "id": "holafly",
@@ -18,7 +18,7 @@
     "name": "Nomad",
     "logo": "/images/providers/nomad-logo.png",
     "description": "Nomad offre eSIM trasferibili e piani flessibili. Perfetto per viaggiatori che cambiano spesso destinazione.",
-    "website": "https://nomad.com"
+    "website": "https://finanza.me/nomad"
   },
   {
     "id": "truphone",
@@ -68,5 +68,40 @@
     "logo": "/images/providers/alosim-logo.png",
     "description": "AloSIM è un provider emergente con eSIM per oltre 170 paesi. Prezzi competitivi e supporto clienti reattivo.",
     "website": "https://alosim.com"
+  },
+  {
+    "id": "saily",
+    "name": "Saily",
+    "logo": "/images/providers/saily-logo.png",
+    "description": "Saily è un provider europeo con copertura globale e prezzi competitivi. Offre eSIM per oltre 190 paesi.",
+    "website": "https://finanza.me/saily"
+  },
+  {
+    "id": "gomoworld",
+    "name": "GoMoWorld",
+    "logo": "/images/providers/gomoworld-logo.png",
+    "description": "GoMoWorld offre eSIM per oltre 200 destinazioni con piani prepagati a partire da €3.99. Attivazione in secondi.",
+    "website": "https://finanza.me/gomoworld"
+  },
+  {
+    "id": "yesim",
+    "name": "YeSim",
+    "logo": "/images/providers/yesim-logo.png",
+    "description": "YeSim è un provider emergente con prezzi molto competitivi e copertura in oltre 150 paesi.",
+    "website": "https://finanza.me/yesim"
+  },
+  {
+    "id": "firsty",
+    "name": "Firsty",
+    "logo": "/images/providers/default-logo.png",
+    "description": "Firsty offre eSIM globali con attivazione istantanea e supporto multilingua per viaggiatori internazionali.",
+    "website": "https://finanza.me/firsty"
+  },
+  {
+    "id": "jetpac",
+    "name": "Jetpac",
+    "logo": "/images/providers/jetpac-logo.png",
+    "description": "Jetpac Global offre eSIM per viaggiatori con copertura globale e piani flessibili.",
+    "website": "https://www.jetpacglobal.com/"
   }
 ]

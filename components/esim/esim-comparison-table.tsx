@@ -97,25 +97,31 @@ export function EsimComparisonTable() {
       'aloSIM': '/images/providers/alosim-logo.png',
       'Sim Local': '/images/providers/simlocal-logo.png',
       'Roamless': '/images/providers/roamless-logo.png',
-      'Menalink': '/images/providers/menalink-logo.png'
+      'Menalink': '/images/providers/menalink-logo.png',
+      'GoMoWorld': '/images/providers/gomoworld-logo.png',
+      'YeSim': '/images/providers/yesim-logo.png',
+      'Firsty': '/images/providers/default-logo.png'
     }
     return logos[provider] || '/images/providers/default-logo.png'
   }
 
   const getProviderWebsite = (provider: string) => {
     const websites: Record<string, string> = {
-      'Airalo': 'https://airalo.pxf.io/vPKRry',
+      'Airalo': 'https://finanza.me/airalo',
       'Holafly': 'https://finanza.me/holafly',
-      'Saily': 'https://saily.com',
+      'Saily': 'https://finanza.me/saily',
       'Ubigi': 'https://finanza.me/ubigi',
-      'Nomad': 'https://nomad.com',
-      'Jetpac': 'https://jetpac.com',
+      'Nomad': 'https://finanza.me/nomad',
+      'Jetpac': 'https://www.jetpacglobal.com/',
       'eSIM4Travel': 'https://finanza.me/esim4travel',
       'Maya': 'https://maya.com',
       'aloSIM': 'https://alosim.com',
       'Sim Local': 'https://simlocal.com',
       'Roamless': 'https://roamless.com',
-      'Menalink': 'https://menalink.com'
+      'Menalink': 'https://menalink.com',
+      'GoMoWorld': 'https://finanza.me/gomoworld',
+      'YeSim': 'https://finanza.me/yesim',
+      'Firsty': 'https://finanza.me/firsty'
     }
     return websites[provider] || '#'
   }

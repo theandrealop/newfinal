@@ -40,7 +40,7 @@ export function EsimComparison() {
         satisfaction: 8.8
       },
       reviewUrl: '/recensioni/airalo',
-      websiteUrl: 'https://airalo.pxf.io/vPKRry'
+      websiteUrl: 'https://finanza.me/airalo'
     },
     {
       name: 'Holafly',
@@ -76,7 +76,7 @@ export function EsimComparison() {
         satisfaction: 8.3
       },
       reviewUrl: '/recensioni/yesim',
-      websiteUrl: 'https://yesim.com'
+      websiteUrl: 'https://finanza.me/yesim'
     },
     {
       name: 'Nomad',
@@ -94,7 +94,7 @@ export function EsimComparison() {
         satisfaction: 8.5
       },
       reviewUrl: '/recensioni/nomad',
-      websiteUrl: 'https://nomad.com'
+      websiteUrl: 'https://finanza.me/nomad'
     },
     {
       name: 'Ubigi',
@@ -113,6 +113,60 @@ export function EsimComparison() {
       },
       reviewUrl: '/recensioni/ubigi',
       websiteUrl: 'https://finanza.me/ubigi'
+    },
+    {
+      name: 'GoMoWorld',
+      rating: 8.4,
+      logo: '/images/providers/gomoworld-logo.png',
+      description: 'Piani prepagati a partire da €3.99 con attivazione in secondi',
+      countries: 200,
+      avgPrice: '€4-15',
+      duration: '7-30 giorni',
+      features: ['Tethering', 'VPN', 'Hotspot'],
+      scores: {
+        credibility: 8.4,
+        coverage: 8.6,
+        costs: 9.0,
+        satisfaction: 8.5
+      },
+      reviewUrl: '/recensioni/gomoworld',
+      websiteUrl: 'https://finanza.me/gomoworld'
+    },
+    {
+      name: 'Firsty',
+      rating: 8.2,
+      logo: '/images/providers/default-logo.png',
+      description: 'eSIM globali con attivazione istantanea e supporto multilingua',
+      countries: 180,
+      avgPrice: '€6-18',
+      duration: '7-30 giorni',
+      features: ['Tethering', 'SMS'],
+      scores: {
+        credibility: 8.2,
+        coverage: 8.3,
+        costs: 8.8,
+        satisfaction: 8.4
+      },
+      reviewUrl: '/recensioni/firsty',
+      websiteUrl: 'https://finanza.me/firsty'
+    },
+    {
+      name: 'Jetpac',
+      rating: 8.0,
+      logo: '/images/providers/jetpac-logo.png',
+      description: 'eSIM per viaggiatori con copertura globale e piani flessibili',
+      countries: 150,
+      avgPrice: '€8-20',
+      duration: '7-30 giorni',
+      features: ['Tethering'],
+      scores: {
+        credibility: 8.0,
+        coverage: 8.1,
+        costs: 8.5,
+        satisfaction: 8.2
+      },
+      reviewUrl: '/recensioni/jetpac',
+      websiteUrl: 'https://www.jetpacglobal.com/'
     }
   ]
 
