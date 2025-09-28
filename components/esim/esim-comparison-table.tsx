@@ -100,6 +100,7 @@ export function EsimComparisonTable() {
       'Menalink': '/images/providers/menalink-logo.png',
       'GoMoWorld': '/images/providers/gomoworld-logo.png',
       'YeSim': '/images/providers/yesim-logo.png',
+      'Yesim': '/images/providers/yesim-logo.png',
       'Firsty': '/images/providers/default-logo.png'
     }
     return logos[provider] || '/images/providers/default-logo.png'
@@ -121,6 +122,7 @@ export function EsimComparisonTable() {
       'Menalink': 'https://menalink.com',
       'GoMoWorld': 'https://finanza.me/gomoworld',
       'YeSim': 'https://finanza.me/yesim',
+      'Yesim': 'https://finanza.me/yesim',
       'Firsty': 'https://finanza.me/firsty'
     }
     return websites[provider] || '#'
