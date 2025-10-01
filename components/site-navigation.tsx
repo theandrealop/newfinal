@@ -15,7 +15,6 @@ export function SiteNavigation() {
 
   const navigationItems = [
     { href: "/", label: "Home", icon: null },
-    { href: "/come-funziona", label: "Come funziona", icon: FileText },
     { href: "/voli-economici", label: "Voli economici", icon: Globe },
     { href: "/esim", label: "eSIM", icon: Search },
     { href: "/blog", label: "Blog", icon: FileText },

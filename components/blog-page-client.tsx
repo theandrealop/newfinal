@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import type { BlogPost } from "@/lib/graphql-api"
 import { BlogList } from "./blog-list"
+import { Breadcrumbs } from "./breadcrumbs"
+import { BlogListSchema } from "./structured-data"
 
 interface BlogPageClientProps {
   initialPosts: BlogPost[]
@@ -144,10 +146,24 @@ export function BlogPageClient({
     <div className="min-h-screen bg-cream" data-blog-content="true">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
+          {/* Breadcrumbs */}
+          <Breadcrumbs 
+            items={[{ name: 'Blog', url: '/blog' }]} 
+            className="mb-6"
+          />
           <h1 className="text-4xl font-bold mb-8 text-dark-green">Blog</h1>
           <p className="text-xl text-gray-600 mb-8">
             Scopri le ultime notizie e consigli sui viaggi e i punti fedeltà
           </p>
+          
+          {/* Schema Markup per lista blog */}
+          <BlogListSchema posts={posts.map(post => ({
+            title: post.title,
+            excerpt: post.excerpt,
+            date: post.date,
+            slug: post.slug,
+            featuredImage: post.featuredImage
+          }))} />
 
           {/* Mostra warning se ci sono errori ma abbiamo dati */}
           {error && posts.length > 0 && (

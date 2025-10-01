@@ -4,6 +4,7 @@ import { getPostBySlug, getRelatedPosts, getAllPosts } from '@/lib/graphql-api'
 import { Metadata } from 'next'
 import { BlogPostContent } from '@/components/blog-post-content'
 import { generateVersionHash, getCurrentVersion, addCacheBustingParams } from '@/lib/cache-busting'
+import { BlogPostSchema } from '@/components/structured-data'
 
 // Genera i parametri statici per il build
 export async function generateStaticParams() {
@@ -39,6 +40,17 @@ async function BlogPostPageContent({ params }: { params: Promise<{ slug: string 
       <meta name="article-version" content={generateVersionHash(post.content)} />
       <meta name="article-modified" content={post.date || new Date().toISOString()} />
       <meta name="cache-bust" content={Date.now().toString()} />
+      
+      {/* Schema Markup per articolo blog */}
+      <BlogPostSchema post={{
+        title: post.title,
+        excerpt: post.excerpt,
+        date: post.date,
+        modified: post.modified,
+        slug: post.slug,
+        featuredImage: post.featuredImage,
+        author: post.author?.name
+      }} />
       
       <BlogPostContent post={postWithCanonical} />
       {relatedPosts.length > 0 && (

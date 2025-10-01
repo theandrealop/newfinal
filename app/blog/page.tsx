@@ -2,6 +2,7 @@ import { Suspense } from "react"
 import { getAllPosts } from "@/lib/graphql-api"
 import { BlogPageClient } from "@/components/blog-page-client"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 function BlogSkeleton() {
   return (

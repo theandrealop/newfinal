@@ -50,14 +50,11 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-dark-green mb-4">Azienda</h3>
             <nav className="space-y-2">
-              <a href="/chi-siamo" className="block text-gray-600 hover:text-dark-green transition-colors">
+              <a href="/chi-siamo/" className="block text-gray-600 hover:text-dark-green transition-colors">
                 Chi siamo
               </a>
-              <a href="/contatto" className="block text-gray-600 hover:text-dark-green transition-colors">
+              <a href="mailto:info@puntifurbi.com" className="block text-gray-600 hover:text-dark-green transition-colors">
                 Contatto
-              </a>
-              <a href="/come-funziona" className="block text-gray-600 hover:text-dark-green transition-colors">
-                Come funziona
               </a>
             </nav>
           </div>
@@ -66,10 +63,10 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-dark-green mb-4">Legale</h3>
             <nav className="space-y-2">
-              <a href="/condizioni-utilizzo" className="block text-gray-600 hover:text-dark-green transition-colors">
+              <a href="/condizioni-utilizzo/" className="block text-gray-600 hover:text-dark-green transition-colors">
                 Condizioni di utilizzo
               </a>
-              <a href="/informativa-privacy" className="block text-gray-600 hover:text-dark-green transition-colors">
+              <a href="/informativa-privacy/" className="block text-gray-600 hover:text-dark-green transition-colors">
                 Informativa sulla privacy
               </a>
             </nav>

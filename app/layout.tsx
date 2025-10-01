@@ -11,16 +11,17 @@ import { GoogleTagManager } from '@/components/google-tag-manager'
 import { LightThemeEnforcer } from '@/components/light-theme-enforcer'
 import { SiteNavigation } from '@/components/site-navigation'
 import Footer from '@/components/Footer'
+import { OrganizationSchema, WebsiteSchema } from '@/components/structured-data'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Punti Furbi - Trova le Migliori Offerte e Risparmia',
+    default: 'Punti Furbi - Confronta eSIM e Voli Economici | Risparmia sui Viaggi',
     template: '%s | Punti Furbi'
   },
-  description: 'Scopri le migliori offerte, sconti e promozioni. Confronta prezzi e risparmia su viaggi, shopping, tecnologia e molto altro.',
-  keywords: ['offerte', 'sconti', 'promozioni', 'risparmio', 'confronto prezzi', 'viaggi', 'shopping'],
+  description: 'Confronta le migliori eSIM per viaggi e trova voli economici. Guida completa per risparmiare su roaming e trasporti. Recensioni e confronti aggiornati 2025.',
+  keywords: ['eSIM viaggi', 'voli economici', 'confronto prezzi', 'roaming', 'risparmio viaggi', 'SIM viaggio', 'eSIM Italia', 'voli Milano', 'risparmio roaming', 'SIM internazionale'],
   authors: [{ name: 'Punti Furbi' }],
   creator: 'Punti Furbi',
   publisher: 'Punti Furbi',
@@ -37,8 +38,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'it_IT',
     url: 'https://puntifurbi.com',
-    title: 'Punti Furbi - Trova le Migliori Offerte e Risparmia',
-    description: 'Scopri le migliori offerte, sconti e promozioni. Confronta prezzi e risparmia su viaggi, shopping, tecnologia e molto altro.',
+    title: 'Punti Furbi - Confronta eSIM e Voli Economici | Risparmia sui Viaggi',
+    description: 'Confronta le migliori eSIM per viaggi e trova voli economici. Guida completa per risparmiare su roaming e trasporti. Recensioni e confronti aggiornati 2025.',
     siteName: 'Punti Furbi',
     images: [
       {
@@ -77,6 +78,21 @@ export default function RootLayout({
     <html lang="it" suppressHydrationWarning>
       <head>
         <GoogleTagManager />
+        <OrganizationSchema 
+          name="Punti Furbi"
+          url="https://puntifurbi.com"
+          logo="https://puntifurbi.com/images/logo.png"
+          socialLinks={[
+            "https://twitter.com/puntifurbi",
+            "https://facebook.com/puntifurbi",
+            "https://instagram.com/puntifurbi"
+          ]}
+        />
+        <WebsiteSchema 
+          name="Punti Furbi"
+          url="https://puntifurbi.com"
+          description="Confronta le migliori eSIM per viaggi e trova voli economici. Guida completa per risparmiare su roaming e trasporti."
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider

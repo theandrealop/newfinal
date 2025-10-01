@@ -154,17 +154,17 @@ export default function PuntiFurbiHomepage() {
             <div className="flex -space-x-3 flex-shrink-0">
               <img 
                 src="https://i.imgur.com/mR4OFJ6.jpeg" 
-                alt="User 1" 
+                alt="Marco R. - Cliente soddisfatto di Punti Furbi per voli economici" 
                 className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover"
               />
               <img 
                 src="https://i.imgur.com/Z3VfOYP.jpeg" 
-                alt="User 2" 
+                alt="Giulia M. - Cliente che ha risparmiato su voli New York con Punti Furbi" 
                 className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover"
               />
               <img 
                 src="https://us.123rf.com/450wm/satura86/satura861708/satura86170801548/84040788-coppia-di-turisti-prendendo-selfie-sulla-spiaggia-concetto-di-vacanza-amore-viaggi-e-vacanze.jpg" 
-                alt="User 3" 
+                alt="Alessandro T. - Cliente che ha risparmiato migliaia di euro sui voli Giappone" 
                 className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover"
               />
             </div>
@@ -183,14 +183,14 @@ export default function PuntiFurbiHomepage() {
               {/* Headline */}
               <div className="space-y-2 animate-fade-in-up animation-delay-200">
                 <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight font-pp-mori mb-6 lg:mb-8 text-center md:text-left">
-                  <span className="text-[#483cff] font-pp-mori font-extrabold">Risparmia fino al </span>
-                  <span className="text-dark-green font-pp-mori font-extrabold">90% sui voli</span>
+                  <span className="text-[#483cff] font-pp-mori font-extrabold">Confronta eSIM e </span>
+                  <span className="text-dark-green font-pp-mori font-extrabold">Voli Economici</span>
                 </h1>
               </div>
 
               {/* Subheadline */}
               <p className="home-subheadline text-3xl lg:text-4xl font-pp-mori font-normal text-dark-green animate-fade-in-up animation-delay-400 mb-10 lg:mb-12 text-center md:text-left">
-                Organizza viaggi. Ricevi avvisi. Vola spendendo meno.
+                Trova le migliori eSIM per viaggi e voli economici. Risparmia su roaming e trasporti.
               </p>
 
               {/* Newsletter Signup */}
@@ -296,11 +296,8 @@ export default function PuntiFurbiHomepage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 lg:py-24 bg-light-green relative">
-        <div className="absolute inset-0 opacity-30" style={{ transform: `translateY(${scrollY * 0.3}px)` }}>
-          <div className="w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <section className="py-16 lg:py-24 bg-light-green">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl lg:text-5xl font-extrabold mb-4 text-dark-green font-pp-mori">Stanco di cercare offerte sui voli?</h2>
             <p className="text-2xl lg:text-3xl font-extrabold text-[#483cff] font-pp-mori">Punti Furbi rende il viaggio più semplice</p>
@@ -319,6 +316,8 @@ export default function PuntiFurbiHomepage() {
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
+                    role="img"
+                    aria-label="Tempio Senso-ji a Kyoto, Giappone - Esempio di destinazione per voli economici"
                   ></div>
                 </div>
               </div>
@@ -327,6 +326,9 @@ export default function PuntiFurbiHomepage() {
                 <p className="text-gray-700">
                   Inserisci i dettagli del tuo viaggio: monitoriamo i prezzi e ti avvisiamo quando cambiano.
                 </p>
+                <Link href="/voli-economici/" className="inline-block text-blue-600 hover:text-blue-800 font-semibold">
+                  Scopri le offerte voli →
+                </Link>
               </div>
             </div>
 
@@ -341,6 +343,8 @@ export default function PuntiFurbiHomepage() {
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
+                    role="img"
+                    aria-label="Notifiche push per offerte voli economici - Punti Furbi ti avvisa quando i prezzi scendono"
                   ></div>
                 </div>
               </div>
@@ -350,6 +354,9 @@ export default function PuntiFurbiHomepage() {
                   Ricevi avvisi su cali di prezzo e tariffe errore. Troviamo le migliori offerte: tu devi solo
                   prenotare.
                 </p>
+                <Link href="/blog/" className="inline-block text-blue-600 hover:text-blue-800 font-semibold">
+                  Leggi le guide viaggi →
+                </Link>
               </div>
             </div>
 
@@ -372,6 +379,9 @@ export default function PuntiFurbiHomepage() {
                 <p className="text-gray-700">
                   Ti piace un'offerta? Prenota direttamente con la compagnia aerea, senza intermediari né sovrapprezzi.
                 </p>
+                <Link href="/esim/" className="inline-block text-blue-600 hover:text-blue-800 font-semibold">
+                  Confronta eSIM per viaggi →
+                </Link>
               </div>
             </div>
           </div>
@@ -383,6 +393,63 @@ export default function PuntiFurbiHomepage() {
             >
               Iscriviti
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Internal Linking Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-dark-green mb-4">
+              Scopri i nostri servizi
+            </h2>
+            <p className="text-xl text-gray-600">
+              Tutto quello che ti serve per viaggiare e risparmiare
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-dark-green mb-3">Confronta eSIM</h3>
+              <p className="text-gray-600 mb-4">
+                Trova la migliore eSIM per i tuoi viaggi. Confronta prezzi, copertura e caratteristiche.
+              </p>
+              <Link 
+                href="/esim/" 
+                className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Confronta eSIM
+              </Link>
+            </div>
+            
+            <div className="text-center p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-dark-green mb-3">Voli Economici</h3>
+              <p className="text-gray-600 mb-4">
+                Scopri le migliori offerte sui voli. Monitoriamo i prezzi per te.
+              </p>
+              <a 
+                href="https://t.me/PuntiFurbi" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+              >
+                Vedi Offerte
+              </a>
+            </div>
+            
+            <div className="text-center p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-dark-green mb-3">Guide Viaggi</h3>
+              <p className="text-gray-600 mb-4">
+                Leggi i nostri consigli e guide per viaggiare al meglio e risparmiare.
+              </p>
+              <Link 
+                href="/blog/" 
+                className="inline-block bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors"
+              >
+                Leggi Blog
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -422,7 +489,7 @@ export default function PuntiFurbiHomepage() {
                     <div className="flex-shrink-0">
                       <img
                         src={testimonial.image || "/placeholder.svg"}
-                        alt={testimonial.name}
+                        alt={`${testimonial.name} - Testimonial cliente Punti Furbi per voli economici e risparmio viaggi`}
                         className="w-full h-full object-cover rounded-lg"
                       />
                     </div>

@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { Shield, Users, CheckCircle, Award, Heart } from 'lucide-react'
+import Link from 'next/link'
 
 export function EsimTrustSection() {
   return (
@@ -119,21 +120,26 @@ export function EsimTrustSection() {
           {/* Links */}
           <div className="mt-8 text-center">
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <Button variant="link" className="text-blue-600 hover:text-blue-700">
-                Chi siamo
-              </Button>
-              <Button variant="link" className="text-blue-600 hover:text-blue-700">
-                Come funziona
-              </Button>
-              <Button variant="link" className="text-blue-600 hover:text-blue-700">
-                Contatto
-              </Button>
-              <Button variant="link" className="text-blue-600 hover:text-blue-700">
-                Privacy Policy
-              </Button>
-              <Button variant="link" className="text-blue-600 hover:text-blue-700">
-                Termini d'uso
-              </Button>
+              <Link href="/chi-siamo/">
+                <Button variant="link" className="text-blue-600 hover:text-blue-700">
+                  Chi siamo
+                </Button>
+              </Link>
+              <Link href="mailto:info@puntifurbi.com">
+                <Button variant="link" className="text-blue-600 hover:text-blue-700">
+                  Contatto
+                </Button>
+              </Link>
+              <Link href="/informativa-privacy/">
+                <Button variant="link" className="text-blue-600 hover:text-blue-700">
+                  Privacy Policy
+                </Button>
+              </Link>
+              <Link href="/condizioni-utilizzo/">
+                <Button variant="link" className="text-blue-600 hover:text-blue-700">
+                  Termini d'uso
+                </Button>
+              </Link>
             </div>
           </div>
 
