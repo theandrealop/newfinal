@@ -101,7 +101,15 @@ export function EsimComparisonTable() {
       'GoMoWorld': '/images/providers/gomoworld-logo.png',
       'YeSim': '/images/providers/yesim-logo.png',
       'Yesim': '/images/providers/yesim-logo.png',
-      'Firsty': '/images/providers/default-logo.png'
+      'Firsty': '/images/providers/default-logo.png',
+      'eSIMGo': '/images/providers/esimgo-logo.png',
+      '3': '/images/providers/3-logo.png',
+      'dtac': '/images/providers/dtac-logo.png',
+      'IIJ': '/images/providers/iij-logo.png',
+      'NextLink': '/images/providers/nextlink-logo.png',
+      'RoamVault': '/images/providers/roamvault-logo.png',
+      'Sparks': '/images/providers/sparks-logo.png',
+      'TSimTech': '/images/providers/tsimtech-logo.png'
     }
     return logos[provider] || '/images/providers/default-logo.png'
   }
@@ -113,17 +121,25 @@ export function EsimComparisonTable() {
       'Saily': 'https://finanza.me/saily',
       'Ubigi': 'https://finanza.me/ubigi',
       'Nomad': 'https://finanza.me/nomad',
-      'Jetpac': 'https://www.jetpacglobal.com/',
+      'Jetpac': 'https://finanza.me/mobimatter',
       'eSIM4Travel': 'https://finanza.me/esim4travel',
-      'Maya': 'https://maya.com',
-      'aloSIM': 'https://alosim.com',
+      'Maya': 'https://finanza.me/mobimatter',
+      'aloSIM': 'https://finanza.me/mobimatter',
       'Sim Local': 'https://simlocal.com',
-      'Roamless': 'https://roamless.com',
+      'Roamless': 'https://finanza.me/mobimatter',
       'Menalink': 'https://menalink.com',
       'GoMoWorld': 'https://finanza.me/gomoworld',
       'YeSim': 'https://finanza.me/yesim',
       'Yesim': 'https://finanza.me/yesim',
-      'Firsty': 'https://finanza.me/firsty'
+      'Firsty': 'https://finanza.me/firsty',
+      'eSIMGo': 'https://finanza.me/mobimatter',
+      '3': 'https://finanza.me/mobimatter',
+      'dtac': 'https://finanza.me/mobimatter',
+      'IIJ': 'https://finanza.me/mobimatter',
+      'NextLink': 'https://finanza.me/mobimatter',
+      'RoamVault': 'https://finanza.me/mobimatter',
+      'Sparks': 'https://finanza.me/mobimatter',
+      'TSimTech': 'https://finanza.me/mobimatter'
     }
     return websites[provider] || '#'
   }

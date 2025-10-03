@@ -60,14 +60,14 @@
     "name": "eSIMGo",
     "logo": "/images/providers/esimgo-logo.png",
     "description": "eSIMGo offre piani regionali e globali con attivazione istantanea. Interfaccia intuitiva e prezzi trasparenti.",
-    "website": "https://esimgo.com"
+    "website": "https://finanza.me/mobimatter"
   },
   {
     "id": "alosim",
     "name": "AloSIM",
     "logo": "/images/providers/alosim-logo.png",
     "description": "AloSIM è un provider emergente con eSIM per oltre 170 paesi. Prezzi competitivi e supporto clienti reattivo.",
-    "website": "https://alosim.com"
+    "website": "https://finanza.me/mobimatter"
   },
   {
     "id": "saily",
@@ -102,6 +102,69 @@
     "name": "Jetpac",
     "logo": "/images/providers/jetpac-logo.png",
     "description": "Jetpac Global offre eSIM per viaggiatori con copertura globale e piani flessibili.",
-    "website": "https://www.jetpacglobal.com/"
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "3",
+    "name": "3",
+    "logo": "/images/providers/3-logo.png",
+    "description": "3 è un provider di eSIM con copertura globale e piani competitivi per viaggiatori internazionali.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "dtac",
+    "name": "dtac",
+    "logo": "/images/providers/dtac-logo.png",
+    "description": "dtac è un operatore thailandese che offre eSIM per viaggiatori con copertura in Thailandia e Asia.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "iij",
+    "name": "IIJ",
+    "logo": "/images/providers/iij-logo.png",
+    "description": "IIJ è un provider giapponese di eSIM con copertura in Giappone e Asia, noto per la qualità del servizio.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "maya",
+    "name": "Maya",
+    "logo": "/images/providers/maya-logo.png",
+    "description": "Maya offre eSIM globali con piani flessibili e prezzi competitivi per viaggiatori internazionali.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "nextlink",
+    "name": "NextLink",
+    "logo": "/images/providers/nextlink-logo.png",
+    "description": "NextLink è un provider di eSIM con copertura globale e piani regionali per viaggiatori business e turistici.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "roamvault",
+    "name": "RoamVault",
+    "logo": "/images/providers/roamvault-logo.png",
+    "description": "RoamVault offre eSIM per viaggiatori con copertura globale e piani prepagati a prezzi competitivi.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "sparks",
+    "name": "Sparks",
+    "logo": "/images/providers/sparks-logo.png",
+    "description": "Sparks è un provider di eSIM con copertura globale e piani flessibili per viaggiatori internazionali.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "tsimtech",
+    "name": "TSimTech",
+    "logo": "/images/providers/tsimtech-logo.png",
+    "description": "TSimTech offre eSIM per viaggiatori con copertura globale e piani competitivi per diverse destinazioni.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "roamless",
+    "name": "Roamless",
+    "logo": "/images/providers/roamless-logo.png",
+    "description": "Roamless è un provider di eSIM con copertura globale e piani flessibili per viaggiatori internazionali.",
+    "website": "https://finanza.me/mobimatter"
   }
 ]

@@ -166,7 +166,7 @@ export function EsimComparison() {
         satisfaction: 8.2
       },
       reviewUrl: '/recensioni/jetpac',
-      websiteUrl: 'https://www.jetpacglobal.com/'
+      websiteUrl: 'https://finanza.me/mobimatter'
     }
   ]
 
