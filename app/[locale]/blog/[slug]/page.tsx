@@ -6,6 +6,8 @@ import { BlogPostContent } from '@/components/blog-post-content'
 // Removed cache-busting imports to fix DYNAMIC_SERVER_USAGE error
 // Removed BlogPostSchema to fix DYNAMIC_SERVER_USAGE error
 
+export const dynamic = 'force-dynamic'
+
 // Genera i parametri statici per il build
 export async function generateStaticParams() {
   // Nessun post statico, tutto on-demand
