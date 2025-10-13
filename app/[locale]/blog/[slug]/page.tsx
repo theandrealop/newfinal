@@ -4,7 +4,7 @@ import { fetchWordPressPostBySlugWithLang } from '@/lib/wordpress-i18n'
 import { Metadata } from 'next'
 import { BlogPostContent } from '@/components/blog-post-content'
 // Removed cache-busting imports to fix DYNAMIC_SERVER_USAGE error
-import { BlogPostSchema } from '@/components/structured-data'
+// Removed BlogPostSchema to fix DYNAMIC_SERVER_USAGE error
 
 // Genera i parametri statici per il build
 export async function generateStaticParams() {
@@ -29,37 +29,7 @@ async function BlogPostPageContent({ params }: { params: Promise<{ slug: string;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      {/* Schema Markup per articolo blog */}
-      <BlogPostSchema post={{
-        title: post.title,
-        excerpt: post.excerpt,
-        date: post.date,
-        modified: post.modified,
-        slug: post.slug,
-        featuredImage: post.featuredImage,
-        author: post.author?.name
-      }} />
-      
       <BlogPostContent post={postWithCanonical} />
-      {relatedPosts.length > 0 && (
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold mb-6">Post Correlati</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {relatedPosts.map((relatedPost: any) => (
-              <div key={relatedPost.id} className="border rounded-lg p-4">
-                <h3 className="font-semibold mb-2">{relatedPost.title}</h3>
-                <p className="text-gray-600 text-sm">{relatedPost.excerpt}</p>
-                <a 
-                  href={`/${locale}/blog/${relatedPost.slug}/`}
-                  className="text-blue-600 hover:underline"
-                >
-                  Leggi di più
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   )
 }
@@ -80,35 +50,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
-  const canonicalUrl = `https://puntifurbi.com/${locale}/blog/${slug}/`
-  const lastModified = post.date || '2025-01-01T00:00:00.000Z'
-
-  const baseUrl = 'https://puntifurbi.com';
-  
   return {
     title: post.title,
     description: post.excerpt || post.title,
-    metadataBase: new URL(baseUrl),
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        it: `/it/blog/${slug}/`,
-        en: `/en/blog/${slug}/`
-      }
-    },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt || post.title,
-      url: canonicalUrl,
-      images: post.featuredImage ? [post.featuredImage.node.sourceUrl] : [],
-      modifiedTime: lastModified,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt || post.title,
-      images: post.featuredImage ? [post.featuredImage.node.sourceUrl] : [],
-    },
   }
 }
 
