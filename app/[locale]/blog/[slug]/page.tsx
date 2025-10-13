@@ -1,6 +1,6 @@
-// app/blog/[slug]/page.tsx
+// app/[locale]/blog/[slug]/page.tsx
 import { notFound } from 'next/navigation'
-import { getPostBySlug, getRelatedPosts, getAllPosts } from '@/lib/graphql-api'
+import { fetchWordPressPostBySlugWithLang } from '@/lib/wordpress-i18n'
 import { Metadata } from 'next'
 import { BlogPostContent } from '@/components/blog-post-content'
 import { generateVersionHash, getCurrentVersion, addCacheBustingParams } from '@/lib/cache-busting'
@@ -13,22 +13,18 @@ export async function generateStaticParams() {
 }
 
 // Resto del tuo codice esistente...
-async function BlogPostPageContent({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
-  const post = await getPostBySlug(slug)
+async function BlogPostPageContent({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params
+  const post = await fetchWordPressPostBySlugWithLang(slug, locale as 'it' | 'en')
   
   if (!post) {
     notFound()
   }
 
-  let relatedPosts = []
-  try {
-    relatedPosts = await getRelatedPosts(post.categories?.nodes || [])
-  } catch (error) {
-    console.error('Error fetching related posts:', error)
-  }
+  // Related posts functionality removed for now
+  const relatedPosts = []
 
-  const canonicalUrl = `https://puntifurbi.com/blog/${slug}/`
+  const canonicalUrl = `https://puntifurbi.com/${locale}/blog/${slug}/`
   const postWithCanonical = { ...post, canonicalUrl }
 
   return (
@@ -76,9 +72,9 @@ async function BlogPostPageContent({ params }: { params: Promise<{ slug: string 
   )
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params
-  const post = await getPostBySlug(slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
+  const { slug, locale } = await params
+  const post = await fetchWordPressPostBySlugWithLang(slug, locale as 'it' | 'en')
   
   if (!post) {
     return {
@@ -92,15 +88,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
-  const canonicalUrl = `https://puntifurbi.com/blog/${slug}/`
+  const canonicalUrl = `https://puntifurbi.com/${locale}/blog/${slug}/`
   const articleVersion = generateVersionHash(post.content)
   const lastModified = post.date || new Date().toISOString()
 
+  const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL || 'https://puntifurbi.com';
+  
   return {
     title: post.title,
     description: post.excerpt || post.title,
+    metadataBase: new URL(baseUrl),
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        it: `/it/blog/${slug}/`,
+        en: `/en/blog/${slug}/`
+      }
     },
     openGraph: {
       title: post.title,
