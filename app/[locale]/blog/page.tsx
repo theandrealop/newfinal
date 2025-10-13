@@ -1,6 +1,5 @@
 import { Suspense } from "react"
 import type { Metadata } from 'next'
-import { getAllPosts } from "@/lib/graphql-api"
 import { fetchWordPressPostsWithLang } from "@/lib/wordpress-i18n"
 import { BlogPageClient } from "@/components/blog-page-client"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -47,23 +46,12 @@ async function BlogPageContent({ locale }: { locale: string }) {
   try {
     console.log(`🚀 BlogPageContent: Iniziando caricamento posts per locale ${locale}...`)
     
-    // Try WordPress i18n first, fallback to GraphQL
-    let posts, hasNextPage, endCursor;
-    
-    try {
-      const result = await fetchWordPressPostsWithLang(1, 12, locale as 'it' | 'en');
-      posts = result.posts;
-      hasNextPage = result.hasNextPage;
-      endCursor = hasNextPage ? '1' : null;
-      console.log(`✅ BlogPageContent: Posts caricati con successo via WordPress i18n:`, posts.length);
-    } catch (wpError) {
-      console.warn("⚠️ WordPress i18n failed, falling back to GraphQL:", wpError);
-      const result = await getAllPosts(12);
-      posts = result.posts;
-      hasNextPage = result.hasNextPage;
-      endCursor = result.endCursor;
-      console.log("✅ BlogPageContent: Posts caricati con successo via GraphQL:", posts.length);
-    }
+    // Use WordPress i18n only - no fallback
+    const result = await fetchWordPressPostsWithLang(1, 12, locale as 'it' | 'en');
+    const posts = result.posts;
+    const hasNextPage = result.hasNextPage;
+    const endCursor = hasNextPage ? '1' : null;
+    console.log(`✅ BlogPageContent: Posts caricati con successo via WordPress i18n:`, posts.length);
 
     // Passa i dati al Client Component
     return (
@@ -88,10 +76,11 @@ async function BlogPageContent({ locale }: { locale: string }) {
   }
 }
 
-export default function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return (
     <Suspense fallback={<BlogSkeleton />}>
-      <BlogPageContent locale={(params as any).locale} />
+      <BlogPageContent locale={locale} />
     </Suspense>
   )
 }
