@@ -1,0 +1,445 @@
+{
+    "Homepage": {
+      "title": "Compare eSIMs and Cheap Flights",
+      "subtitle": "Find the best eSIMs for travel and cheap flights. Save on roaming and transport.",
+      "emailPlaceholder": "Your email",
+      "subscribeButton": "Subscribe",
+      "submitting": "...",
+      "lovedBy": "Loved",
+      "users": "by 20k+",
+      "rating": "rating",
+      "newOffer": "New deal!",
+      "romeTokyo": "Rome - Tokyo",
+      "price": "€389 RT",
+      "savings": "Save 65% off the regular price",
+      "tiredOfSearching": "Tired of searching for flight deals?",
+      "makeTravelEasier": "Punti Furbi makes travel easier",
+      "trackPrices": "Track prices for all your trips",
+      "trackPricesDesc": "Enter your trip details: we monitor prices and notify you when they change.",
+      "discoverOffers": "Discover flight deals →",
+      "dreamDestinations": "Deals to your dream destinations",
+      "dreamDestinationsDesc": "Get alerts on price drops and error fares. We find the best deals; you just book.",
+      "readGuides": "Read travel guides →",
+      "bookFlight": "Book your flight anywhere",
+      "bookFlightDesc": "Like a deal? Book directly with the airline, with no middlemen or markups.",
+      "compareEsim": "Compare travel eSIMs →",
+      "subscribe": "Subscribe",
+      "discoverServices": "Discover our services",
+      "everythingYouNeed": "Everything you need to travel and save",
+      "compareEsimTitle": "Compare eSIMs",
+      "compareEsimDesc": "Find the best eSIM for your trips. Compare prices, coverage, and features.",
+      "compareEsimButton": "Compare eSIMs",
+      "cheapFlightsTitle": "Cheap Flights",
+      "cheapFlightsDesc": "Discover the best flight deals. We track prices for you.",
+      "seeOffers": "See Deals",
+      "travelGuidesTitle": "Travel Guides",
+      "travelGuidesDesc": "Read our tips and guides to travel better and save money.",
+      "readBlog": "Read Blog",
+      "joinMillions": "Join millions of travelers who save",
+      "ratedExcellent": "Rated excellent on TrustPilot",
+      "newsletterSignup": "Subscribe to the Newsletter",
+      "Testimonials": {
+        "marco": "I found the perfect family vacation thanks to Punti Furbi! Saved over €600.",
+        "giulia": "Incredible! I managed to fly to New York for half the usual price.",
+        "alessandro": "Punti Furbi alerts saved me thousands of euros on flights to Japan.",
+        "carla": "I can finally afford to travel often thanks to Punti Furbi's deals!",
+        "luca": "With Punti Furbi I discovered destinations I never thought I could afford.",
+        "sofia": "Punti Furbi notifications are always timely and have saved me hundreds of euros."
+      }
+    },
+    "Navigation": {
+      "home": "Home",
+      "cheapFlights": "Cheap flights",
+      "esim": "eSIM",
+      "blog": "Blog",
+      "premium": "Premium",
+      "elite": "Elite",
+      "subscribe": "Subscribe"
+    },
+    "Footer": {
+      "followUs": "Follow us on social",
+      "company": "Company",
+      "aboutUs": "About us",
+      "contact": "Contact",
+      "legal": "Legal",
+      "termsOfUse": "Terms of use",
+      "privacyPolicy": "Privacy policy",
+      "proudlyMade": "Proudly made in Italy",
+      "tagline": "Punti Furbi - Your eSIM comparison tool for smart travel",
+      "copyright": "© 2024-2025 Punti Furbi. All rights reserved.",
+      "disclosure": "Advertiser disclosure:",
+      "disclosureText": "Instead of ad banners and paywalls, we earn through affiliate links to various eSIM service providers featured on the site. While we do our best to explore the market to find the best offers, we cannot consider every possible product available to you. Our wide range of trusted affiliate partners allows us to provide detailed, impartial, solution-oriented recommendations for every type of consumer question and problem. This lets us match our users with the most suitable providers and, in turn, match our providers with new customers, creating a win-win for all parties. However, although some of our links may earn us a commission, this never affects the independence and integrity of our opinions, recommendations, and ratings."
+    },
+    "Common": {
+      "loading": "Loading...",
+      "error": "Error",
+      "retry": "Retry",
+      "close": "Close",
+      "open": "Open",
+      "save": "Save",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "search": "Search",
+      "filter": "Filter",
+      "sort": "Sort",
+      "view": "View",
+      "edit": "Edit",
+      "delete": "Delete",
+      "add": "Add",
+      "remove": "Remove",
+      "select": "Select",
+      "all": "All",
+      "none": "None",
+      "yes": "Yes",
+      "no": "No",
+      "ok": "OK"
+    },
+    "VoliEconomici": {
+      "title": "Cheap Flights",
+      "subtitle": "Discover the best flight deals and save on your trips",
+      "activeOffers": "Active Deals",
+      "terminatedOffers": "Ended Deals",
+      "viewOffer": "View Deal",
+      "bookNow": "Book Now",
+      "bookNowButton": "Book now",
+      "discount": "Discount",
+      "originalPrice": "Original price",
+      "newPrice": "New price",
+      "dates": "Dates",
+      "airline": "Airline",
+      "stops": "Stops",
+      "duration": "Duration",
+      "description": "Description",
+      "noOffers": "No deals available at the moment",
+      "loading": "Loading deals...",
+      "error": "Error loading deals",
+      "selectAirport": "Select your departure airport",
+      "offersAvailable": "deals available from",
+      "featuredOffers": "Featured deals",
+      "featuredSubtitle": "Top picks selected for you",
+      "terminated": "Ended",
+      "offerTerminated": "Deal ended",
+      "offerNotAvailable": "This deal is no longer available",
+      "dontMiss": "Don't miss the next deals",
+      "subscribeText": "Subscribe for free and receive real-time alerts on the best flight deals",
+      "subscribeButton": "Subscribe free",
+      "perPerson": "RT per person",
+      "directFlight": "Direct flight",
+      "nonStop": "Non-stop flight",
+      "oneStop": "1 stop",
+      "multipleStops": "Multiple stops"
+    },
+    "ESim": {
+      "title": "eSIM for Travel",
+      "subtitle": "Compare the best eSIMs to travel without roaming limits",
+      "heroTitle": "Travel Smart with eSIM",
+      "heroSubtitle": "Compare the best eSIMs to travel without roaming limits. Save on roaming costs and browse freely worldwide.",
+      "databaseStats": {
+        "totalOffers": "7383",
+        "coveredCountries": "210",
+        "providers": "16",
+        "avgPrice": "25.85"
+      },
+      "compareButton": "Compare eSIMs",
+      "learnMore": "Learn more",
+      "features": {
+        "title": "Why choose eSIM?",
+        "noRoaming": "No more expensive roaming",
+        "noRoamingDesc": "Avoid shocking roaming bills with affordable local rates",
+        "instantActivation": "Instant activation",
+        "instantActivationDesc": "Activate your eSIM in minutes, wherever you are",
+        "globalCoverage": "Global coverage",
+        "globalCoverageDesc": "Browse in 190+ countries with the best local networks",
+        "secureConnection": "Secure connection",
+        "secureConnectionDesc": "Protect your data with encrypted connections",
+        "onlinePurchase": "Online purchase",
+        "onlinePurchaseDesc": "Buy online and get your eSIM instantly by email",
+        "multiSim": "Multi-SIM support",
+        "multiSimDesc": "Multiple numbers on one device"
+      },
+      "deviceCompatibility": {
+        "title": "eSIM Device Compatibility",
+        "desc": "Check if your device supports eSIM with our practical brand-by-brand guides.",
+        "devices": [
+          {
+            "model": "iPhone 12 mini",
+            "brand": "Apple",
+            "compatibility": "Full",
+            "features": ["eSIM", "Dual SIM", "5G", "Hotspot"],
+            "setup": "Settings > Cellular > Add Cellular Plan"
+          },
+          {
+            "model": "Samsung Galaxy S24",
+            "brand": "Samsung",
+            "compatibility": "Full",
+            "features": ["eSIM", "Dual SIM", "5G", "Hotspot"],
+            "setup": "Settings > Connections > SIM manager"
+          },
+          {
+            "model": "Pixel 7a",
+            "brand": "Google",
+            "compatibility": "Full",
+            "features": ["eSIM", "Dual SIM", "5G", "Hotspot"],
+            "setup": "Settings > Network & Internet > SIMs"
+          },
+          {
+            "model": "Apple Watch Series 9",
+            "brand": "Apple",
+            "compatibility": "Limited",
+            "features": ["eSIM", "Cellular", "Number sharing"],
+            "setup": "Apple Watch app > Cellular"
+          },
+          {
+            "model": "Samsung Galaxy A54",
+            "brand": "Samsung",
+            "compatibility": "Partial",
+            "features": ["eSIM", "Dual SIM", "4G"],
+            "setup": "Settings > Connections > SIM manager"
+          }
+        ]
+      },
+      "plans": {
+        "title": "Popular eSIM Plans",
+        "viewAll": "See all plans",
+        "durations": [
+          {
+            "title": "Italy 7-day eSIM - Best",
+            "price": "€8-15",
+            "data": "5-20 GB",
+            "provider": "Saily",
+            "features": ["Instant activation", "5G", "Hotspot", "SMS"],
+            "idealFor": ["Long weekends", "Short trips", "City breaks"]
+          },
+          {
+            "title": "Italy Weekend eSIM - Budget",
+            "price": "€5-10",
+            "data": "3-10 GB",
+            "provider": "Nomad",
+            "features": ["Low price", "Quick activation", "4G/5G"],
+            "idealFor": ["Short weekends", "Lightning trips", "Tight budgets"]
+          },
+          {
+            "title": "Italy 3-month eSIM - Unlimited",
+            "price": "€45-80",
+            "data": "Unlimited",
+            "provider": "Holafly",
+            "features": ["Unlimited data", "5G", "Hotspot", "24/7 support"],
+            "idealFor": ["Long stays", "Temporary work", "Study abroad"]
+          },
+          {
+            "title": "Italy Daily eSIM - Cost",
+            "price": "€2-5",
+            "data": "1-3 GB",
+            "provider": "Ubigi",
+            "features": ["Instant activation", "Fixed price", "4G"],
+            "idealFor": ["Day trips", "Business trips", "eSIM testing"]
+          },
+          {
+            "title": "Italy Monthly eSIM - Popular",
+            "price": "€15-30",
+            "data": "10-50 GB",
+            "provider": "Airalo",
+            "features": ["Great value for money", "5G", "Hotspot", "Top-up"],
+            "idealFor": ["Monthly travel", "Vacations", "Temporary work"]
+          },
+          {
+            "title": "Italy 6-month eSIM - Value",
+            "price": "€80-150",
+            "data": "50-100 GB",
+            "provider": "Saily",
+            "features": ["Half-year discount", "5G", "Hotspot", "Dedicated support"],
+            "idealFor": ["Long stays", "Temporary work", "Studies"]
+          }
+        ]
+      },
+      "specialSolutions": {
+        "title": "eSIM for Specific Segments",
+        "students": {
+          "provider": "Saily",
+          "priceRange": "€5-12",
+          "duration": "1-6 months",
+          "features": ["Student pricing", "EU coverage", "Multilingual support"],
+          "advantages": ["Special discounts", "Flexible plans"]
+        },
+        "family": {
+          "provider": "Airalo",
+          "priceRange": "€8-20",
+          "duration": "7-30 days",
+          "features": ["Family bundles", "Hotspot sharing", "Parental controls"],
+          "advantages": ["Family discounts", "Shared data"]
+        },
+        "senior": {
+          "provider": "Holafly",
+          "priceRange": "€15-25",
+          "duration": "7-30 days",
+          "features": ["Phone support", "Assisted setup", "Unlimited plans"],
+          "advantages": ["Phone support", "24/7 assistance"]
+        },
+        "kids": {
+          "provider": "Nomad",
+          "priceRange": "€6-15",
+          "duration": "7-30 days",
+          "features": ["Parental controls", "Usage limits", "Content filters"],
+          "advantages": ["Usage control", "Time/data limits"]
+        },
+        "business": {
+          "provider": "Ubigi",
+          "priceRange": "€12-30",
+          "duration": "7-90 days",
+          "features": ["Priority support", "Business invoicing", "VPN"],
+          "advantages": ["Priority support", "Business invoicing"]
+        },
+        "frequent": {
+          "provider": "Saily",
+          "priceRange": "€10-25",
+          "duration": "30-365 days",
+          "features": ["Global coverage", "Annual plans", "Auto top-up"],
+          "advantages": ["Coverage in 190+ countries", "Annual plans"]
+        }
+      },
+      "howToChoose": {
+        "briefTrips": "Choose daily or weekly plans to save",
+        "mediumTrips": "Monthly plans = best value for money",
+        "longStays": "Half-year plans with discounts/top-ups"
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "whatIsESim": "What is an eSIM?",
+        "whatIsESimAnswer": "An eSIM is a digital SIM embedded in your device that lets you activate data plans without a physical SIM.",
+        "howToActivate": "How do I activate an eSIM?",
+        "howToActivateAnswer": "Download the provider's app, scan the QR code, and follow the instructions. Activation takes just a few minutes.",
+        "deviceCompatibility": "Is my device compatible?",
+        "deviceCompatibilityAnswer": "Most modern smartphones support eSIM. Check your device specs to be sure.",
+        "questions": [
+          {
+            "q": "What is an eSIM?",
+            "a": "An eSIM is a digital SIM integrated into your device: you can activate data plans without a physical SIM."
+          },
+          {
+            "q": "How do I activate an eSIM?",
+            "a": "Download the provider app, scan the QR code, and follow the instructions. It takes just a few minutes."
+          },
+          {
+            "q": "Is my device compatible?",
+            "a": "Most recent smartphones support eSIM. Check the specifications to be sure."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Start Traveling Smart",
+        "subtitle": "Choose the perfect eSIM plan for your travel needs",
+        "getStarted": "Get Started"
+      },
+      "troubleshooting": {
+        "commonIssues": [
+          {
+            "title": "eSIM QR code won't scan",
+            "priority": "Critical",
+            "solution": "Make sure the camera is clean and the QR code is well lit"
+          },
+          {
+            "title": "eSIM activation failed",
+            "priority": "Critical",
+            "solution": "Check your internet connection and the data you entered"
+          },
+          {
+            "title": "eSIM not working in Italy",
+            "priority": "Medium",
+            "solution": "Check APN settings and coverage"
+          },
+          {
+            "title": "eSIM expired",
+            "priority": "Medium",
+            "solution": "Buy a new plan or extend the existing one"
+          },
+          {
+            "title": "Dual SIM eSIM - Network conflict",
+            "priority": "Low",
+            "solution": "Properly configure dual SIM settings"
+          },
+          {
+            "title": "Slow eSIM speeds",
+            "priority": "Medium",
+            "solution": "Check 5G coverage and network settings"
+          }
+        ]
+      },
+      "providerComparison": [
+        {
+          "provider": "Saily",
+          "score": "9.2",
+          "details": "European provider with global coverage and competitive prices",
+          "countries": "190",
+          "priceRange": "€8-15",
+          "duration": "7-30 days"
+        },
+        {
+          "provider": "Airalo",
+          "score": "8.9",
+          "details": "Global leader with the widest country coverage",
+          "countries": "200",
+          "priceRange": "€10-20",
+          "duration": "7-365 days"
+        },
+        {
+          "provider": "Holafly",
+          "score": "8.7",
+          "details": "Specialized in unlimited data for travelers",
+          "countries": "160",
+          "priceRange": "€15-30",
+          "duration": "5-90 days"
+        },
+        {
+          "provider": "Yesim",
+          "score": "8.5",
+          "details": "Emerging provider with very competitive prices",
+          "countries": "150",
+          "priceRange": "€6-12",
+          "duration": "7-30 days"
+        },
+        {
+          "provider": "Nomad",
+          "score": "8.3",
+          "details": "Flexible with customizable plans",
+          "countries": "165",
+          "priceRange": "€8-18",
+          "duration": "1-30 days"
+        },
+        {
+          "provider": "Ubigi",
+          "score": "8.1",
+          "details": "Specialized in Asia and the Pacific",
+          "countries": "120",
+          "priceRange": "€7-15",
+          "duration": "7-30 days"
+        },
+        {
+          "provider": "GoMoWorld",
+          "score": "8.4",
+          "details": "Prepaid plans from €3.99 with activation in seconds",
+          "countries": "200",
+          "priceRange": "€4-15",
+          "duration": "7-30 days"
+        },
+        {
+          "provider": "Firsty",
+          "score": "8.2",
+          "details": "Global eSIMs with instant activation and multilingual support",
+          "countries": "180",
+          "priceRange": "€6-18",
+          "duration": "7-30 days"
+        }
+      ],
+      "aboutTrust": {
+        "mission": "Helping you find the best eSIM deals with transparency and independence.",
+        "community": "15M+ users",
+        "testing": "Independent service testing",
+        "opinions": "Unbiased opinions and recommendations",
+        "support": "Dedicated support"
+      }
+    }
+  }
+  

@@ -1,0 +1,43 @@
+/* Flag CSS - Sistema con Immagini Locali */
+.flag {
+  display: inline-block;
+  width: 24px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+/* Bandiere con immagini locali */
+.flag-au { background-image: url('/images/flags/au.svg'); }
+.flag-br { background-image: url('/images/flags/br.svg'); }
+.flag-ae { background-image: url('/images/flags/ae.svg'); }
+.flag-fr { background-image: url('/images/flags/fr.svg'); }
+.flag-jp { background-image: url('/images/flags/jp.svg'); }
+.flag-id { background-image: url('/images/flags/id.svg'); }
+.flag-it { background-image: url('/images/flags/it.svg'); }
+.flag-ma { background-image: url('/images/flags/ma.svg'); }
+.flag-es { background-image: url('/images/flags/es.svg'); }
+.flag-lk { background-image: url('/images/flags/lk.svg'); }
+.flag-us { background-image: url('/images/flags/us.svg'); }
+.flag-za { background-image: url('/images/flags/za.svg'); }
+.flag-th { background-image: url('/images/flags/th.svg'); }
+.flag-tr { background-image: url('/images/flags/tr.svg'); }
+
+/* COME MODIFICARE LE BANDIERE:
+ * 
+ * Opzione 1: Immagini locali (attualmente utilizzata)
+ * .flag-it { background-image: url('/images/flags/it.svg'); }
+ * 
+ * Opzione 2: URL esterni
+ * .flag-it { background-image: url('https://flagcdn.com/it.svg'); }
+ * 
+ * Opzione 3: SVG inline
+ * .flag-it { background-image: url('data:image/svg+xml;base64,...'); }
+ * 
+ * Opzione 4: Immagini PNG/JPG
+ * .flag-it { background-image: url('/images/flags/italy.png'); }
+ */
+
