@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { fetchWordPressPostBySlugWithLang } from '@/lib/wordpress-i18n'
 import { Metadata } from 'next'
 import { BlogPostContent } from '@/components/blog-post-content'
-import { generateVersionHash, getCurrentVersion, addCacheBustingParams } from '@/lib/cache-busting'
+// Removed cache-busting imports to fix DYNAMIC_SERVER_USAGE error
 import { BlogPostSchema } from '@/components/structured-data'
 
 // Genera i parametri statici per il build
@@ -29,14 +29,6 @@ async function BlogPostPageContent({ params }: { params: Promise<{ slug: string;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      {/* Cache busting meta tags specifici per l'articolo */}
-      <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-      <meta httpEquiv="Pragma" content="no-cache" />
-      <meta httpEquiv="Expires" content="0" />
-      <meta name="article-version" content={generateVersionHash(post.content)} />
-      <meta name="article-modified" content={post.date || new Date().toISOString()} />
-      <meta name="cache-bust" content={Date.now().toString()} />
-      
       {/* Schema Markup per articolo blog */}
       <BlogPostSchema post={{
         title: post.title,
@@ -58,7 +50,7 @@ async function BlogPostPageContent({ params }: { params: Promise<{ slug: string;
                 <h3 className="font-semibold mb-2">{relatedPost.title}</h3>
                 <p className="text-gray-600 text-sm">{relatedPost.excerpt}</p>
                 <a 
-                  href={addCacheBustingParams(`/blog/${relatedPost.slug}/`)}
+                  href={`/${locale}/blog/${relatedPost.slug}/`}
                   className="text-blue-600 hover:underline"
                 >
                   Leggi di più
@@ -89,8 +81,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const canonicalUrl = `https://puntifurbi.com/${locale}/blog/${slug}/`
-  const articleVersion = generateVersionHash(post.content)
-  const lastModified = post.date || new Date().toISOString()
+  const lastModified = post.date || '2025-01-01T00:00:00.000Z'
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL || 'https://puntifurbi.com';
   
@@ -117,16 +108,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: post.excerpt || post.title,
       images: post.featuredImage ? [post.featuredImage.node.sourceUrl] : [],
-    },
-    // Cache busting metadata
-    other: {
-      'cache-control': 'no-cache, no-store, must-revalidate',
-      'pragma': 'no-cache',
-      'expires': '0',
-      'version': getCurrentVersion(),
-      'article-version': articleVersion,
-      'last-modified': lastModified,
-      'cache-bust': Date.now().toString(),
     },
   }
 }
