@@ -136,8 +136,6 @@ export async function fetchWordPressPostBySlugWithLang(
   locale: 'it' | 'en'
 ): Promise<BlogPost | null> {
   try {
-    console.log(`🌐 Fetching WordPress post "${slug}" for locale: ${locale}`);
-    
     // Try to fetch the post without language filter first
     let post = await getPostBySlugFromREST(slug);
 
@@ -175,22 +173,18 @@ export async function fetchWordPressPostBySlugWithLang(
         if (title.includes('marriott') && title.includes('laurus')) {
           if (title.includes('apre') || title.includes('primo')) {
             // Italian version: "Marriott apre The Laurus: il primo Luxury Collection"
-            console.log(`✅ Found Italian Marriott post "${slug}" in ${locale}`);
             return post;
           } else if (title.includes('opens') || title.includes('first')) {
             // English version: "Marriott opens The Laurus: the first Luxury Collection"
-            console.log(`🚫 English Marriott post "${slug}" filtered out for ${locale}`);
             return null;
           }
         }
         
         // If it has English indicators but no Italian ones, it's likely English
         if (hasEnglishIndicators && !hasItalianIndicators) {
-          console.log(`🚫 English post "${slug}" filtered out for ${locale}`);
           return null;
         }
         
-        console.log(`✅ Found Italian post "${slug}" in ${locale}`);
         return post;
       } else {
         // For English locale, check if post has English indicators
@@ -205,31 +199,25 @@ export async function fetchWordPressPostBySlugWithLang(
         if (title.includes('marriott') && title.includes('laurus')) {
           if (title.includes('opens') || title.includes('first')) {
             // English version: "Marriott opens The Laurus: the first Luxury Collection"
-            console.log(`✅ Found English Marriott post "${slug}" in ${locale}`);
             return post;
           } else if (title.includes('apre') || title.includes('primo')) {
             // Italian version: "Marriott apre The Laurus: il primo Luxury Collection"
-            console.log(`🚫 Italian Marriott post "${slug}" filtered out for ${locale}`);
             return null;
           }
         }
         
         // If it has Italian indicators but no English ones, it's likely Italian
         if (hasItalianIndicators && !hasEnglishIndicators) {
-          console.log(`🚫 Italian post "${slug}" filtered out for ${locale}`);
           return null;
         }
         
-        console.log(`✅ Found English post "${slug}" in ${locale}`);
         return post;
       }
     }
 
     // If no post found, return null
-    console.log(`⚠️ No post found for "${slug}"`);
     return null;
   } catch (error) {
-    console.error(`Error fetching WordPress post by slug ${slug} for locale ${locale}:`, error);
     return null;
   }
 }

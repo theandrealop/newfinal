@@ -82,7 +82,7 @@ interface WPRestResponse {
   totalPosts: number
 }
 
-const WORDPRESS_REST_URL = process.env.WP_REST_ENDPOINT || "https://puntifurbi.wasmer.app/wp-json/wp/v2"
+const WORDPRESS_REST_URL = "https://puntifurbi.wasmer.app/wp-json/wp/v2"
 
 /**
  * Converte un post della REST API in formato BlogPost
@@ -138,7 +138,6 @@ export async function getPostsFromREST(
   lang?: string
 ): Promise<{ posts: BlogPost[], hasNextPage: boolean, totalPages: number }> {
   try {
-    console.log(`🚀 getPostsFromREST: Caricando pagina ${page} con ${perPage} post per pagina`)
     
     // Costruisci l'URL con parametri
     const params = new URLSearchParams({
@@ -168,11 +167,9 @@ export async function getPostsFromREST(
     }
 
     const url = `${WORDPRESS_REST_URL}/posts?${params.toString()}`
-    console.log(`📡 Fetching: ${url}`)
 
     const response = await fetch(url, {
-      cache: 'force-cache',
-      next: { revalidate: 60, tags: ['posts'] }
+      cache: 'no-store'
     })
 
     if (!response.ok) {
@@ -183,7 +180,6 @@ export async function getPostsFromREST(
     const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1')
     const totalPosts = parseInt(response.headers.get('X-WP-Total') || '0')
 
-    console.log(`✅ getPostsFromREST: ${posts.length} post caricati (pagina ${page}/${totalPages})`)
 
     // Converti i post nel formato BlogPost
     const blogPosts = posts.map(convertWPRestPostToBlogPost)
@@ -194,7 +190,6 @@ export async function getPostsFromREST(
       totalPages
     }
   } catch (error) {
-    console.error('💥 getPostsFromREST: Errore durante il fetch:', error)
     throw error
   }
 }
@@ -204,7 +199,6 @@ export async function getPostsFromREST(
  */
 export async function getPostBySlugFromREST(slug: string, lang?: string): Promise<BlogPost | null> {
   try {
-    console.log(`🚀 getPostBySlugFromREST: Caricando post "${slug}"`)
     
     const params = new URLSearchParams({
       slug: slug,
@@ -217,8 +211,7 @@ export async function getPostBySlugFromREST(slug: string, lang?: string): Promis
 
     const url = `${WORDPRESS_REST_URL}/posts?${params.toString()}`
     const response = await fetch(url, {
-      cache: 'force-cache',
-      next: { revalidate: 60, tags: ['posts'] }
+      cache: 'no-store'
     })
 
     if (!response.ok) {
@@ -228,15 +221,12 @@ export async function getPostBySlugFromREST(slug: string, lang?: string): Promis
     const posts: WPRestPost[] = await response.json()
     
     if (posts.length === 0) {
-      console.warn(`⚠️ getPostBySlugFromREST: Post "${slug}" non trovato`)
       return null
     }
 
     const blogPost = convertWPRestPostToBlogPost(posts[0])
-    console.log(`✅ getPostBySlugFromREST: Post "${slug}" caricato con successo`)
     return blogPost
   } catch (error) {
-    console.error(`💥 getPostBySlugFromREST: Errore caricamento post "${slug}":`, error)
     return null
   }
 }
@@ -246,12 +236,10 @@ export async function getPostBySlugFromREST(slug: string, lang?: string): Promis
  */
 export async function getCategoriesFromREST(): Promise<Array<{ id: number, name: string, slug: string }>> {
   try {
-    console.log('🚀 getCategoriesFromREST: Caricando categorie')
     
     const url = `${WORDPRESS_REST_URL}/categories?per_page=100`
     const response = await fetch(url, {
-      cache: 'force-cache',
-      next: { revalidate: 300, tags: ['categories'] }
+      cache: 'no-store'
     })
 
     if (!response.ok) {
@@ -259,7 +247,6 @@ export async function getCategoriesFromREST(): Promise<Array<{ id: number, name:
     }
 
     const categories = await response.json()
-    console.log(`✅ getCategoriesFromREST: ${categories.length} categorie caricate`)
     
     return categories.map((cat: any) => ({
       id: cat.id,
@@ -267,7 +254,6 @@ export async function getCategoriesFromREST(): Promise<Array<{ id: number, name:
       slug: cat.slug
     }))
   } catch (error) {
-    console.error('💥 getCategoriesFromREST: Errore caricamento categorie:', error)
     return []
   }
 }
@@ -277,7 +263,6 @@ export async function getCategoriesFromREST(): Promise<Array<{ id: number, name:
  */
 export async function getRelatedPostsFromREST(categoryId: number, excludePostId?: string): Promise<BlogPost[]> {
   try {
-    console.log(`🚀 getRelatedPostsFromREST: Caricando post correlati per categoria ${categoryId}`)
     
     const params = new URLSearchParams({
       categories: categoryId.toString(),
@@ -292,8 +277,7 @@ export async function getRelatedPostsFromREST(categoryId: number, excludePostId?
 
     const url = `${WORDPRESS_REST_URL}/posts?${params.toString()}`
     const response = await fetch(url, {
-      cache: 'force-cache',
-      next: { revalidate: 60, tags: ['posts'] }
+      cache: 'no-store'
     })
 
     if (!response.ok) {
@@ -303,10 +287,8 @@ export async function getRelatedPostsFromREST(categoryId: number, excludePostId?
     const posts: WPRestPost[] = await response.json()
     const blogPosts = posts.map(convertWPRestPostToBlogPost)
     
-    console.log(`✅ getRelatedPostsFromREST: ${blogPosts.length} post correlati trovati`)
     return blogPosts
   } catch (error) {
-    console.error('💥 getRelatedPostsFromREST: Errore caricamento post correlati:', error)
     return []
   }
 }

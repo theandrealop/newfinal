@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const canonicalUrl = `https://puntifurbi.com/${locale}/blog/${slug}/`
   const lastModified = post.date || '2025-01-01T00:00:00.000Z'
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL || 'https://puntifurbi.com';
+  const baseUrl = 'https://puntifurbi.com';
   
   return {
     title: post.title,

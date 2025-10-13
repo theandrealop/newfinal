@@ -88,7 +88,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   
-  const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL || 'https://puntifurbi.com';
+  const baseUrl = 'https://puntifurbi.com';
   
   return {
     title: locale === 'en' 
