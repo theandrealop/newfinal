@@ -34,12 +34,10 @@ export function BlogPageClient({
   // Handler per retry automatico in caso di errore
   const handleRetry = async () => {
     if (retryCount >= 3) {
-      console.log("🚫 Massimo numero di retry raggiunto")
       return
     }
 
     setRetryCount(prev => prev + 1)
-    console.log(`🔄 Tentativo di retry ${retryCount + 1}/3...`)
     
     // Delay progressivo per retry
     const delay = Math.pow(2, retryCount) * 1000 // 1s, 2s, 4s
@@ -49,7 +47,6 @@ export function BlogPageClient({
   // Gestione errori con retry automatico
   useEffect(() => {
     if (error && posts.length === 0 && retryCount < 3) {
-      console.log("🤖 Errore rilevato, tentativo retry automatico...")
       const timer = setTimeout(handleRetry, 2000)
       return () => clearTimeout(timer)
     }

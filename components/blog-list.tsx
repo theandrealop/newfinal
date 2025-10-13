@@ -27,8 +27,6 @@ export function BlogList({
 
     setLoading(true)
     try {
-      console.log("🚀 BlogList: Caricando più posts con REST API...")
-      
       // Converti il cursor in numero di pagina per la REST API
       const currentPage = endCursor ? parseInt(endCursor) + 1 : 2
       
@@ -43,7 +41,6 @@ export function BlogList({
       })
 
       const url = `${WORDPRESS_REST_URL}/posts?${params.toString()}`
-      console.log(`📡 Fetching: ${url}`)
 
       const response = await fetch(url, {
         cache: 'force-cache',
@@ -58,7 +55,6 @@ export function BlogList({
       const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1')
       
       if (!Array.isArray(newPostsData) || newPostsData.length === 0) {
-        console.warn("⚠️ BlogList: Nessun dato ricevuto per load more")
         setHasNextPage(false)
         return
       }
@@ -104,7 +100,6 @@ export function BlogList({
         return new Date(b.date).getTime() - new Date(a.date).getTime()
       })
       
-      console.log(`✅ BlogList: Caricati ${sortedNewPosts.length} nuovi posts via REST API`)
       
       setPosts((prevPosts: BlogPost[]) => {
         const combined = [...prevPosts, ...sortedNewPosts]

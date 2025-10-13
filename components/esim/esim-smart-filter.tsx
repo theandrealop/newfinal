@@ -19,30 +19,23 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
   const [countries, setCountries] = useState<string[]>([])
 
   useEffect(() => {
-    console.log('EsimSmartFilter: Caricamento dati...')
     try {
       const fallbackCountries = ['Italia', 'Francia', 'Marocco', 'Thailandia', 'Stati Uniti', 'Brasile', 'Indonesia', 'Giappone', 'Turchia', 'Australia', 'Emirati Arabi', 'Sudafrica', 'Spagna']
 
       const serviceCountries = esimService.getAvailableCountries()
-      console.log('Service countries:', serviceCountries)
-      console.log('Service countries length:', serviceCountries.length)
 
       // Se il servizio non ha dati, usa i fallback
       if (serviceCountries.length === 0) {
-        console.log('Nessun paese dal servizio, uso fallback')
         setCountries(fallbackCountries)
       } else {
-        console.log('Usando paesi dal servizio')
         setCountries(serviceCountries)
       }
     } catch (error) {
-      console.error('Errore nel caricamento dei dati eSIM:', error)
       setCountries(['Italia', 'Francia', 'Marocco', 'Thailandia', 'Stati Uniti', 'Brasile', 'Indonesia', 'Giappone', 'Turchia', 'Australia', 'Emirati Arabi', 'Sudafrica', 'Spagna'])
     }
   }, [])
 
   const handleCompare = () => {
-    console.log('Confronta cliccato:', { selectedCountry, selectedDuration, selectedGB })
     if (!selectedCountry) return
 
     const filters: EsimFilter = { paese: selectedCountry }
@@ -81,8 +74,7 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
     window.dispatchEvent(new CustomEvent('esimFiltersChanged', { detail: filters }))
 
          try {
-       const offers = esimService.filterOffers(filters)
-       console.log('Offerte trovate:', offers)
+      const offers = esimService.filterOffers(filters)
       
       if (onCompare) {
         onCompare(offers)
@@ -107,21 +99,17 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
         }, 100)
       }
     } catch (error) {
-      console.error('Errore nel confronto:', error)
+      // Error handling
     }
   }
 
   const handleDurationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log('Durata selezionata:', e.target.value)
     setSelectedDuration(e.target.value)
   }
 
   const handleGBChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log('GB selezionati:', e.target.value)
     setSelectedGB(e.target.value)
   }
-
-  console.log('Render EsimSmartFilter:', { countries, selectedCountry, selectedDuration, selectedGB })
 
   return (
     <div className="w-full max-w-5xl mx-auto">
