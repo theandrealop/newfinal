@@ -4,8 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Globe, Database, TrendingDown, Star } from 'lucide-react'
 import { esimService } from '@/lib/esim-service'
+import { useTranslations } from 'next-intl'
 
 export function EsimStats() {
+  const t = useTranslations('ESim.databaseStats')
   const stats = esimService.getDatabaseStats()
 
   return (
@@ -13,62 +15,62 @@ export function EsimStats() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            Il Nostro Database eSIM
+            {t('title')}
           </h2>
           <p className="text-gray-600">
-            Aggiornato costantemente con le migliori offerte del mercato
+            {t('subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Offerte Totali</CardTitle>
+              <CardTitle className="text-sm font-medium">{t('totalOffers')}</CardTitle>
               <Database className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats.totalOffers}</div>
               <p className="text-xs text-muted-foreground">
-                Offerte disponibili
+                {t('offersAvailable')}
               </p>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Paesi Coperti</CardTitle>
+              <CardTitle className="text-sm font-medium">{t('coveredCountries')}</CardTitle>
               <Globe className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats.countries}</div>
               <p className="text-xs text-muted-foreground">
-                Destinazioni disponibili
+                {t('destinationsAvailable')}
               </p>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Provider</CardTitle>
+              <CardTitle className="text-sm font-medium">{t('providers')}</CardTitle>
               <Star className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats.providers}</div>
               <p className="text-xs text-muted-foreground">
-                Partner verificati
+                {t('verifiedPartners')}
               </p>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Prezzo Medio</CardTitle>
+              <CardTitle className="text-sm font-medium">{t('avgPrice')}</CardTitle>
               <TrendingDown className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">€{stats.averagePrice}</div>
               <p className="text-xs text-muted-foreground">
-                Per offerta
+                {t('perOffer')}
               </p>
             </CardContent>
           </Card>
@@ -81,7 +83,7 @@ export function EsimStats() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="font-semibold text-green-800 mb-2">
-                      🏆 Offerta Più Economica
+                      {t('bestOffer')}
                     </h3>
                     <p className="text-green-700">
                       {stats.cheapestOffer.provider} - {stats.cheapestOffer.paese} 

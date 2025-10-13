@@ -1,24 +1,20 @@
 "use client"
 
 import { Smartphone, Globe, Zap, Shield, CreditCard, Wifi } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export function EsimWhyUse() {
+  const t = useTranslations('ESim.whyUse')
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Perché usare una eSIM?
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Le eSIM offrono una soluzione <strong className="text-blue-600">completamente digitale</strong> 
-              per la connessione mobile, più pratica e conveniente delle SIM tradizionali. 
-              Con i <strong>piani dati eSIM</strong> puoi rimanere connesso <strong>senza interruzioni</strong> 
-              durante i tuoi viaggi, utilizzando <strong>altri dispositivi</strong> come tablet e laptop 
-              <strong> subito dopo</strong> l'attivazione. I <strong>piani dati illimitati</strong> 
-              ti permettono di navigare liberamente, mentre la <strong>connessione dati</strong> 
-              rimane stabile grazie alle <strong>reti locali</strong> dei provider.
+              {t('description')}
             </p>
           </div>
 
@@ -30,13 +26,10 @@ export function EsimWhyUse() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Nessuna SIM fisica
+                    {t('noPhysicalSim.title')}
                   </h3>
                   <p className="text-gray-600">
-                    <em>Niente più carte SIM da gestire.</em> Le eSIM sono integrate 
-                    nel dispositivo e si attivano digitalmente. <strong>Possono essere</strong> 
-                    attivate in <strong>24 ore</strong> con l'<strong>uso corretto</strong> 
-                    del codice QR, eliminando la necessità di una <strong>scheda SIM</strong> fisica.
+                    {t('noPhysicalSim.description')}
                   </p>
                 </div>
               </div>
@@ -47,14 +40,10 @@ export function EsimWhyUse() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Copertura globale
+                    {t('globalCoverage.title')}
                   </h3>
                   <p className="text-gray-600">
-                    <strong>Funziona in oltre 190 paesi</strong> con un'unica eSIM. 
-                    Perfetto per viaggiatori frequenti. <strong>Dopo aver</strong> 
-                    attivato l'eSIM, la copertura <strong>può variare</strong> 
-                    a seconda del paese, ma garantisce sempre una <strong>connessione dati</strong> 
-                    stabile attraverso le <strong>reti locali</strong>.
+                    {t('globalCoverage.description')}
                   </p>
                 </div>
               </div>
@@ -65,11 +54,10 @@ export function EsimWhyUse() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Attivazione istantanea
+                    {t('instantActivation.title')}
                   </h3>
                   <p className="text-gray-600">
-                    <em>Connesso in pochi secondi.</em> Basta scansionare un QR code 
-                    per attivare la tua eSIM.
+                    {t('instantActivation.description')}
                   </p>
                 </div>
               </div>
@@ -82,11 +70,10 @@ export function EsimWhyUse() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Sicurezza avanzata
+                    {t('advancedSecurity.title')}
                   </h3>
                   <p className="text-gray-600">
-                    <strong>Impossibile da rubare fisicamente.</strong> Le eSIM sono 
-                    protette da crittografia avanzata.
+                    {t('advancedSecurity.description')}
                   </p>
                 </div>
               </div>
@@ -97,11 +84,10 @@ export function EsimWhyUse() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Acquisto online
+                    {t('onlinePurchase.title')}
                   </h3>
                   <p className="text-gray-600">
-                    <em>Niente più code in negozio.</em> Acquista online e ricevi 
-                    l'eSIM istantaneamente via email.
+                    {t('onlinePurchase.description')}
                   </p>
                 </div>
               </div>
@@ -112,11 +98,10 @@ export function EsimWhyUse() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Multi-SIM support
+                    {t('multiSimSupport.title')}
                   </h3>
                   <p className="text-gray-600">
-                    <strong>Più numeri su un dispositivo.</strong> Mantieni la tua SIM 
-                    principale e aggiungi eSIM per viaggi.
+                    {t('multiSimSupport.description')}
                   </p>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { X } from "lucide-react"
 import { subscribeToNewsletter } from "@/lib/buttondown"
+import { useTranslations } from 'next-intl'
 
 interface NewsletterPopupProps {
   isOpen: boolean
@@ -12,6 +13,7 @@ interface NewsletterPopupProps {
 }
 
 export function NewsletterPopup({ isOpen, onClose }: NewsletterPopupProps) {
+  const t = useTranslations('ESim.newsletter')
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState("")
@@ -37,7 +39,7 @@ export function NewsletterPopup({ isOpen, onClose }: NewsletterPopupProps) {
       }
     } catch (error) {
       console.error("Newsletter signup error:", error)
-      setSubmitMessage("Si è verificato un errore. Riprova più tardi.")
+      setSubmitMessage(t('errorMessage'))
     } finally {
       setIsSubmitting(false)
     }
@@ -106,10 +108,10 @@ export function NewsletterPopup({ isOpen, onClose }: NewsletterPopupProps) {
 
         <div style={{ textAlign: "center", marginBottom: "24px" }}>
           <h2 style={{ fontSize: "28px", fontWeight: "bold", color: "#1f2937", marginBottom: "8px" }}>
-            Iscriviti alla Newsletter
+            {t('title')}
           </h2>
           <p style={{ color: "#6b7280", fontSize: "16px" }}>
-            Ricevi le migliori offerte di volo direttamente nella tua casella email
+            {t('subtitle')}
           </p>
         </div>
 
@@ -119,7 +121,7 @@ export function NewsletterPopup({ isOpen, onClose }: NewsletterPopupProps) {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="La tua email"
+              placeholder={t('emailPlaceholder')}
               required
               style={{
                 width: "100%",
@@ -165,7 +167,7 @@ export function NewsletterPopup({ isOpen, onClose }: NewsletterPopupProps) {
               }
             }}
           >
-            {isSubmitting ? "Invio..." : "Iscriviti"}
+            {isSubmitting ? t('submitting') : t('subscribeButton')}
           </button>
         </form>
 
@@ -182,7 +184,7 @@ export function NewsletterPopup({ isOpen, onClose }: NewsletterPopupProps) {
         )}
 
         <p style={{ fontSize: "12px", color: "#9ca3af", textAlign: "center", marginTop: "16px" }}>
-          Gratuito per sempre • Nessuna carta di credito richiesta
+          {t('footer')}
         </p>
       </div>
     </div>

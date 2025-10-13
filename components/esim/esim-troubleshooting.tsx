@@ -5,17 +5,19 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { AlertTriangle, QrCode, RefreshCw, HelpCircle, CheckCircle, XCircle } from 'lucide-react'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 export function EsimTroubleshooting() {
+  const t = useTranslations('ESim.troubleshooting')
   const [expandedProblem, setExpandedProblem] = useState<string | null>(null)
 
   const commonProblems = [
     {
-      id: 'qr-scan',
-      title: 'Codice QR eSIM non si scansiona',
+      id: 'qrCode',
+      title: t('problems.qrCode.title'),
       severity: 'high',
       icon: <QrCode className="w-5 h-5" />,
-      quickFix: 'Verifica che la fotocamera sia pulita e il QR code sia ben illuminato',
+      quickFix: t('problems.qrCode.quickFix'),
       solutions: [
         'Pulisci la fotocamera del dispositivo',
         'Assicurati che il QR code sia ben illuminato',
@@ -26,11 +28,11 @@ export function EsimTroubleshooting() {
       keyword: 'codice QR eSIM non si scansiona'
     },
     {
-      id: 'activation-failed',
-      title: 'Attivazione eSIM fallita - Errori comuni',
+      id: 'activationFailed',
+      title: t('problems.activationFailed.title'),
       severity: 'high',
       icon: <XCircle className="w-5 h-5" />,
-      quickFix: 'Verifica la connessione internet e i dati inseriti',
+      quickFix: t('problems.activationFailed.quickFix'),
       solutions: [
         'Controlla la connessione internet stabile',
         'Verifica che i dati personali siano corretti',
@@ -41,11 +43,11 @@ export function EsimTroubleshooting() {
       keyword: 'attivazione eSIM fallita errori comuni'
     },
     {
-      id: 'not-working',
-      title: 'eSIM non funziona in Italia - Cosa fare',
+      id: 'notWorkingItaly',
+      title: t('problems.notWorkingItaly.title'),
       severity: 'medium',
       icon: <AlertTriangle className="w-5 h-5" />,
-      quickFix: 'Verifica le impostazioni APN e la copertura',
+      quickFix: t('problems.notWorkingItaly.quickFix'),
       solutions: [
         'Controlla le impostazioni APN del dispositivo',
         'Verifica che la regione sia coperta dal provider',
@@ -57,10 +59,10 @@ export function EsimTroubleshooting() {
     },
     {
       id: 'expired',
-      title: 'eSIM scaduta - Come rinnovare',
+      title: t('problems.expired.title'),
       severity: 'medium',
       icon: <RefreshCw className="w-5 h-5" />,
-      quickFix: 'Acquista un nuovo piano o estendi quello esistente',
+      quickFix: t('problems.expired.quickFix'),
       solutions: [
         'Verifica se il provider offre estensioni',
         'Acquista un nuovo piano eSIM',
@@ -71,11 +73,11 @@ export function EsimTroubleshooting() {
       keyword: 'eSIM scaduta come rinnovare'
     },
     {
-      id: 'dual-sim',
-      title: 'eSIM dual SIM - Conflitto rete',
+      id: 'dualSimConflict',
+      title: t('problems.dualSimConflict.title'),
       severity: 'low',
       icon: <HelpCircle className="w-5 h-5" />,
-      quickFix: 'Configura correttamente le impostazioni dual SIM',
+      quickFix: t('problems.dualSimConflict.quickFix'),
       solutions: [
         'Imposta l\'eSIM come SIM dati principale',
         'Disattiva temporaneamente la SIM fisica',
@@ -86,11 +88,11 @@ export function EsimTroubleshooting() {
       keyword: 'eSIM dual SIM conflitto rete'
     },
     {
-      id: 'slow-speed',
-      title: 'eSIM velocità lenta - Cause e soluzioni',
+      id: 'slowSpeed',
+      title: t('problems.slowSpeed.title'),
       severity: 'medium',
       icon: <AlertTriangle className="w-5 h-5" />,
-      quickFix: 'Verifica la copertura 5G e le impostazioni di rete',
+      quickFix: t('problems.slowSpeed.quickFix'),
       solutions: [
         'Controlla se sei in una zona con copertura 5G',
         'Verifica le impostazioni di rete del dispositivo',
@@ -126,11 +128,10 @@ export function EsimTroubleshooting() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Troubleshooting eSIM - Risolvi Problemi Comuni
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Risolvi i problemi più comuni con le eSIM. Guida completa per attivazione, 
-              configurazione e risoluzione errori.
+              {t('subtitle')}
             </p>
           </div>
 
@@ -195,43 +196,43 @@ export function EsimTroubleshooting() {
 
           <div className="mt-12 bg-white rounded-lg p-6 border border-gray-200">
             <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-              Non riesci a risolvere il problema?
+              {t('cantResolve')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
                   <HelpCircle className="w-6 h-6 text-blue-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Supporto Provider</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">{t('providerSupport')}</h4>
                 <p className="text-sm text-gray-600 mb-3">
-                  Contatta direttamente il supporto del tuo provider eSIM
+                  {t('providerSupportDesc')}
                 </p>
                 <Button variant="outline" size="sm">
-                  Contatta Supporto
+                  {t('contactSupport')}
                 </Button>
               </div>
               <div>
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
                   <RefreshCw className="w-6 h-6 text-green-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Riavvia Dispositivo</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">{t('restartDevice')}</h4>
                 <p className="text-sm text-gray-600 mb-3">
-                  Spesso un semplice riavvio risolve molti problemi
+                  {t('restartDeviceDesc')}
                 </p>
                 <Button variant="outline" size="sm">
-                  Guida Riavvio
+                  {t('restartGuide')}
                 </Button>
               </div>
               <div>
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
                   <AlertTriangle className="w-6 h-6 text-purple-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Verifica Compatibilità</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">{t('checkCompatibility')}</h4>
                 <p className="text-sm text-gray-600 mb-3">
-                  Controlla che il tuo dispositivo supporti eSIM
+                  {t('checkCompatibilityDesc')}
                 </p>
                 <Button variant="outline" size="sm">
-                  Test Compatibilità
+                  {t('compatibilityTest')}
                 </Button>
               </div>
             </div>

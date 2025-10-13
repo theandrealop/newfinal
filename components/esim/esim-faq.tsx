@@ -1,8 +1,10 @@
 "use client"
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { useTranslations } from 'next-intl'
 
 export function EsimFAQ() {
+  const t = useTranslations('ESim.faq')
   const faqs = [
     {
       question: "Cos'è un eSIM?",
@@ -60,10 +62,10 @@ export function EsimFAQ() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Domande frequenti
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600">
-              Tutto quello che devi sapere sugli eSIM
+              {t('subtitle')}
             </p>
           </div>
 

@@ -10,6 +10,7 @@ interface CountrySelectorProps {
   selectedCountry: string
   onCountrySelect: (country: string) => void
   countries: string[]
+  placeholder?: string
 }
 
 const countryFlagImages: Record<string, string> = {
@@ -251,7 +252,7 @@ const countryFlagImages: Record<string, string> = {
   'Zimbabwe': '/images/flags/zw.png'
 }
 
-export function CountrySelector({ selectedCountry, onCountrySelect, countries }: CountrySelectorProps) {
+export function CountrySelector({ selectedCountry, onCountrySelect, countries, placeholder = "Clicca qui per selezionare un paese" }: CountrySelectorProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -334,7 +335,7 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries }:
               )}
               <Input
                 type="text"
-                placeholder={selectedCountry ? selectedCountry : "Clicca qui per selezionare un paese"}
+                placeholder={selectedCountry ? selectedCountry : placeholder}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onFocus={() => {

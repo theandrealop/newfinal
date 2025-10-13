@@ -1,6 +1,9 @@
 "use client"
 
+import { useTranslations } from 'next-intl'
+
 export function EsimHero() {
+  const t = useTranslations('ESim')
   return (
     <section className="pt-8 pb-12 md:pb-16 relative overflow-hidden">
       {/* Background image with blur for readability */}
@@ -19,33 +22,32 @@ export function EsimHero() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center" style={{ filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.35))" }}>
           {/* Main headline */}
-      <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight font-pp-mori">
-        Confronta eSIM: Trova il piano dati perfetto per il tuo viaggio
+          <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight font-pp-mori">
+        {t('heroTitle')}
       </h1>
           
           {/* Subtitle hidden on mobile */}
           <p className="hidden md:block text-lg md:text-xl text-green-100 mb-8 leading-relaxed max-w-3xl mx-auto font-pp-mori">
-            Confronta prezzi, copertura e caratteristiche di tutti i principali provider eSIM. 
-            Trova la tariffa più conveniente per la tua destinazione.
+            {t('heroSubtitle')}
           </p>
 
           {/* Stats hidden on mobile */}
           <div className="hidden md:grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-white mb-1">190+</div>
-              <div className="text-sm text-green-100">Paesi coperti</div>
+              <div className="text-sm text-green-100">{t('stats.countries')}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-white mb-1">10+</div>
-              <div className="text-sm text-green-100">Provider confrontati</div>
+              <div className="text-sm text-green-100">{t('stats.providers')}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-white mb-1">24/7</div>
-              <div className="text-sm text-green-100">Attivazione istantanea</div>
+              <div className="text-sm text-green-100">{t('stats.activation')}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-white mb-1">€0</div>
-              <div className="text-sm text-green-100">Costi nascosti</div>
+              <div className="text-sm text-green-100">{t('stats.hiddenCosts')}</div>
             </div>
           </div>
         </div>

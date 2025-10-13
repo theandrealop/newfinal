@@ -3,29 +3,30 @@
 import { Button } from '@/components/ui/button'
 import { Shield, Users, CheckCircle, Award, Heart } from 'lucide-react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 export function EsimTrustSection() {
+  const t = useTranslations('ESim.aboutTrust')
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              About, trust e trasparenza
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600">
-              Perché fidarsi di Punti Furbi per le tue scelte eSIM
+              {t('subtitle')}
             </p>
           </div>
 
           <div className="bg-blue-50 rounded-lg p-8 border border-blue-200">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Perché fidarsi di Punti Furbi?
+                {t('whyTrust')}
               </h3>
               <p className="text-lg text-gray-600">
-                La nostra missione è aiutarti a trovare le migliori offerte eSIM 
-                con trasparenza e indipendenza
+                {t('mission')}
               </p>
             </div>
 
@@ -36,11 +37,10 @@ export function EsimTrustSection() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                    Più di 15 milioni di utenti
+                    {t('stats.users')}
                   </h4>
                   <p className="text-gray-600">
-                    La nostra community di viaggiatori ci ha scelto per trovare 
-                    le migliori offerte eSIM in tutto il mondo.
+                    {t('stats.usersDesc')}
                   </p>
                 </div>
               </div>
@@ -51,11 +51,10 @@ export function EsimTrustSection() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                    Test indipendenti
+                    {t('stats.tests')}
                   </h4>
                   <p className="text-gray-600">
-                    I nostri esperti testano personalmente ogni servizio eSIM 
-                    per garantire recensioni accurate e imparziali.
+                    {t('stats.testsDesc')}
                   </p>
                 </div>
               </div>
@@ -66,11 +65,10 @@ export function EsimTrustSection() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                    Opinioni imparziali
+                    {t('stats.opinions')}
                   </h4>
                   <p className="text-gray-600">
-                    Le commissioni non influenzano le nostre opinioni. 
-                    Raccomandiamo solo i servizi che riteniamo davvero validi.
+                    {t('stats.opinionsDesc')}
                   </p>
                 </div>
               </div>
@@ -81,11 +79,10 @@ export function EsimTrustSection() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                    Supporto dedicato
+                    {t('stats.support')}
                   </h4>
                   <p className="text-gray-600">
-                    Il nostro team di supporto è sempre disponibile per aiutarti 
-                    a scegliere l'eSIM perfetta per le tue esigenze.
+                    {t('stats.supportDesc')}
                   </p>
                 </div>
               </div>
@@ -94,24 +91,24 @@ export function EsimTrustSection() {
             {/* Additional trust factors */}
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                I nostri numeri parlano per noi:
+                {t('numbers.title')}
               </h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-blue-600">190+</div>
-                  <div className="text-sm text-gray-600">Paesi coperti</div>
+                  <div className="text-sm text-gray-600">{t('numbers.countries')}</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-green-600">10+</div>
-                  <div className="text-sm text-gray-600">Provider testati</div>
+                  <div className="text-sm text-gray-600">{t('numbers.providers')}</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-purple-600">50K+</div>
-                  <div className="text-sm text-gray-600">Recensioni verificate</div>
+                  <div className="text-sm text-gray-600">{t('numbers.reviews')}</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-red-600">24/7</div>
-                  <div className="text-sm text-gray-600">Supporto disponibile</div>
+                  <div className="text-sm text-gray-600">{t('numbers.support')}</div>
                 </div>
               </div>
             </div>
@@ -122,22 +119,22 @@ export function EsimTrustSection() {
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <Link href="/chi-siamo/">
                 <Button variant="link" className="text-blue-600 hover:text-blue-700">
-                  Chi siamo
+                  {t('links.about')}
                 </Button>
               </Link>
               <Link href="mailto:info@puntifurbi.com">
                 <Button variant="link" className="text-blue-600 hover:text-blue-700">
-                  Contatto
+                  {t('links.contact')}
                 </Button>
               </Link>
               <Link href="/informativa-privacy/">
                 <Button variant="link" className="text-blue-600 hover:text-blue-700">
-                  Privacy Policy
+                  {t('links.privacy')}
                 </Button>
               </Link>
               <Link href="/condizioni-utilizzo/">
                 <Button variant="link" className="text-blue-600 hover:text-blue-700">
-                  Termini d'uso
+                  {t('links.terms')}
                 </Button>
               </Link>
             </div>
@@ -146,8 +143,7 @@ export function EsimTrustSection() {
           {/* Footer note */}
           <div className="mt-8 text-center text-sm text-gray-500">
             <p>
-              Punti Furbi è un sito di confronto indipendente. Possiamo ricevere commissioni 
-              quando acquisti tramite i nostri link, ma questo non influisce sui nostri giudizi.
+              {t('footer')}
             </p>
           </div>
         </div>

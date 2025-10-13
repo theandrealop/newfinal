@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { TrendingDown } from 'lucide-react'
@@ -13,6 +14,7 @@ interface EsimSmartFilterProps {
 }
 
 export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
+  const t = useTranslations('ESim.smartFilter')
   const [selectedCountry, setSelectedCountry] = useState<string>('')
   const [selectedDuration, setSelectedDuration] = useState<string>('')
   const [selectedGB, setSelectedGB] = useState<string>('')
@@ -117,10 +119,10 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
         <CardContent className="p-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Trova il miglior pacchetto eSIM
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600">
-              Confronta prezzi e trova l'offerta perfetta per il tuo viaggio
+              {t('subtitle')}
             </p>
           </div>
 
@@ -128,50 +130,51 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
              {/* Paese */}
              <div>
                <label className="block text-sm font-semibold text-gray-700 mb-3">
-                 DOVE STAI ANDANDO?
+                 {t('whereGoing')}
                </label>
                <CountrySelector
                  selectedCountry={selectedCountry}
                  onCountrySelect={setSelectedCountry}
                  countries={countries}
+                 placeholder={t('countryPlaceholder')}
                />
              </div>
 
             {/* Durata */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-3">
-                QUANTO DURA IL TUO VIAGGIO?
+                {t('howLong')}
               </label>
               <select 
                 value={selectedDuration} 
                 onChange={handleDurationChange}
                 className="w-full h-14 text-lg bg-white border-2 border-gray-200 hover:border-blue-300 transition-colors rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="">Seleziona durata</option>
-                <option value="1-6">Meno di una settimana</option>
-                <option value="7-14">1-2 settimane</option>
-                <option value="15-29">15-29 giorni</option>
-                <option value="30+">30 giorni o più</option>
+                <option value="">{t('selectDuration')}</option>
+                <option value="1-6">{t('lessThanWeek')}</option>
+                <option value="7-14">{t('oneTwoWeeks')}</option>
+                <option value="15-29">{t('fifteenTwentyNine')}</option>
+                <option value="30+">{t('thirtyPlus')}</option>
               </select>
             </div>
 
             {/* GB */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-3">
-                DI QUANTI DATI HAI BISOGNO?
+                {t('howMuchData')}
               </label>
               <select 
                 value={selectedGB} 
                 onChange={handleGBChange}
                 className="w-full h-14 text-lg bg-white border-2 border-gray-200 hover:border-blue-300 transition-colors rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="">Mostra tutto</option>
-                <option value="5+">5 GB o più</option>
-                <option value="10+">10 GB o più</option>
-                <option value="20+">20 GB o più</option>
-                <option value="50+">50 GB o più</option>
-                <option value="100+">100 GB o più</option>
-                <option value="illimitati">Dati illimitati</option>
+                <option value="">{t('showAll')}</option>
+                <option value="5+">{t('fiveGBPlus')}</option>
+                <option value="10+">{t('tenGBPlus')}</option>
+                <option value="20+">{t('twentyGBPlus')}</option>
+                <option value="50+">{t('fiftyGBPlus')}</option>
+                <option value="100+">{t('hundredGBPlus')}</option>
+                <option value="illimitati">{t('unlimitedData')}</option>
               </select>
             </div>
           </div>
@@ -184,14 +187,14 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               <TrendingDown className="w-5 h-5 mr-2" />
-              Confronta eSIM
+              {t('compareButton')}
             </Button>
           </div>
 
           {/* Loghi Partner */}
           <div className="mt-8 pt-8 border-t border-gray-200">
             <p className="text-center text-sm text-gray-500 mb-4">
-              Provider partner
+              {t('partnerProviders')}
             </p>
             <div className="flex justify-center items-center gap-6 flex-wrap">
               {[

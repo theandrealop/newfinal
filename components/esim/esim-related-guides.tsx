@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Calendar, User, Tag } from 'lucide-react'
 import { fetchEsimGuides } from '@/lib/graphql-api'
+import { useTranslations } from 'next-intl'
 
 interface EsimGuide {
   id: string
@@ -192,6 +193,7 @@ const fallbackGuides: EsimGuide[] = [
 ]
 
 export function EsimRelatedGuides() {
+  const t = useTranslations('ESim.blogArticles')
   const [guides, setGuides] = useState<EsimGuide[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -225,10 +227,10 @@ export function EsimRelatedGuides() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Guide correlate
+                {t('relatedGuides')}
               </h2>
               <p className="text-lg text-gray-600">
-                Caricamento guide eSIM...
+                {t('loading')}
               </p>
             </div>
           </div>
@@ -243,10 +245,10 @@ export function EsimRelatedGuides() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Guide correlate
+              {t('relatedGuides')}
             </h2>
             <p className="text-lg text-gray-600">
-              Articoli e guide utili per approfondire il mondo delle eSIM
+              {t('relatedGuidesSubtitle')}
             </p>
           </div>
 
@@ -317,7 +319,7 @@ export function EsimRelatedGuides() {
               size="lg"
               onClick={() => window.open('/blog', '_blank')}
             >
-              Vedi tutte le guide eSIM
+              {t('seeAllGuides')}
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>

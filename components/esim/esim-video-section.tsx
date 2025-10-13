@@ -3,8 +3,10 @@
 import { Play, Share2, ExternalLink, Wifi, Globe, Smartphone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 export function EsimVideoSection() {
+  const t = useTranslations('ESim.videoSection')
   const [showVideo, setShowVideo] = useState(false)
 
   return (
@@ -13,10 +15,10 @@ export function EsimVideoSection() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Video e Visual
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600">
-              Scopri tutto quello che devi sapere sulle eSIM nel nostro video completo
+              {t('subtitle')}
             </p>
           </div>
 
@@ -106,10 +108,10 @@ export function EsimVideoSection() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Airalo vs Holafly: Qual è la eSIM Migliore?
+                    {t('videoTitle')}
                   </h3>
                   <p className="text-gray-600">
-                    Recensione Aggiornata & Dati Reali per scegliere la migliore eSIM
+                    {t('videoDescription')}
                   </p>
                 </div>
                 
@@ -121,7 +123,7 @@ export function EsimVideoSection() {
                       onClick={() => setShowVideo(true)}
                     >
                       <Play className="w-4 h-4" />
-                      <span>Play</span>
+                      <span>{t('playButton')}</span>
                     </Button>
                   )}
                   <Button 
@@ -130,7 +132,7 @@ export function EsimVideoSection() {
                     onClick={() => window.open('https://www.youtube.com/watch?v=kyw895K_z6s', '_blank')}
                   >
                     <ExternalLink className="w-4 h-4" />
-                    <span>Guarda su YouTube</span>
+                    <span>{t('watchOnYouTube')}</span>
                   </Button>
                   <Button 
                     variant="outline" 
@@ -147,7 +149,7 @@ export function EsimVideoSection() {
                     }}
                   >
                     <Share2 className="w-4 h-4" />
-                    <span>Condividi</span>
+                    <span>{t('shareButton')}</span>
                   </Button>
                 </div>
               </div>
@@ -156,27 +158,27 @@ export function EsimVideoSection() {
 
           {/* Video Description */}
           <div className="bg-gray-50 rounded-lg p-6">
-            <h4 className="font-semibold text-gray-900 mb-3">Cosa imparerai in questo video:</h4>
+            <h4 className="font-semibold text-gray-900 mb-3">{t('whatYouWillLearn')}</h4>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start space-x-2">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Come funzionano le eSIM e differenze con le SIM tradizionali</span>
+                <span>{t('learnings.0')}</span>
               </li>
               <li className="flex items-start space-x-2">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Come scegliere il provider migliore per la tua destinazione</span>
+                <span>{t('learnings.1')}</span>
               </li>
               <li className="flex items-start space-x-2">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Processo di attivazione passo dopo passo</span>
+                <span>{t('learnings.2')}</span>
               </li>
               <li className="flex items-start space-x-2">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Consigli per risparmiare sui costi di roaming</span>
+                <span>{t('learnings.3')}</span>
               </li>
               <li className="flex items-start space-x-2">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Risoluzione dei problemi più comuni</span>
+                <span>{t('learnings.4')}</span>
               </li>
             </ul>
           </div>

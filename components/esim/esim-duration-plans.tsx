@@ -4,86 +4,146 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Clock, Calendar, Euro, Star, Zap } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export function EsimDurationPlans() {
+  const t = useTranslations('ESim.durationPlans')
   const durationPlans = [
     {
+      id: 'sevenDays',
       duration: '7 giorni',
-      title: 'eSIM 7 giorni Italia - Migliore',
-      description: 'Perfetta per weekend lunghi e viaggi brevi',
-      bestProvider: 'Saily',
-      avgPrice: '€8-15',
-      dataGB: '5-20 GB',
-      features: ['Attivazione istantanea', '5G', 'Hotspot', 'SMS'],
-      bestFor: ['Weekend lunghi', 'Viaggi brevi', 'City break'],
+      title: t('sevenDays.title'),
+      description: t('sevenDays.description'),
+      bestProvider: t('sevenDays.bestProvider'),
+      avgPrice: t('sevenDays.price'),
+      dataGB: t('sevenDays.data'),
+      features: [
+        t('sevenDays.features.0'),
+        t('sevenDays.features.1'),
+        t('sevenDays.features.2'),
+        t('sevenDays.features.3')
+      ],
+      bestFor: [
+        t('sevenDays.idealFor.0'),
+        t('sevenDays.idealFor.1'),
+        t('sevenDays.idealFor.2')
+      ],
       keyword: 'eSIM 7 giorni Italia migliore',
       popularity: 'high',
-      savings: 'Fino al 60% vs roaming'
+      savings: t('sevenDays.savings')
     },
     {
+      id: 'weekend',
       duration: 'Weekend',
-      title: 'eSIM Weekend Italia - Economica',
-      description: 'Soluzione economica per weekend di 2-3 giorni',
-      bestProvider: 'Nomad',
-      avgPrice: '€5-10',
-      dataGB: '3-10 GB',
-      features: ['Prezzo basso', 'Attivazione rapida', '4G/5G'],
-      bestFor: ['Weekend corti', 'Viaggi lampo', 'Budget limitato'],
+      title: t('weekend.title'),
+      description: t('weekend.description'),
+      bestProvider: t('weekend.bestProvider'),
+      avgPrice: t('weekend.price'),
+      dataGB: t('weekend.data'),
+      features: [
+        t('weekend.features.0'),
+        t('weekend.features.1'),
+        t('weekend.features.2')
+      ],
+      bestFor: [
+        t('weekend.idealFor.0'),
+        t('weekend.idealFor.1'),
+        t('weekend.idealFor.2')
+      ],
       keyword: 'eSIM weekend Italia economica',
       popularity: 'medium',
-      savings: 'Fino al 70% vs roaming'
+      savings: t('weekend.savings')
     },
     {
+      id: 'threeMonths',
       duration: '3 mesi',
-      title: 'eSIM 3 mesi Italia - Unlimited',
-      description: 'Piano lungo con dati illimitati per soggiorni estesi',
-      bestProvider: 'Holafly',
-      avgPrice: '€45-80',
-      dataGB: 'Illimitati',
-      features: ['Dati illimitati', '5G', 'Hotspot', 'Supporto 24/7'],
-      bestFor: ['Soggiorni lunghi', 'Lavoro temporaneo', 'Studi all\'estero'],
+      title: t('threeMonths.title'),
+      description: t('threeMonths.description'),
+      bestProvider: t('threeMonths.bestProvider'),
+      avgPrice: t('threeMonths.price'),
+      dataGB: t('threeMonths.data'),
+      features: [
+        t('threeMonths.features.0'),
+        t('threeMonths.features.1'),
+        t('threeMonths.features.2'),
+        t('threeMonths.features.3')
+      ],
+      bestFor: [
+        t('threeMonths.idealFor.0'),
+        t('threeMonths.idealFor.1'),
+        t('threeMonths.idealFor.2')
+      ],
       keyword: 'eSIM 3 mesi Italia unlimited',
       popularity: 'medium',
-      savings: 'Fino al 50% vs piani mensili'
+      savings: t('threeMonths.savings')
     },
     {
+      id: 'daily',
       duration: 'Giornaliera',
-      title: 'eSIM Giornaliera Italia - Costo',
-      description: 'Piano giornaliero per viaggi di un giorno',
-      bestProvider: 'Ubigi',
-      avgPrice: '€2-5',
-      dataGB: '1-3 GB',
-      features: ['Attivazione istantanea', 'Prezzo fisso', '4G'],
-      bestFor: ['Gite giornaliere', 'Viaggi di lavoro', 'Test eSIM'],
+      title: t('daily.title'),
+      description: t('daily.description'),
+      bestProvider: t('daily.bestProvider'),
+      avgPrice: t('daily.price'),
+      dataGB: t('daily.data'),
+      features: [
+        t('daily.features.0'),
+        t('daily.features.1'),
+        t('daily.features.2')
+      ],
+      bestFor: [
+        t('daily.idealFor.0'),
+        t('daily.idealFor.1'),
+        t('daily.idealFor.2')
+      ],
       keyword: 'eSIM giornaliera Italia costo',
       popularity: 'low',
-      savings: 'Fino all\'80% vs roaming'
+      savings: t('daily.savings')
     },
     {
+      id: 'monthly',
       duration: '1 mese',
-      title: 'eSIM Mensile Italia - Popolare',
-      description: 'Il piano più popolare per viaggi di un mese',
-      bestProvider: 'Airalo',
-      avgPrice: '€15-30',
-      dataGB: '10-50 GB',
-      features: ['Ottimo rapporto qualità-prezzo', '5G', 'Hotspot', 'Top-up'],
-      bestFor: ['Viaggi mensili', 'Vacanze', 'Lavoro temporaneo'],
+      title: t('monthly.title'),
+      description: t('monthly.description'),
+      bestProvider: t('monthly.bestProvider'),
+      avgPrice: t('monthly.price'),
+      dataGB: t('monthly.data'),
+      features: [
+        t('monthly.features.0'),
+        t('monthly.features.1'),
+        t('monthly.features.2'),
+        t('monthly.features.3')
+      ],
+      bestFor: [
+        t('monthly.idealFor.0'),
+        t('monthly.idealFor.1'),
+        t('monthly.idealFor.2')
+      ],
       keyword: 'eSIM mensile Italia',
       popularity: 'high',
-      savings: 'Fino al 65% vs roaming'
+      savings: t('monthly.savings')
     },
     {
+      id: 'sixMonths',
       duration: '6 mesi',
-      title: 'eSIM Semestrale Italia - Conveniente',
-      description: 'Piano semestrale con sconti significativi',
-      bestProvider: 'Saily',
-      avgPrice: '€80-150',
-      dataGB: '50-100 GB',
-      features: ['Sconto semestrale', '5G', 'Hotspot', 'Supporto dedicato'],
-      bestFor: ['Soggiorni lunghi', 'Lavoro temporaneo', 'Studi'],
+      title: t('sixMonths.title'),
+      description: t('sixMonths.description'),
+      bestProvider: t('sixMonths.bestProvider'),
+      avgPrice: t('sixMonths.price'),
+      dataGB: t('sixMonths.data'),
+      features: [
+        t('sixMonths.features.0'),
+        t('sixMonths.features.1'),
+        t('sixMonths.features.2'),
+        t('sixMonths.features.3')
+      ],
+      bestFor: [
+        t('sixMonths.idealFor.0'),
+        t('sixMonths.idealFor.1'),
+        t('sixMonths.idealFor.2')
+      ],
       keyword: 'eSIM semestrale Italia',
       popularity: 'low',
-      savings: 'Fino al 40% vs piani mensili'
+      savings: t('sixMonths.savings')
     }
   ]
 
@@ -120,11 +180,10 @@ export function EsimDurationPlans() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Piani eSIM per Durata
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Scegli il piano eSIM perfetto per la durata del tuo viaggio. 
-              Dalla giornaliera al semestrale, trova la soluzione più conveniente.
+              {t('subtitle')}
             </p>
           </div>
 
@@ -212,7 +271,7 @@ export function EsimDurationPlans() {
                     className="w-full mt-4 bg-[#03464b] hover:bg-[#02363a] text-white"
                     size="sm"
                   >
-                    Confronta Piani {plan.duration}
+                    {t(`${plan.id}.cta`)}
                   </Button>
                 </CardContent>
               </Card>
@@ -221,34 +280,34 @@ export function EsimDurationPlans() {
 
           <div className="mt-12 bg-gray-50 rounded-lg p-6">
             <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
-              Come Scegliere la Durata Giusta
+              {t('howToChooseDuration.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
                   <Clock className="w-6 h-6 text-blue-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Viaggi Brevi (1-7 giorni)</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">{t('howToChooseDuration.shortTrips.title')}</h4>
                 <p className="text-sm text-gray-600">
-                  Scegli piani giornalieri o settimanali per massimizzare il risparmio
+                  {t('howToChooseDuration.shortTrips.description')}
                 </p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
                   <Calendar className="w-6 h-6 text-green-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Viaggi Medi (1-3 mesi)</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">{t('howToChooseDuration.mediumTrips.title')}</h4>
                 <p className="text-sm text-gray-600">
-                  Piani mensili offrono il miglior rapporto qualità-prezzo
+                  {t('howToChooseDuration.mediumTrips.description')}
                 </p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
                   <Star className="w-6 h-6 text-purple-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Soggiorni Lunghi (3+ mesi)</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">{t('howToChooseDuration.longStays.title')}</h4>
                 <p className="text-sm text-gray-600">
-                  Piani semestrali con sconti significativi e top-up
+                  {t('howToChooseDuration.longStays.description')}
                 </p>
               </div>
             </div>

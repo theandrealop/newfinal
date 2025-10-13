@@ -1,18 +1,20 @@
 "use client"
 
 import { Check, X, Smartphone, Wifi, Globe, Shield } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export function EsimHowItWorks() {
+  const t = useTranslations('ESim.howItWorks')
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Cos'è e come funziona una eSIM?
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600">
-              Scopri tutto quello che devi sapere sulle eSIM e confronta con le SIM tradizionali
+              {t('subtitle')}
             </p>
           </div>
 
@@ -20,17 +22,16 @@ export function EsimHowItWorks() {
             {/* What is eSIM */}
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Cos'è un'eSIM?
+                {t('whatIsEsim.title')}
               </h3>
               <p className="text-gray-600 mb-4">
-                Un'eSIM (SIM embedded) è una <strong>SIM virtuale integrata</strong> nel dispositivo 
-                che permette di attivare piani dati senza dover inserire fisicamente una carta SIM.
+                {t('whatIsEsim.description')}
               </p>
               <div className="flex items-center space-x-3 p-4 bg-blue-50 rounded-lg">
                 <Smartphone className="w-8 h-8 text-blue-600" />
                 <div>
-                  <p className="font-semibold text-gray-900">Integrata nel dispositivo</p>
-                  <p className="text-sm text-gray-600">Nessuna carta fisica da gestire</p>
+                  <p className="font-semibold text-gray-900">{t('whatIsEsim.integrated')}</p>
+                  <p className="text-sm text-gray-600">{t('whatIsEsim.noPhysicalCard')}</p>
                 </div>
               </div>
             </div>
@@ -38,30 +39,28 @@ export function EsimHowItWorks() {
             {/* How eSIM works */}
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Come funzionano le eSIM?
+                {t('howEsimWorks.title')}
               </h3>
-              <p className="text-gray-600 mb-4">
-                L'attivazione è <em>semplice e veloce</em>: acquisti l'eSIM online, ricevi un QR code 
-                o un link di attivazione, e l'eSIM si attiva automaticamente.
+              <p className="text-gray-600 mb-4" dangerouslySetInnerHTML={{ __html: t('howEsimWorks.description') }}>
               </p>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
                     <span className="text-blue-600 font-bold text-sm">1</span>
                   </div>
-                  <span className="text-gray-700">Acquista online</span>
+                  <span className="text-gray-700">{t('howEsimWorks.step1')}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
                     <span className="text-blue-600 font-bold text-sm">2</span>
                   </div>
-                  <span className="text-gray-700">Ricevi QR code via email</span>
+                  <span className="text-gray-700">{t('howEsimWorks.step2')}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
                     <span className="text-blue-600 font-bold text-sm">3</span>
                   </div>
-                  <span className="text-gray-700">Scansiona e attiva</span>
+                  <span className="text-gray-700">{t('howEsimWorks.step3')}</span>
                 </div>
               </div>
             </div>
@@ -73,39 +72,39 @@ export function EsimHowItWorks() {
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                 <Wifi className="w-6 h-6 text-blue-600 mr-3" />
-                Pro & Contro delle eSIM
+                {t('prosCons.esim.title')}
               </h3>
               
               {/* Pros */}
               <div className="mb-6">
                 <h4 className="text-lg font-semibold text-green-700 mb-3 flex items-center">
                   <Check className="w-5 h-5 mr-2" />
-                  Vantaggi ✅
+                  {t('prosCons.esim.advantages.title')}
                 </h4>
                 <ul className="space-y-2">
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Nessuna carta SIM fisica da gestire</span>
+                    <span className="text-gray-700">{t('prosCons.esim.advantages.0')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Attivazione istantanea</span>
+                    <span className="text-gray-700">{t('prosCons.esim.advantages.1')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Più sicura (impossibile da rubare)</span>
+                    <span className="text-gray-700">{t('prosCons.esim.advantages.2')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Supporto multi-SIM</span>
+                    <span className="text-gray-700">{t('prosCons.esim.advantages.3')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Acquisto online semplice</span>
+                    <span className="text-gray-700">{t('prosCons.esim.advantages.4')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Spesso più economica del roaming</span>
+                    <span className="text-gray-700">{t('prosCons.esim.advantages.5')}</span>
                   </li>
                 </ul>
               </div>
@@ -114,24 +113,24 @@ export function EsimHowItWorks() {
               <div>
                 <h4 className="text-lg font-semibold text-red-700 mb-3 flex items-center">
                   <X className="w-5 h-5 mr-2" />
-                  Inconvenienti ❌
+                  {t('prosCons.esim.disadvantages.title')}
                 </h4>
                 <ul className="space-y-2">
                   <li className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Non tutti i dispositivi supportano eSIM</span>
+                    <span className="text-gray-700">{t('prosCons.esim.disadvantages.0')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Difficile trasferire su altro dispositivo</span>
+                    <span className="text-gray-700">{t('prosCons.esim.disadvantages.1')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Alcuni provider hanno limitazioni</span>
+                    <span className="text-gray-700">{t('prosCons.esim.disadvantages.2')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Supporto tecnico può essere limitato</span>
+                    <span className="text-gray-700">{t('prosCons.esim.disadvantages.3')}</span>
                   </li>
                 </ul>
               </div>
@@ -141,31 +140,31 @@ export function EsimHowItWorks() {
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                 <Shield className="w-6 h-6 text-gray-600 mr-3" />
-                Pro & Contro SIM Fisiche
+                {t('prosCons.physicalSim.title')}
               </h3>
               
               {/* Pros */}
               <div className="mb-6">
                 <h4 className="text-lg font-semibold text-green-700 mb-3 flex items-center">
                   <Check className="w-5 h-5 mr-2" />
-                  Vantaggi ✅
+                  {t('prosCons.physicalSim.advantages.title')}
                 </h4>
                 <ul className="space-y-2">
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Compatibilità universale</span>
+                    <span className="text-gray-700">{t('prosCons.physicalSim.advantages.0')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Facile trasferire tra dispositivi</span>
+                    <span className="text-gray-700">{t('prosCons.physicalSim.advantages.1')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Supporto tecnico consolidato</span>
+                    <span className="text-gray-700">{t('prosCons.physicalSim.advantages.2')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Nessuna dipendenza da software</span>
+                    <span className="text-gray-700">{t('prosCons.physicalSim.advantages.3')}</span>
                   </li>
                 </ul>
               </div>
@@ -174,28 +173,28 @@ export function EsimHowItWorks() {
               <div>
                 <h4 className="text-lg font-semibold text-red-700 mb-3 flex items-center">
                   <X className="w-5 h-5 mr-2" />
-                  Inconvenienti ❌
+                  {t('prosCons.physicalSim.disadvantages.title')}
                 </h4>
                 <ul className="space-y-2">
                   <li className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Carta fisica da gestire e non perdere</span>
+                    <span className="text-gray-700">{t('prosCons.physicalSim.disadvantages.0')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Attivazione più complessa</span>
+                    <span className="text-gray-700">{t('prosCons.physicalSim.disadvantages.1')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Può essere rubata o danneggiata</span>
+                    <span className="text-gray-700">{t('prosCons.physicalSim.disadvantages.2')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Spesso più costosa per roaming</span>
+                    <span className="text-gray-700">{t('prosCons.physicalSim.disadvantages.3')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Limitazioni di spazio nel dispositivo</span>
+                    <span className="text-gray-700">{t('prosCons.physicalSim.disadvantages.4')}</span>
                   </li>
                 </ul>
               </div>
@@ -205,16 +204,14 @@ export function EsimHowItWorks() {
           {/* Summary */}
           <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
             <h3 className="text-xl font-bold text-gray-900 mb-4">
-              Quale scegliere?
+              {t('whichToChoose.title')}
             </h3>
             <p className="text-gray-700 mb-4">
-              <strong>Le eSIM sono la scelta migliore per i viaggiatori moderni</strong> grazie alla 
-              loro praticità, sicurezza e convenienza. Tuttavia, assicurati che il tuo dispositivo 
-              supporti le eSIM prima di acquistarne una.
+              {t('whichToChoose.description')}
             </p>
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Globe className="w-4 h-4" />
-              <span>Verifica la compatibilità del tuo dispositivo nelle impostazioni</span>
+              <span>{t('whichToChoose.checkCompatibility')}</span>
             </div>
           </div>
         </div>

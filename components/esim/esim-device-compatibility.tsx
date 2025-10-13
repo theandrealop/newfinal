@@ -4,8 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Smartphone, CheckCircle, XCircle, AlertCircle, Settings } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export function EsimDeviceCompatibility() {
+  const t = useTranslations('ESim.deviceCompatibility')
   const devices = [
     {
       name: 'iPhone 12 mini',
@@ -102,11 +104,10 @@ export function EsimDeviceCompatibility() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Compatibilità eSIM per Dispositivi
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Scopri se il tuo dispositivo supporta eSIM e come configurarlo. 
-              Guida completa per iPhone, Samsung, Pixel e smartwatch.
+              {t('subtitle')}
             </p>
           </div>
 
@@ -140,7 +141,7 @@ export function EsimDeviceCompatibility() {
                 <CardContent className="pt-0">
                   <div className="space-y-3">
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2 text-sm">Caratteristiche:</h4>
+                      <h4 className="font-semibold text-gray-900 mb-2 text-sm">{t('howToCheck.checksToDo')}:</h4>
                       <div className="flex flex-wrap gap-1">
                         {device.features.map((feature) => (
                           <Badge key={feature} variant="outline" className="text-xs">
@@ -171,30 +172,30 @@ export function EsimDeviceCompatibility() {
 
           <div className="mt-12 bg-gray-50 rounded-lg p-6">
             <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
-              Come Verificare la Compatibilità eSIM
+              {t('howToCheck.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
                   <Settings className="w-5 h-5 mr-2 text-blue-600" />
-                  Controlli da Fare
+                  {t('howToCheck.checksToDo')}
                 </h4>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span>Verifica che il dispositivo sia stato acquistato dopo il 2018</span>
+                    <span>{t('howToCheck.checks.0')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span>Controlla le specifiche tecniche del produttore</span>
+                    <span>{t('howToCheck.checks.1')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span>Verifica che il dispositivo sia sbloccato</span>
+                    <span>{t('howToCheck.checks.2')}</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span>Assicurati che il software sia aggiornato</span>
+                    <span>{t('howToCheck.checks.3')}</span>
                   </li>
                 </ul>
               </div>
@@ -202,25 +203,25 @@ export function EsimDeviceCompatibility() {
               <div>
                 <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
                   <Smartphone className="w-5 h-5 mr-2 text-blue-600" />
-                  Test Rapido
+                  {t('howToCheck.quickTest')}
                 </h4>
                 <div className="space-y-3">
                   <div className="bg-blue-50 rounded-lg p-3">
                     <p className="text-sm font-medium text-blue-900 mb-1">iPhone:</p>
                     <p className="text-xs text-blue-700">
-                      Vai in Impostazioni {'>'} Generali {'>'} Info e cerca "eSIM"
+                      {t('howToCheck.iphoneTest')}
                     </p>
                   </div>
                   <div className="bg-green-50 rounded-lg p-3">
                     <p className="text-sm font-medium text-green-900 mb-1">Android:</p>
                     <p className="text-xs text-green-700">
-                      Impostazioni {'>'} Connessioni {'>'} SIM manager
+                      {t('howToCheck.androidTest')}
                     </p>
                   </div>
                   <div className="bg-purple-50 rounded-lg p-3">
                     <p className="text-sm font-medium text-purple-900 mb-1">Smartwatch:</p>
                     <p className="text-xs text-purple-700">
-                      Verifica se è il modello Cellular/LTE
+                      {t('howToCheck.smartwatchTest')}
                     </p>
                   </div>
                 </div>

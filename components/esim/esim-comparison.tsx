@@ -3,8 +3,10 @@
 import { Button } from '@/components/ui/button'
 import { Star, ExternalLink, Globe, Shield, DollarSign, Users } from 'lucide-react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 export function EsimComparison() {
+  const t = useTranslations('ESim.providerComparison')
   const providers = [
     {
       name: 'Saily',
@@ -176,10 +178,10 @@ export function EsimComparison() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Confronto MIGLIORI eSIM
+              {t('title')}
             </h2>
             <p className="text-lg text-gray-600">
-              Confronta i principali provider eSIM e trova quello perfetto per le tue esigenze
+              {t('subtitle')}
             </p>
           </div>
 
@@ -279,7 +281,7 @@ export function EsimComparison() {
                     onClick={() => window.open(provider.reviewUrl, '_blank')}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Leggi recensione
+                    {t('readReview')}
                   </Button>
                 </div>
               </div>
@@ -289,14 +291,13 @@ export function EsimComparison() {
           {/* Summary */}
           <div className="mt-12 bg-gray-50 rounded-lg p-6 text-center">
             <h3 className="text-xl font-bold text-gray-900 mb-4">
-              Non sei sicuro quale scegliere?
+              {t('notSure')}
             </h3>
             <p className="text-gray-600 mb-6">
-              Leggi le nostre recensioni dettagliate per ogni provider e scopri quale 
-              si adatta meglio alle tue esigenze di viaggio.
+              {t('readReviews')}
             </p>
             <Button className="bg-[#03464b] hover:bg-[#02363a] text-white">
-              Confronta tutti i provider
+              {t('compareAll')}
             </Button>
           </div>
         </div>
