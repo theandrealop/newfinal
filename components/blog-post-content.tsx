@@ -9,11 +9,8 @@ interface BlogPostContentProps {
 
 export function BlogPostContent({ post }: BlogPostContentProps) {
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("it-IT", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
+    // Static date formatting - just return the date string as is
+    return dateString.split('T')[0] // Extract just the date part (YYYY-MM-DD)
   }
 
   // Function to process HTML content and add target="_blank" to all links
