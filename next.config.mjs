@@ -73,5 +73,36 @@ const nextConfig = {
     maxInactiveAge: 60 * 1000, // 1 minuto
     pagesBufferLength: 5,
   },
+  async redirects() {
+    // Legacy WordPress and outdated paths → new destinations
+    return [
+      // Broken legacy content slugs → relevant section
+      { source: '/giappone-pocket-wifi-vs-sim', destination: '/blog/', permanent: true },
+      { source: '/come-attivare-esim', destination: '/esim/', permanent: true },
+      { source: '/esim-marocco-guida-completa', destination: '/esim/', permanent: true },
+      { source: '/esim-risparmiare-viaggi', destination: '/esim/', permanent: true },
+      { source: '/guida-punti-fedelta', destination: '/blog/', permanent: true },
+      { source: '/migliori-esim-internazionali', destination: '/esim/', permanent: true },
+      { source: '/category/mobile-viaggi', destination: '/blog/', permanent: true },
+      { source: '/esim-partner', destination: '/esim/', permanent: true },
+      { source: '/esim-giappone-faq', destination: '/esim/', permanent: true },
+      { source: '/status-hotel', destination: '/', permanent: true },
+      { source: '/guide-marocco-mobile-internet', destination: '/blog/', permanent: true },
+      { source: '/comparatore-esim-internazionali', destination: '/esim/', permanent: true },
+
+      { source: '/en/giappone-pocket-wifi-vs-sim', destination: '/en/blog/', permanent: true },
+      { source: '/en/come-attivare-esim', destination: '/en/esim/', permanent: true },
+      { source: '/en/esim-marocco-guida-completa', destination: '/en/esim/', permanent: true },
+      { source: '/en/esim-risparmiare-viaggi', destination: '/en/esim/', permanent: true },
+      { source: '/en/guida-punti-fedelta', destination: '/en/blog/', permanent: true },
+      { source: '/en/migliori-esim-internazionali', destination: '/en/esim/', permanent: true },
+      { source: '/en/category/mobile-viaggi', destination: '/en/blog/', permanent: true },
+      { source: '/en/esim-partner', destination: '/en/esim/', permanent: true },
+      { source: '/en/esim-giappone-faq', destination: '/en/esim/', permanent: true },
+      { source: '/en/status-hotel', destination: '/en/', permanent: true },
+      { source: '/en/guide-marocco-mobile-internet', destination: '/en/blog/', permanent: true },
+      { source: '/en/comparatore-esim-internazionali', destination: '/en/esim/', permanent: true },
+    ]
+  },
 }
 export default withNextIntl(nextConfig)

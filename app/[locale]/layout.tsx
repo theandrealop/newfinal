@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   
   const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL || 'https://puntifurbi.com';
+  const isDefault = locale === 'it'
   
   return {
     title: {
@@ -51,16 +52,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: './',
+      canonical: isDefault ? `${baseUrl}/` : `${baseUrl}/en/`,
       languages: {
-        it: '/it',
-        en: '/en'
+        it: `${baseUrl}/`,
+        en: `${baseUrl}/en/`
       }
     },
     openGraph: {
       type: 'website',
       locale: locale === 'en' ? 'en_US' : 'it_IT',
-      url: baseUrl,
+      url: isDefault ? `${baseUrl}/` : `${baseUrl}/en/`,
       title: locale === 'en'
         ? 'Punti Furbi - Compare eSIM and Cheap Flights | Save on Travel'
         : 'Punti Furbi - Confronta eSIM e Voli Economici | Risparmia sui Viaggi',

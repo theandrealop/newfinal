@@ -89,6 +89,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   
   const baseUrl = 'https://puntifurbi.com';
+  const isDefault = locale === 'it'
   
   return {
     title: locale === 'en' 
@@ -99,10 +100,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       : 'Scopri i nostri articoli su viaggi, punti fedeltà e offerte esclusive.',
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: './',
+      canonical: isDefault ? `${baseUrl}/blog/` : `${baseUrl}/en/blog/`,
       languages: {
-        it: '/it/blog',
-        en: '/en/blog'
+        it: `${baseUrl}/blog/`,
+        en: `${baseUrl}/en/blog/`
       }
     },
     other: {

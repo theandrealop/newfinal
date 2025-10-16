@@ -20,91 +20,52 @@ async function getBlogPosts() {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://puntifurbi.com'
+  const locales = ['it', 'en'] as const
   
-  // Static pages con priorità ottimizzate per SEO
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/voli-economici/`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/blog/`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/come-funziona/`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/premium/`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8, // Aumentato per pagine di conversione
-    },
-    {
-      url: `${baseUrl}/elite/`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8, // Aumentato per pagine di conversione
-    },
-    {
-      url: `${baseUrl}/checkout/`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/esim/`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/chi-siamo/`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/contatto/`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/informativa-privacy/`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/condizioni-utilizzo/`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+  // Static pages localized for it/en
+  const corePaths = [
+    '/',
+    '/voli-economici/',
+    '/blog/',
+    '/come-funziona/',
+    '/premium/',
+    '/elite/',
+    '/checkout/',
+    '/esim/',
+    '/chi-siamo/',
+    '/contatto/',
+    '/informativa-privacy/',
+    '/condizioni-utilizzo/',
   ]
+
+  const staticPages: MetadataRoute.Sitemap = corePaths.map((path, idx) => ({
+    url: path,
+    lastModified: new Date(),
+    changeFrequency: idx <= 2 ? 'daily' : idx <= 6 ? 'weekly' : idx <= 9 ? 'monthly' : 'yearly',
+    priority: idx === 0 ? 1 : idx === 1 || idx === 6 || idx === 3 ? 0.8 : idx === 2 || idx === 7 ? 0.9 : idx <= 9 ? 0.5 : 0.3,
+  })).map((entry) => ({
+    ...entry,
+    url: `${baseUrl}${entry.url}`,
+  }))
 
   // Dynamic blog posts
   const blogPosts = await getBlogPosts()
-  const blogSitemapEntries: MetadataRoute.Sitemap = blogPosts.map((post: any) => ({
-    url: `${baseUrl}/blog/${post.slug}/`,
-    lastModified: new Date(post.modified || post.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
+  const blogSitemapEntries: MetadataRoute.Sitemap = [
+    // Default locale (it) unprefixed
+    ...blogPosts.map((post: any) => ({
+      url: `${baseUrl}/blog/${post.slug}/`,
+      lastModified: new Date(post.modified || post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+    // English locale prefixed
+    ...blogPosts.map((post: any) => ({
+      url: `${baseUrl}/en/blog/${post.slug}/`,
+      lastModified: new Date(post.modified || post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+  ]
 
   return [
     ...staticPages,

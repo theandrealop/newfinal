@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   
   const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL || 'https://puntifurbi.com';
+  const isDefault = locale === 'it'
 
   if (locale === 'en') {
     return {
@@ -36,10 +37,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
       metadataBase: new URL(baseUrl),
       alternates: {
-        canonical: './',
+        canonical: isDefault ? `${baseUrl}/esim/` : `${baseUrl}/en/esim/`,
         languages: {
-          it: '/it/esim',
-          en: '/en/esim'
+          it: `${baseUrl}/esim/`,
+          en: `${baseUrl}/en/esim/`
         }
       }
     };
@@ -56,10 +57,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: './',
+      canonical: isDefault ? `${baseUrl}/esim/` : `${baseUrl}/en/esim/`,
       languages: {
-        it: '/it/esim',
-        en: '/en/esim'
+        it: `${baseUrl}/esim/`,
+        en: `${baseUrl}/en/esim/`
       }
     }
   };

@@ -13,7 +13,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
     return dateString.split('T')[0] // Extract just the date part (YYYY-MM-DD)
   }
 
-  // Function to process HTML content and add target="_blank" to all links
+  // Function to process HTML content for links and images
   const processContentLinks = (htmlContent: string) => {
     let processedContent = htmlContent
     
@@ -23,10 +23,29 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       'https://puntifurbi.wasmer.app'
     )
     
+    // Rewrite expiring Jasper GCS signed URLs through local proxy
+    processedContent = processedContent
+      // storage.googleapis.com/.../jasper-production-images-doc/...
+      .replace(
+        /src=\"(https:\/\/storage\.googleapis\.com\/[^"]*jasper-production-images-doc[^"]*)\"/g,
+        'src="/api/proxy-image?url=$1"'
+      )
+      // jasper-production-images-doc.storage.googleapis.com/...
+      .replace(
+        /src=\"(https:\/\/jasper-production-images-doc\.storage\.googleapis\.com\/[^"]*)\"/g,
+        'src="/api/proxy-image?url=$1"'
+      )
+    
     // Add alt attributes to images that don't have them
     processedContent = processedContent.replace(
       /<img([^>]*?)(?<!alt=)([^>]*?)>/g,
       '<img$1 alt="Immagine" $2>'
+    )
+    
+    // Add onerror fallback to images to handle 403/expired links
+    processedContent = processedContent.replace(
+      /<img([^>]*?)>/g,
+      '<img$1 onerror="this.onerror=null;this.src=\'/placeholder.jpg\';" />'
     )
     
     // Add target="_blank" to all links
