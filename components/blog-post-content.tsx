@@ -53,6 +53,45 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       /<a([^>]*?)>/g, 
       '<a$1 target="_blank" rel="noopener noreferrer">'
     )
+
+    // Rewrite legacy internal links to current destinations to avoid crawler hitting 404/redirects
+    const legacyMap: Record<string, string> = {
+      // Italian
+      '/giappone-pocket-wifi-vs-sim': '/blog/',
+      '/come-attivare-esim': '/esim/',
+      '/esim-marocco-guida-completa': '/esim/',
+      '/esim-risparmiare-viaggi': '/esim/',
+      '/guida-punti-fedelta': '/blog/',
+      '/migliori-esim-internazionali': '/esim/',
+      '/category/mobile-viaggi': '/blog/',
+      '/esim-partner': '/esim/',
+      '/esim-giappone-faq': '/esim/',
+      '/status-hotel': '/',
+      '/guide-marocco-mobile-internet': '/blog/',
+      '/comparatore-esim-internazionali': '/esim/',
+      '/contatti': '/contatto/',
+      // English
+      '/en/giappone-pocket-wifi-vs-sim': '/en/blog/',
+      '/en/come-attivare-esim': '/en/esim/',
+      '/en/esim-marocco-guida-completa': '/en/esim/',
+      '/en/esim-risparmiare-viaggi': '/en/esim/',
+      '/en/guida-punti-fedelta': '/en/blog/',
+      '/en/migliori-esim-internazionali': '/en/esim/',
+      '/en/category/mobile-viaggi': '/en/blog/',
+      '/en/esim-partner': '/en/esim/',
+      '/en/esim-giappone-faq': '/en/esim/',
+      '/en/status-hotel': '/en/',
+      '/en/guide-marocco-mobile-internet': '/en/blog/',
+      '/en/comparatore-esim-internazionali': '/en/esim/',
+      '/en/contatti': '/en/contatto/',
+    }
+    Object.entries(legacyMap).forEach(([fromPath, toPath]) => {
+      const pattern = new RegExp(`href=\\"(?:https?:\\/\\/)?(?:www\\.)?puntifurbi\\.com${fromPath}\\/?\\"`, 'g')
+      processedContent = processedContent.replace(pattern, `href=\"${toPath}\"`)
+      // Also handle site-relative links
+      const relPattern = new RegExp(`href=\\"${fromPath}\\/?\\"`, 'g')
+      processedContent = processedContent.replace(relPattern, `href=\"${toPath}\"`)
+    })
     
     return processedContent
   }

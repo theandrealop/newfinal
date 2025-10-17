@@ -14,7 +14,8 @@ export async function GET(req: NextRequest) {
       'jasper-production-images-doc.storage.googleapis.com',
       'images.unsplash.com',
       'pff-815f04.ingress-florina.ewp.live',
-      'puntifurbi.wasmer.app'
+      'puntifurbi.wasmer.app',
+      'i0.wp.com'
     ]
 
     const parsed = new URL(url)
