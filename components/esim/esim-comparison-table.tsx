@@ -8,13 +8,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { ArrowUpDown, ExternalLink, Star, TrendingDown, Copy, Check, Tag } from 'lucide-react'
 import { esimService } from '@/lib/esim-service'
-import { EsimOffer, EsimFilter } from '@/types/esim'
+import { EsimOffer, EsimFilter, SortOption, SortOrder } from '@/types/esim'
+import { EsimModernFilters } from './esim-modern-filters'
 
 export function EsimComparisonTable() {
   const [offers, setOffers] = useState<EsimOffer[]>([])
   const [filters, setFilters] = useState<EsimFilter>({})
-  const [sortBy, setSortBy] = useState<'prezzo' | 'durata' | 'gb'>('prezzo')
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
+  const [sortBy, setSortBy] = useState<SortOption>('prezzo')
+  const [sortOrder, setSortOrder] = useState<SortOrder>('asc')
   const [copiedCodes, setCopiedCodes] = useState<Set<string>>(new Set())
   const [hasSearched, setHasSearched] = useState(false)
 
@@ -23,11 +24,11 @@ export function EsimComparisonTable() {
     const handleFiltersChanged = (event: CustomEvent) => {
       const newFilters = event.detail as EsimFilter
       console.log('Filtri ricevuti nella tabella:', newFilters)
-      
+
       // Applica i filtri direttamente
       setHasSearched(true)
-      
-      // Applica i filtri
+
+      // Applica i filtri base
       const filteredOffers = esimService.filterOffers(newFilters)
       const sortedOffers = sortOffers(filteredOffers, sortBy, sortOrder)
       setOffers(sortedOffers)
@@ -46,27 +47,43 @@ export function EsimComparisonTable() {
   }, [sortBy, sortOrder])
 
 
-  const sortOffers = (offers: EsimOffer[], sortBy: string, order: 'asc' | 'desc') => {
+  const sortOffers = (offers: EsimOffer[], sortBy: SortOption, order: SortOrder) => {
     return [...offers].sort((a, b) => {
       let comparison = 0
       switch (sortBy) {
         case 'prezzo':
           comparison = a.prezzo - b.prezzo
           break
-        case 'durata':
-          comparison = a.durata - b.durata
-          break
-        case 'gb':
-          // Gestisce sia numeri che stringhe per i GB
-          if (typeof a.gb === 'number' && typeof b.gb === 'number') {
-            comparison = a.gb - b.gb
-          } else if (typeof a.gb === 'string' && typeof b.gb === 'string') {
-            comparison = a.gb.localeCompare(b.gb)
-          } else if (typeof a.gb === 'string') {
-            comparison = 1 // Le stringhe vengono dopo i numeri
-          } else {
-            comparison = -1 // I numeri vengono prima delle stringhe
+        case 'dati':
+          // Ordina per quantità di dati (GB) - Maggiore GB prima
+          const getGbValue = (gb: any): number => {
+            if (typeof gb === 'number') return gb
+            if (typeof gb === 'string') {
+              if (gb.toLowerCase().includes('unlimited') || gb.toLowerCase().includes('illimitati')) {
+                return Infinity // Illimitati = infinito
+              }
+              const parsed = parseFloat(gb.replace(/[^\d.]/g, ''))
+              return isNaN(parsed) ? 0 : parsed
+            }
+            return 0
           }
+          
+          const aGb = getGbValue(a.gb)
+          const bGb = getGbValue(b.gb)
+          comparison = bGb - aGb // Ordine decrescente: più GB prima
+          break
+        case 'validita':
+          // Ordina per durata - Validità più lunga prima
+          comparison = b.durata - a.durata // Ordine decrescente: durata più lunga prima
+          break
+        case 'prezzo-per-gb':
+          // Calcola il rapporto prezzo/GB
+          const aPricePerGB = typeof a.gb === 'number' && a.gb > 0 ? a.prezzo / a.gb : Infinity
+          const bPricePerGB = typeof b.gb === 'number' && b.gb > 0 ? b.prezzo / b.gb : Infinity
+          comparison = aPricePerGB - bPricePerGB
+          break
+        case 'provider':
+          comparison = a.provider.localeCompare(b.provider)
           break
         default:
           comparison = a.prezzo - b.prezzo
@@ -75,13 +92,13 @@ export function EsimComparisonTable() {
     })
   }
 
-  const handleSort = (column: 'prezzo' | 'durata' | 'gb') => {
-    if (sortBy === column) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
-    } else {
-      setSortBy(column)
-      setSortOrder('asc')
-    }
+  const handleSortChange = (newSortBy: SortOption, newSortOrder: SortOrder) => {
+    setSortBy(newSortBy)
+    setSortOrder(newSortOrder)
+    
+    // Riorganizza le offerte con il nuovo ordinamento
+    const sortedOffers = sortOffers(offers, newSortBy, newSortOrder)
+    setOffers(sortedOffers)
   }
 
   const getProviderLogo = (provider: string) => {
@@ -112,6 +129,15 @@ export function EsimComparisonTable() {
       'TSimTech': '/images/providers/tsimtech-logo.png'
     }
     return logos[provider] || '/images/providers/default-logo.png'
+  }
+
+  // Mappa dei link alle recensioni per provider
+  const getReviewLink = (provider: string) => {
+    const reviewLinks: Record<string, string> = {
+      'Saily': 'https://puntifurbi.com/blog/recensione-saily-2025-opinioni-reali-sul-servizio-esim-di-nordvpn-e-confronto-prezzi/',
+      'Holafly': 'https://puntifurbi.com/blog/la-mia-opinione-sulla-esim-holafly-ne-vale-davvero-la-pena/'
+    }
+    return reviewLinks[provider] || null
   }
 
   const getProviderWebsite = (provider: string) => {
@@ -190,6 +216,12 @@ export function EsimComparisonTable() {
             </CardTitle>
           </CardHeader>
           <CardContent>
+            {/* Controlli di ordinamento moderni */}
+            <EsimModernFilters 
+              sortBy={sortBy}
+              sortOrder={sortOrder}
+              onSortChange={handleSortChange}
+            />
           {offers.length > 0 ? (
             <div className="space-y-6">
               {offers.map((offer, index) => {
@@ -206,6 +238,16 @@ export function EsimComparisonTable() {
                           <div>
                             <div className="font-bold text-gray-900">{offer.provider}</div>
                             <div className="text-xs text-gray-500">{offer.paese}</div>
+                            {getReviewLink(offer.provider) && (
+                              <a 
+                                href={getReviewLink(offer.provider)!} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="link-recensione-dettaglio"
+                              >
+                                Leggi la recensione
+                              </a>
+                            )}
                           </div>
                         </div>
 
@@ -241,6 +283,11 @@ export function EsimComparisonTable() {
                                 <span className="text-sm text-gray-600 line-through">€ {offer.prezzo.toFixed(2)}</span>
                                 <span className="text-lg font-bold text-gray-900">€ {getDiscountedPrice(offer.prezzo).toFixed(2)}</span>
                               </div>
+                              {typeof offer.gb === 'number' && offer.gb > 0 && (
+                                <div className="text-xs text-gray-500 text-right">
+                                  €{(getDiscountedPrice(offer.prezzo) / offer.gb).toFixed(2)} per GB
+                                </div>
+                              )}
                               <div className="flex items-center justify-between bg-white border border-gray-200 rounded px-3 py-2">
                                 <span className="font-mono text-sm font-medium">FINANZAPERSONALE</span>
                                 <button
@@ -270,6 +317,11 @@ export function EsimComparisonTable() {
                                 <div className="text-sm text-gray-600">Prezzo</div>
                                 <div className="text-xl font-bold text-gray-900">€ {offer.prezzo.toFixed(2)}</div>
                               </div>
+                              {typeof offer.gb === 'number' && offer.gb > 0 && (
+                                <div className="mt-2 text-xs text-gray-500">
+                                  €{(offer.prezzo / offer.gb).toFixed(2)} per GB
+                                </div>
+                              )}
                             </div>
 
                             <Button className="w-full bg-[#03464b] hover:bg-[#02363a] text-white" onClick={() => window.open(getProviderWebsite(offer.provider), '_blank')}>

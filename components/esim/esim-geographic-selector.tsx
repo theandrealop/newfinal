@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Input } from '@/components/ui/input'
 import { Globe, MapPin, Search } from 'lucide-react'
 import { esimService } from '@/lib/esim-service'
+import { EsimFilter } from '@/types/esim'
 
 export function EsimGeographicSelector() {
   const [activeTab, setActiveTab] = useState('europe')
@@ -97,9 +98,11 @@ export function EsimGeographicSelector() {
   const handleCountrySelect = (countryName: string) => {
     console.log('Paese selezionato:', countryName)
     
-    // Filtra le offerte eSIM per il paese selezionato
-    const filters = { paese: countryName }
-    const offers = esimService.getOffersSortedByPrice(filters)
+    // Filtra le offerte eSIM per il paese selezionato usando i filtri base
+    const filters: EsimFilter = { 
+      paese: countryName
+    }
+    const offers = esimService.filterOffers(filters)
     
     console.log('Offerte trovate per', countryName, ':', offers)
     

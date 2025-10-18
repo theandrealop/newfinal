@@ -56,9 +56,31 @@ export interface EsimFilters {
   hotspot?: boolean;
   eKYC?: 'none' | 'passport' | 'id';
   topup?: boolean;
+  // Nuovi filtri avanzati
+  dataRange?: {
+    min: number;
+    max: number;
+  };
+  validityRange?: {
+    min: number;
+    max: number;
+  };
+  priceRange?: {
+    min: number;
+    max: number;
+  };
+  hideSpeedLimits?: boolean;
+  hideMaxSpeedLimits?: boolean;
+  hideDailyLimits?: boolean;
+  hideSubscriptions?: boolean;
+  hideWithoutPromo?: boolean;
+  hideDataOnly?: boolean;
+  hideWithoutLocalInternet?: boolean;
+  selectedProviders?: string[];
 }
 
-export type SortOption = 'best-rating' | 'lowest-price' | 'most-data' | 'best-value' | 'best-coverage';
+export type SortOption = 'prezzo' | 'dati' | 'validita' | 'prezzo-per-gb' | 'provider';
+export type SortOrder = 'asc' | 'desc';
 
 export interface EsimState {
   filters: EsimFilters;

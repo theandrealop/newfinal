@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { EsimFilterBar } from './esim-filter-bar'
-import { EsimResults } from './esim-results'
+import { EsimComparisonTable } from './esim-comparison-table'
 import { loadEsimOffers } from '@/lib/esim-utils'
 import type { EsimOffer, EsimFilters } from '@/types/esim'
 
@@ -94,11 +94,7 @@ export function EsimPageWrapper() {
       />
       
       <div id="esim-results">
-        <EsimResults 
-          offers={offers}
-          filters={filters}
-          loading={loading}
-        />
+        <EsimComparisonTable />
       </div>
     </>
   )

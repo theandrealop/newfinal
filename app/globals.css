@@ -116,3 +116,18 @@ html {
     width: auto !important;
   }
 }
+
+/* Link alle recensioni eSIM */
+.link-recensione-dettaglio {
+  font-size: 0.9em;        /* Leggermente più piccolo del testo normale */
+  font-weight: bold;
+  color: #0073aa;          /* Un colore che si abbini al tema */
+  text-decoration: underline;
+  display: inline-block;
+  margin-top: 5px;         /* Piccola spaziatura dal nome/logo */
+}
+
+.link-recensione-dettaglio:hover {
+  color: #005177;          /* Colore al passaggio del mouse */
+  text-decoration: none;
+}

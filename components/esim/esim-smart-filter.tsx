@@ -23,9 +23,9 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
   useEffect(() => {
     try {
       const fallbackCountries = ['Italia', 'Francia', 'Marocco', 'Thailandia', 'Stati Uniti', 'Brasile', 'Indonesia', 'Giappone', 'Turchia', 'Australia', 'Emirati Arabi', 'Sudafrica', 'Spagna']
-
+      
       const serviceCountries = esimService.getAvailableCountries()
-
+      
       // Se il servizio non ha dati, usa i fallback
       if (serviceCountries.length === 0) {
         setCountries(fallbackCountries)
@@ -40,25 +40,20 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
   const handleCompare = () => {
     if (!selectedCountry) return
 
-    const filters: EsimFilter = { paese: selectedCountry }
+    const filters: EsimFilter = { 
+      paese: selectedCountry
+    }
     
     // Gestione durata
     if (selectedDuration) {
       if (selectedDuration === '1-6') {
-        // Per viaggi brevi, includi solo offerte fino a 7 giorni
-        filters.durataMin = 1
-        filters.durataMax = 7
+        filters.durata = 7
       } else if (selectedDuration === '7-14') {
-        // Per 1-2 settimane, includi offerte da 7 giorni in su (30 giorni va bene)
-        filters.durataMin = 7
-        // Nessun limite massimo - una 30 giorni copre comunque 1-2 settimane
+        filters.durata = 14
       } else if (selectedDuration === '15-29') {
-        // Per 15-29 giorni, includi offerte da 15 giorni in su (30 giorni va bene)
-        filters.durataMin = 15
-        // Nessun limite massimo - una 30 giorni copre comunque 15-29 giorni
+        filters.durata = 30
       } else if (selectedDuration === '30+') {
-        // Per 30+ giorni, solo offerte da 30 giorni in su
-        filters.durataMin = 30
+        filters.durata = 30
       }
     }
     
@@ -75,7 +70,7 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
     localStorage.setItem('esimFilters', JSON.stringify(filters))
     window.dispatchEvent(new CustomEvent('esimFiltersChanged', { detail: filters }))
 
-         try {
+    try {
       const offers = esimService.filterOffers(filters)
       
       if (onCompare) {
@@ -88,20 +83,15 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
             resultsElement.scrollIntoView({ 
               behavior: 'smooth', 
               block: 'start',
-              inline: 'nearest'
-            })
-          } else {
-            // Fallback: scroll più significativo
-            const currentPosition = window.pageYOffset
-            window.scrollTo({
-              top: currentPosition + 400, // Scroll di 400px verso il basso
-              behavior: 'smooth'
             })
           }
         }, 100)
       }
     } catch (error) {
-      // Error handling
+      console.error("Errore durante il filtraggio delle offerte:", error)
+      if (onCompare) {
+        onCompare([]) // Passa un array vuoto in caso di errore
+      }
     }
   }
 
@@ -118,105 +108,150 @@ export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
       <Card className="shadow-2xl border-0 bg-gradient-to-r from-blue-50 to-purple-50">
         <CardContent className="p-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {t('title')}
+            <h2 className="text-3xl font-bold text-gray-800 mb-2">
+              Trova il miglior pacchetto eSIM
             </h2>
-            <p className="text-lg text-gray-600">
-              {t('subtitle')}
+            <p className="text-gray-600">
+              Confronta prezzi e trova l'offerta perfetta per il tuo viaggio
             </p>
           </div>
 
-                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-             {/* Paese */}
-             <div>
-               <label className="block text-sm font-semibold text-gray-700 mb-3">
-                 {t('whereGoing')}
-               </label>
-               <CountrySelector
-                 selectedCountry={selectedCountry}
-                 onCountrySelect={setSelectedCountry}
-                 countries={countries}
-                 placeholder={t('countryPlaceholder')}
-               />
-             </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* Paese */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">
+                DOVE STAI ANDANDO?
+              </label>
+              <CountrySelector
+                countries={countries}
+                selectedCountry={selectedCountry}
+                onCountrySelect={setSelectedCountry}
+                placeholder="Paese"
+              />
+            </div>
 
             {/* Durata */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">
-                {t('howLong')}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">
+                QUANTO DURA IL TUO VIAGGIO?
               </label>
-              <select 
-                value={selectedDuration} 
+              <select
+                value={selectedDuration}
                 onChange={handleDurationChange}
-                className="w-full h-14 text-lg bg-white border-2 border-gray-200 hover:border-blue-300 transition-colors rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                <option value="">{t('selectDuration')}</option>
-                <option value="1-6">{t('lessThanWeek')}</option>
-                <option value="7-14">{t('oneTwoWeeks')}</option>
-                <option value="15-29">{t('fifteenTwentyNine')}</option>
-                <option value="30+">{t('thirtyPlus')}</option>
+                <option value="">Seleziona durata</option>
+                <option value="1-6">Meno di una settimana</option>
+                <option value="7-14">1-2 settimane</option>
+                <option value="15-29">15-29 giorni</option>
+                <option value="30+">30 giorni o più</option>
               </select>
             </div>
 
             {/* GB */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">
-                {t('howMuchData')}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">
+                DI QUANTI DATI HAI BISOGNO?
               </label>
-              <select 
-                value={selectedGB} 
+              <select
+                value={selectedGB}
                 onChange={handleGBChange}
-                className="w-full h-14 text-lg bg-white border-2 border-gray-200 hover:border-blue-300 transition-colors rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                <option value="">{t('showAll')}</option>
-                <option value="5+">{t('fiveGBPlus')}</option>
-                <option value="10+">{t('tenGBPlus')}</option>
-                <option value="20+">{t('twentyGBPlus')}</option>
-                <option value="50+">{t('fiftyGBPlus')}</option>
-                <option value="100+">{t('hundredGBPlus')}</option>
-                <option value="illimitati">{t('unlimitedData')}</option>
+                <option value="">Mostra tutto</option>
+                <option value="5+">5 GB o più</option>
+                <option value="10+">10 GB o più</option>
+                <option value="20+">20 GB o più</option>
+                <option value="50+">50 GB o più</option>
+                <option value="100+">100 GB o più</option>
+                <option value="illimitati">Dati illimitati</option>
               </select>
             </div>
           </div>
 
-          {/* Pulsante Confronta */}
+          {/* Bottone Confronta */}
           <div className="text-center">
             <Button
               onClick={handleCompare}
               disabled={!selectedCountry}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
               <TrendingDown className="w-5 h-5 mr-2" />
-              {t('compareButton')}
+              Confronta eSIM
             </Button>
           </div>
 
-          {/* Loghi Partner */}
+          {/* Provider Partner */}
           <div className="mt-8 pt-8 border-t border-gray-200">
-            <p className="text-center text-sm text-gray-500 mb-4">
-              {t('partnerProviders')}
-            </p>
-            <div className="flex justify-center items-center gap-6 flex-wrap">
-              {[
-                { name: 'Airalo', logo: '/images/providers/airalo-logo.png' },
-                { name: 'Holafly', logo: '/images/providers/holafly-logo.png' },
-                { name: 'Saily', logo: '/images/providers/saily-logo.png' },
-                { name: 'Ubigi', logo: '/images/providers/ubigi-logo.png' },
-                { name: 'Nomad', logo: '/images/providers/nomad-logo.png' }
-              ].map(provider => (
-                <div key={provider.name} className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-                  <img 
-                    src={provider.logo} 
-                    alt={provider.name} 
-                    className="w-12 h-12 object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none'
-                      e.currentTarget.nextElementSibling?.classList.remove('hidden')
-                    }}
-                  />
-                  <span className="text-xs font-medium text-gray-600 hidden">{provider.name}</span>
-                </div>
-              ))}
+            <div className="text-center mb-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                Provider partner
+              </h3>
+              <p className="text-sm text-gray-600">
+                Collaboriamo con i migliori provider eSIM al mondo
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap justify-center items-center gap-6">
+              {/* Airalo - Link alla pagina dedicata */}
+              <a 
+                href="/esim/airalo" 
+                className="flex items-center justify-center bg-white rounded-lg px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 cursor-pointer"
+              >
+                <img 
+                  src="/images/providers/airalo-logo.png" 
+                  alt="Airalo" 
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
+
+              {/* Holafly - Link alla pagina dedicata */}
+              <a 
+                href="/esim/holafly" 
+                className="flex items-center justify-center bg-white rounded-lg px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 cursor-pointer"
+              >
+                <img 
+                  src="/images/providers/holafly-logo.png" 
+                  alt="Holafly" 
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
+
+              {/* Saily - Link alla pagina dedicata */}
+              <a 
+                href="/esim/saily" 
+                className="flex items-center justify-center bg-white rounded-lg px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 cursor-pointer"
+              >
+                <img 
+                  src="/images/providers/saily-logo.png" 
+                  alt="Saily" 
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
+
+              {/* Ubigi - Link alla pagina dedicata */}
+              <a 
+                href="/esim/ubigi" 
+                className="flex items-center justify-center bg-white rounded-lg px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 cursor-pointer"
+              >
+                <img 
+                  src="/images/providers/ubigi-logo.png" 
+                  alt="Ubigi" 
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
+
+              {/* Nomad - Link alla pagina dedicata */}
+              <a 
+                href="/esim/nomad" 
+                className="flex items-center justify-center bg-white rounded-lg px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 cursor-pointer"
+              >
+                <img 
+                  src="/images/providers/nomad-logo.png" 
+                  alt="Nomad" 
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
             </div>
           </div>
         </CardContent>
