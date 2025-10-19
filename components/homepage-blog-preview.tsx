@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Calendar, User, ArrowRight } from 'lucide-react'
+import { fetchWordPressPostsWithLang } from '@/lib/wordpress-i18n'
 
 type WPPost = {
   id: string
@@ -19,9 +20,10 @@ type WPPost = {
 
 interface HomepageBlogPreviewProps {
   className?: string
+  locale?: 'it' | 'en'
 }
 
-export function HomepageBlogPreview({ className = "" }: HomepageBlogPreviewProps) {
+export function HomepageBlogPreview({ className = "", locale = 'it' }: HomepageBlogPreviewProps) {
   const [posts, setPosts] = useState<WPPost[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -31,38 +33,26 @@ export function HomepageBlogPreview({ className = "" }: HomepageBlogPreviewProps
       try {
         setLoading(true)
         
-        // Usa direttamente l'API REST senza importare da lib/wp.ts
-        const WP_REST_ENDPOINT = process.env.NEXT_PUBLIC_WP_REST_ENDPOINT || "https://puntifurbi.wasmer.app/wp-json/wp/v2"
-        const url = `${WP_REST_ENDPOINT}/posts?per_page=3&_fields=id,slug,title,excerpt,date,link,featured_media,author&_embed`
-        
-        const response = await fetch(url, {
-          cache: 'force-cache',
-          next: { revalidate: 60, tags: ['posts'] }
-        })
-        
-        if (!response.ok) {
-          throw new Error(`REST API HTTP ${response.status}`)
-        }
-        
-        const postsData = await response.json()
+        // Usa il sistema di filtraggio per lingua
+        const result = await fetchWordPressPostsWithLang(1, 3, locale)
         
         // Converti i post nel formato WPPost
-        const wpPosts: WPPost[] = postsData.map((p: any) => ({
-            id: String(p.id),
-            title: p.title?.rendered ?? '',
-            slug: p.slug,
-            uri: `/blog/${p.slug}`,
-            date: p.date,
-            excerpt: p.excerpt?.rendered?.replace(/<[^>]*>/g, '') ?? '',
-            featuredImage: p._embedded?.['wp:featuredmedia']?.[0] ? {
-              node: {
-                sourceUrl: p._embedded['wp:featuredmedia'][0].source_url?.replace('http://', 'https://'),
-                altText: p._embedded['wp:featuredmedia'][0].alt_text
-              }
-            } : null,
-            categories: { nodes: [] },
-            author: { node: { name: p._embedded?.author?.[0]?.name || 'Punti Furbi' } }
-          }))
+        const wpPosts: WPPost[] = result.posts.map((p) => ({
+          id: String(p.id),
+          title: p.title,
+          slug: p.slug,
+          uri: locale === 'en' ? `/en/blog/${p.slug}` : `/blog/${p.slug}`,
+          date: p.date,
+          excerpt: p.excerpt?.replace(/<[^>]*>/g, '') ?? '',
+          featuredImage: p.featuredImage?.node?.sourceUrl ? {
+            node: {
+              sourceUrl: p.featuredImage.node.sourceUrl,
+              altText: p.featuredImage.node.altText
+            }
+          } : null,
+          categories: { nodes: [] },
+          author: { node: { name: p.author?.node?.name || 'Punti Furbi' } }
+        }))
         
         setPosts(wpPosts)
         setError(null)
@@ -165,10 +155,10 @@ export function HomepageBlogPreview({ className = "" }: HomepageBlogPreviewProps
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-dark-green mb-4">
-            Ultimi Articoli dal Blog
+            {locale === 'en' ? 'Latest Blog Articles' : 'Ultimi Articoli dal Blog'}
           </h2>
           <p className="text-xl text-gray-600">
-            Consigli e guide per viaggiare al meglio e risparmiare
+            {locale === 'en' ? 'Tips and guides to travel better and save money' : 'Consigli e guide per viaggiare al meglio e risparmiare'}
           </p>
         </div>
         
@@ -209,7 +199,7 @@ export function HomepageBlogPreview({ className = "" }: HomepageBlogPreviewProps
                   </p>
                   
                   <div className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors">
-                    Leggi l'articolo
+                    {locale === 'en' ? 'Read article' : 'Leggi l\'articolo'}
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -220,10 +210,10 @@ export function HomepageBlogPreview({ className = "" }: HomepageBlogPreviewProps
         
         <div className="text-center mt-12">
           <Link 
-            href="/blog/"
+            href={locale === 'en' ? "/en/blog/" : "/blog/"}
             className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
           >
-            Vedi Tutti gli Articoli
+            {locale === 'en' ? 'View All Articles' : 'Vedi Tutti gli Articoli'}
           </Link>
         </div>
       </div>

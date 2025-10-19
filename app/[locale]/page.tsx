@@ -5,7 +5,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { Star, ChevronLeft, ChevronRight, Menu, X } from "lucide-react"
 import { Link } from "@/src/i18n/navigation"
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import Image from "next/image"
 import { subscribeToNewsletter } from "@/lib/buttondown"
 import { NewsletterPopup } from "@/components/newsletter-popup"
@@ -13,6 +13,7 @@ import { HomepageBlogPreview } from "@/components/homepage-blog-preview"
 
 export default function PuntiFurbiHomepage() {
   const t = useTranslations('Homepage');
+  const locale = useLocale() as 'it' | 'en';
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
@@ -456,7 +457,7 @@ export default function PuntiFurbiHomepage() {
       </section>
 
       {/* Blog Preview Section */}
-      <HomepageBlogPreview />
+      <HomepageBlogPreview locale={locale} />
 
       {/* Testimonials Section */}
       <section className="py-16 lg:py-24 overflow-visible">

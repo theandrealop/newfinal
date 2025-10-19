@@ -59,6 +59,7 @@ async function BlogPageContent({ locale }: { locale: string }) {
         initialPosts={posts} 
         hasNextPage={hasNextPage} 
         endCursor={endCursor}
+        locale={locale}
       />
     )
   } catch (error) {

@@ -11,13 +11,15 @@ interface BlogPageClientProps {
   hasNextPage: boolean
   endCursor: string | null
   error?: string
+  locale?: string
 }
 
 export function BlogPageClient({
   initialPosts,
   hasNextPage: initialHasNextPage,
   endCursor: initialEndCursor,
-  error
+  error,
+  locale
 }: BlogPageClientProps) {
   const [posts, setPosts] = useState(initialPosts)
   const [hasNextPage, setHasNextPage] = useState(initialHasNextPage)
@@ -145,12 +147,14 @@ export function BlogPageClient({
         <div className="max-w-6xl mx-auto">
           {/* Breadcrumbs */}
           <Breadcrumbs 
-            items={[{ name: 'Blog', url: '/blog' }]} 
+            items={[{ name: 'Blog', url: locale === 'en' ? '/en/blog' : '/blog' }]} 
             className="mb-6"
           />
           <h1 className="text-4xl font-bold mb-8 text-dark-green">Blog</h1>
           <p className="text-xl text-gray-600 mb-8">
-            Scopri le ultime notizie e consigli sui viaggi e i punti fedeltà
+            {locale === 'en'
+              ? 'Discover the latest news and tips on travel and loyalty points'
+              : 'Scopri le ultime notizie e consigli sui viaggi e i punti fedeltà'}
           </p>
           
           {/* Schema Markup per lista blog */}
@@ -175,7 +179,8 @@ export function BlogPageClient({
             <BlogList 
               initialPosts={posts} 
               hasNextPage={hasNextPage} 
-              endCursor={endCursor} 
+              endCursor={endCursor}
+              locale={(locale as 'it' | 'en')}
             />
           ) : (
             <div className="text-center py-12">

@@ -5,9 +5,11 @@ import { Badge } from '@/components/ui/badge'
 import { Globe, Database, TrendingDown, Star } from 'lucide-react'
 import { esimService } from '@/lib/esim-service'
 import { useTranslations } from 'next-intl'
+import { useCurrency } from '@/hooks/use-currency'
 
 export function EsimStats() {
   const t = useTranslations('ESim.databaseStats')
+  const { formatPrice } = useCurrency()
   const stats = esimService.getDatabaseStats()
 
   return (
@@ -91,7 +93,7 @@ export function EsimStats() {
                     </p>
                   </div>
                   <Badge variant="default" className="bg-green-500 text-white">
-                    €{stats.cheapestOffer.prezzo}
+                    {formatPrice(stats.cheapestOffer.prezzo)}
                   </Badge>
                 </div>
               </CardContent>

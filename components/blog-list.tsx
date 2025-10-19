@@ -10,12 +10,14 @@ interface BlogListProps {
   initialPosts: BlogPost[]
   hasNextPage: boolean
   endCursor: string | null
+  locale?: 'it' | 'en'
 }
 
 export function BlogList({
   initialPosts,
   hasNextPage: initialHasNextPage,
   endCursor: initialEndCursor,
+  locale = 'it',
 }: BlogListProps) {
   const [posts, setPosts] = useState(initialPosts)
   const [hasNextPage, setHasNextPage] = useState(initialHasNextPage)
@@ -39,6 +41,10 @@ export function BlogList({
         _embed: 'true',
         status: 'publish'
       })
+      // Polylang language filter if available
+      if (locale === 'en' || locale === 'it') {
+        params.append('lang', locale)
+      }
 
       const url = `${WORDPRESS_REST_URL}/posts?${params.toString()}`
 
@@ -129,14 +135,16 @@ export function BlogList({
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {posts.map((post) => (
-          <BlogCard key={post.id} post={post} />
+          <BlogCard key={post.id} post={post} locale={locale} />
         ))}
       </div>
 
       {hasNextPage && (
         <div className="text-center">
           <Button onClick={loadMore} disabled={loading} variant="outline" size="lg">
-            {loading ? "Caricamento..." : "Carica altri articoli"}
+            {loading 
+              ? (locale === 'en' ? 'Loading...' : 'Caricamento...')
+              : (locale === 'en' ? 'Load more posts' : 'Carica altri articoli')}
           </Button>
         </div>
       )}

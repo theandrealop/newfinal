@@ -163,7 +163,22 @@
             "hundredGBPlus": "100 GB o più",
             "unlimitedData": "Dati illimitati",
             "compareButton": "Confronta eSIM",
-            "partnerProviders": "Provider partner"
+            "partnerProviders": "Provider partner",
+            "partnerDescription": "Collaboriamo con i migliori provider eSIM al mondo"
+          },
+          "results": {
+            "title": "Risultati ({count} offerte trovate)",
+            "totalData": "Dati totali",
+            "validFor": "Valido per",
+            "days": "giorni",
+            "planType": "Tipo di piano",
+            "dataOnly": "Solo dati",
+            "price": "Prezzo",
+            "goTo": "Vai a",
+            "readReview": "Leggi la recensione"
+          },
+          "currency": {
+            "currency": "Valuta"
           },
     "databaseStats": {
       "totalOffers": "7383",

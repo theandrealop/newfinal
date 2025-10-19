@@ -80,6 +80,7 @@ const nextConfig = {
       { source: '/giappone-pocket-wifi-vs-sim', destination: '/blog/', permanent: true },
       { source: '/come-attivare-esim', destination: '/esim/', permanent: true },
       { source: '/esim-marocco-guida-completa', destination: '/esim/', permanent: true },
+      { source: '/esim-per-il-marocco-tutte-le-opzioni-costi-e-migliori-alternative-2025', destination: '/blog/esim-marocco-opzioni-costi-provider', permanent: true },
       { source: '/esim-risparmiare-viaggi', destination: '/esim/', permanent: true },
       { source: '/guida-punti-fedelta', destination: '/blog/', permanent: true },
       { source: '/migliori-esim-internazionali', destination: '/esim/', permanent: true },
@@ -93,6 +94,8 @@ const nextConfig = {
       { source: '/en/giappone-pocket-wifi-vs-sim', destination: '/en/blog/', permanent: true },
       { source: '/en/come-attivare-esim', destination: '/en/esim/', permanent: true },
       { source: '/en/esim-marocco-guida-completa', destination: '/en/esim/', permanent: true },
+      { source: '/en/esim-per-il-marocco-tutte-le-opzioni-costi-e-migliori-alternative-2025', destination: '/en/blog/', permanent: true },
+      { source: '/en/cose-una-esim-come-funziona-davvero-e-quanto-ti-conviene-passarci', destination: '/blog/cose-una-esim-come-funziona-davvero-e-quanto-ti-conviene-passarci', permanent: true },
       { source: '/en/esim-risparmiare-viaggi', destination: '/en/esim/', permanent: true },
       { source: '/en/guida-punti-fedelta', destination: '/en/blog/', permanent: true },
       { source: '/en/migliori-esim-internazionali', destination: '/en/esim/', permanent: true },
@@ -102,6 +105,10 @@ const nextConfig = {
       { source: '/en/status-hotel', destination: '/en/', permanent: true },
       { source: '/en/guide-marocco-mobile-internet', destination: '/en/blog/', permanent: true },
       { source: '/en/comparatore-esim-internazionali', destination: '/en/esim/', permanent: true },
+      // Specific Italian slugs accessed under English blog → redirect to Italian version
+      { source: '/en/blog/esim-per-il-marocco-tutte-le-opzioni-costi-e-migliori-alternative-2025', destination: '/blog/esim-per-il-marocco-tutte-le-opzioni-costi-e-migliori-alternative-2025', permanent: true },
+      { source: '/en/blog/cose-una-esim-come-funziona-davvero-e-quanto-ti-conviene-passarci', destination: '/blog/cose-una-esim-come-funziona-davvero-e-quanto-ti-conviene-passarci', permanent: true },
+      { source: '/en/contatti', destination: '/contatto/', permanent: true },
     ]
   },
 }

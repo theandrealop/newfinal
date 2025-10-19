@@ -5,9 +5,10 @@ import { Badge } from "@/components/ui/badge"
 
 interface BlogCardProps {
   post: BlogPost
+  locale?: 'it' | 'en'
 }
 
-export function BlogCard({ post }: BlogCardProps) {
+export function BlogCard({ post, locale = 'it' }: BlogCardProps) {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("it-IT", {
       year: "numeric",
@@ -18,7 +19,7 @@ export function BlogCard({ post }: BlogCardProps) {
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-      <Link href={`/blog/${post.slug}`}>
+      <Link href={locale === 'en' ? `/en/blog/${post.slug}` : `/blog/${post.slug}`}>
         {post.featuredImage?.node?.sourceUrl && (
           <div className="aspect-video overflow-hidden">
             <img

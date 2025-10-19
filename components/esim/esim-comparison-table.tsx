@@ -10,8 +10,13 @@ import { ArrowUpDown, ExternalLink, Star, TrendingDown, Copy, Check, Tag } from 
 import { esimService } from '@/lib/esim-service'
 import { EsimOffer, EsimFilter, SortOption, SortOrder } from '@/types/esim'
 import { EsimModernFilters } from './esim-modern-filters'
+import { CurrencySelector } from './currency-selector'
+import { useCurrency } from '@/hooks/use-currency'
+import { useTranslations } from 'next-intl'
 
 export function EsimComparisonTable() {
+  const t = useTranslations('ESim.results')
+  const { formatPrice, getCurrencySymbol } = useCurrency()
   const [offers, setOffers] = useState<EsimOffer[]>([])
   const [filters, setFilters] = useState<EsimFilter>({})
   const [sortBy, setSortBy] = useState<SortOption>('prezzo')
@@ -212,16 +217,19 @@ export function EsimComparisonTable() {
         <Card data-esim-results>
           <CardHeader>
             <CardTitle>
-              Risultati ({offers.length} offerte trovate)
+              {t('title', { count: offers.length })}
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {/* Controlli di ordinamento moderni */}
-            <EsimModernFilters 
-              sortBy={sortBy}
-              sortOrder={sortOrder}
-              onSortChange={handleSortChange}
-            />
+            {/* Controlli di ordinamento e valuta */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <EsimModernFilters 
+                sortBy={sortBy}
+                sortOrder={sortOrder}
+                onSortChange={handleSortChange}
+              />
+              <CurrencySelector />
+            </div>
           {offers.length > 0 ? (
             <div className="space-y-6">
               {offers.map((offer, index) => {
@@ -245,7 +253,7 @@ export function EsimComparisonTable() {
                                 rel="noopener noreferrer"
                                 className="link-recensione-dettaglio"
                               >
-                                Leggi la recensione
+                                {t('readReview')}
                               </a>
                             )}
                           </div>
@@ -253,16 +261,16 @@ export function EsimComparisonTable() {
 
                         <div className="grid grid-cols-3 gap-3 text-sm text-gray-700">
                           <div>
-                            <div className="text-xs text-gray-500">Dati totali</div>
+                            <div className="text-xs text-gray-500">{t('totalData')}</div>
                             <div className="font-semibold">{typeof offer.gb === 'string' ? offer.gb : `${offer.gb} GB`}</div>
                           </div>
                           <div>
-                            <div className="text-xs text-gray-500">Valido per</div>
-                            <div className="font-semibold">{offer.durata} giorni</div>
+                            <div className="text-xs text-gray-500">{t('validFor')}</div>
+                            <div className="font-semibold">{offer.durata} {t('days')}</div>
                           </div>
                           <div>
-                            <div className="text-xs text-gray-500">Tipo di piano</div>
-                            <div className="font-semibold">Solo dati</div>
+                            <div className="text-xs text-gray-500">{t('planType')}</div>
+                            <div className="font-semibold">{t('dataOnly')}</div>
                           </div>
                         </div>
                       </div>
@@ -314,18 +322,18 @@ export function EsimComparisonTable() {
                           <div className="space-y-3">
                             <div className="rounded-lg border bg-slate-50 p-3">
                               <div className="flex items-center justify-between">
-                                <div className="text-sm text-gray-600">Prezzo</div>
-                                <div className="text-xl font-bold text-gray-900">€ {offer.prezzo.toFixed(2)}</div>
+                                <div className="text-sm text-gray-600">{t('price')}</div>
+                                <div className="text-xl font-bold text-gray-900">{formatPrice(offer.prezzo)}</div>
                               </div>
                               {typeof offer.gb === 'number' && offer.gb > 0 && (
                                 <div className="mt-2 text-xs text-gray-500">
-                                  €{(offer.prezzo / offer.gb).toFixed(2)} per GB
+                                  {formatPrice(offer.prezzo / offer.gb)} per GB
                                 </div>
                               )}
                             </div>
 
                             <Button className="w-full bg-[#03464b] hover:bg-[#02363a] text-white" onClick={() => window.open(getProviderWebsite(offer.provider), '_blank')}>
-                              Vai a {offer.provider}
+                              {t('goTo')} {offer.provider}
                             </Button>
                           </div>
                         )}
