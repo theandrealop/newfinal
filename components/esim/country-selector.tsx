@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Search, Globe, X, ChevronDown } from 'lucide-react'
+import { useCountryTranslation } from '@/lib/country-translations'
 
 interface CountrySelectorProps {
   selectedCountry: string
@@ -225,7 +226,6 @@ const countryFlagImages: Record<string, string> = {
   'Svizzera': '/images/flags/ch.png',
   'Swaziland': '/images/flags/sz.png',
   'Tailandia': '/images/flags/th.png',
-  'Tailandia': '/images/flags/th.png',
   'Taiwan': '/images/flags/tw.png',
   'Tanzania': '/images/flags/tz.png',
   'Tagikistan': '/images/flags/tj.png',
@@ -253,6 +253,7 @@ const countryFlagImages: Record<string, string> = {
 }
 
 export function CountrySelector({ selectedCountry, onCountrySelect, countries, placeholder = "Clicca qui per selezionare un paese" }: CountrySelectorProps) {
+  const translateCountry = useCountryTranslation()
   const [searchTerm, setSearchTerm] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -335,7 +336,7 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries, p
               )}
               <Input
                 type="text"
-                placeholder={selectedCountry ? selectedCountry : placeholder}
+                placeholder={selectedCountry ? translateCountry(selectedCountry) : placeholder}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onFocus={() => {
@@ -395,7 +396,7 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries, p
                         className="w-5 h-4 object-cover rounded-sm mr-3"
                       />
                     )}
-                    <span className="font-semibold">{country}</span>
+                    <span className="font-semibold">{translateCountry(country)}</span>
                   </Button>
                 ))
               ) : (

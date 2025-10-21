@@ -15,6 +15,7 @@ import {
   findCountryByInput 
 } from '@/lib/esim-utils'
 import type { EsimFilters, Country } from '@/types/esim'
+import { useCountryTranslation } from '@/lib/country-translations'
 
 interface EsimFilterBarProps {
   filters: EsimFilters
@@ -23,6 +24,7 @@ interface EsimFilterBarProps {
 }
 
 export function EsimFilterBar({ filters, onFiltersChange, onApplyFilters }: EsimFilterBarProps) {
+  const translateCountry = useCountryTranslation()
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false)
   const [countrySearch, setCountrySearch] = useState('')
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([])
@@ -96,7 +98,7 @@ export function EsimFilterBar({ filters, onFiltersChange, onApplyFilters }: Esim
                         onClick={() => handleCountrySelect(country)}
                         className="w-full text-left px-4 py-2 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
                       >
-                        <div className="font-medium">{country.name}</div>
+                        <div className="font-medium">{translateCountry(country.name)}</div>
                         {country.aliases.length > 0 && (
                           <div className="text-sm text-gray-500">
                             {country.aliases.slice(0, 2).join(', ')}

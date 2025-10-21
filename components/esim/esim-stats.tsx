@@ -6,9 +6,11 @@ import { Globe, Database, TrendingDown, Star } from 'lucide-react'
 import { esimService } from '@/lib/esim-service'
 import { useTranslations } from 'next-intl'
 import { useCurrency } from '@/hooks/use-currency'
+import { useCountryTranslation } from '@/lib/country-translations'
 
 export function EsimStats() {
   const t = useTranslations('ESim.databaseStats')
+  const translateCountry = useCountryTranslation()
   const { formatPrice } = useCurrency()
   const stats = esimService.getDatabaseStats()
 
@@ -88,7 +90,7 @@ export function EsimStats() {
                       {t('bestOffer')}
                     </h3>
                     <p className="text-green-700">
-                      {stats.cheapestOffer.provider} - {stats.cheapestOffer.paese} 
+                      {stats.cheapestOffer.provider} - {translateCountry(stats.cheapestOffer.paese)} 
                       ({stats.cheapestOffer.gb} GB, {stats.cheapestOffer.durata} giorni)
                     </p>
                   </div>

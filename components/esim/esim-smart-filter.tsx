@@ -9,6 +9,7 @@ import { esimService } from '@/lib/esim-service'
 import { EsimOffer, EsimFilter } from '@/types/esim'
 import { CountrySelector } from './country-selector'
 import { CurrencySelector } from './currency-selector'
+import { useCountryTranslation } from '@/lib/country-translations'
 
 interface EsimSmartFilterProps {
   onCompare?: (offers: EsimOffer[]) => void
@@ -16,6 +17,7 @@ interface EsimSmartFilterProps {
 
 export function EsimSmartFilter({ onCompare }: EsimSmartFilterProps) {
   const t = useTranslations('ESim.smartFilter')
+  const translateCountry = useCountryTranslation()
   const [selectedCountry, setSelectedCountry] = useState<string>('')
   const [selectedDuration, setSelectedDuration] = useState<string>('')
   const [selectedGB, setSelectedGB] = useState<string>('')

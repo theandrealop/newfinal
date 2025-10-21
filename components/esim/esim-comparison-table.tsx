@@ -13,9 +13,11 @@ import { EsimModernFilters } from './esim-modern-filters'
 import { CurrencySelector } from './currency-selector'
 import { useCurrency } from '@/hooks/use-currency'
 import { useTranslations } from 'next-intl'
+import { useCountryTranslation } from '@/lib/country-translations'
 
 export function EsimComparisonTable() {
   const t = useTranslations('ESim.results')
+  const translateCountry = useCountryTranslation()
   const { formatPrice, getCurrencySymbol } = useCurrency()
   const [offers, setOffers] = useState<EsimOffer[]>([])
   const [filters, setFilters] = useState<EsimFilter>({})
@@ -245,7 +247,7 @@ export function EsimComparisonTable() {
                           <img src={getProviderLogo(offer.provider)} alt={offer.provider} className="w-8 h-8 object-contain" />
                           <div>
                             <div className="font-bold text-gray-900">{offer.provider}</div>
-                            <div className="text-xs text-gray-500">{offer.paese}</div>
+                            <div className="text-xs text-gray-500">{translateCountry(offer.paese)}</div>
                             {getReviewLink(offer.provider) && (
                               <a 
                                 href={getReviewLink(offer.provider)!} 

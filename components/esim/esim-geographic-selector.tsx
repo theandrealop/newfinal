@@ -7,8 +7,10 @@ import { Input } from '@/components/ui/input'
 import { Globe, MapPin, Search } from 'lucide-react'
 import { esimService } from '@/lib/esim-service'
 import { EsimFilter } from '@/types/esim'
+import { useCountryTranslation } from '@/lib/country-translations'
 
 export function EsimGeographicSelector() {
+  const translateCountry = useCountryTranslation()
   const [activeTab, setActiveTab] = useState('europe')
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -192,7 +194,7 @@ export function EsimGeographicSelector() {
                         onClick={() => handleCountrySelect(country.name)}
                       >
                         <span className="text-lg">{country.flag}</span>
-                        <span className="text-sm font-medium">{country.name}</span>
+                        <span className="text-sm font-medium">{translateCountry(country.name)}</span>
                       </Button>
                     ))}
                   </div>
