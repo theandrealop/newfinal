@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Search, Globe, X, ChevronDown } from 'lucide-react'
 import { useCountryTranslation } from '@/lib/country-translations'
+import { useTranslations } from 'next-intl'
 
 interface CountrySelectorProps {
   selectedCountry: string
@@ -252,8 +253,9 @@ const countryFlagImages: Record<string, string> = {
   'Zimbabwe': '/images/flags/zw.png'
 }
 
-export function CountrySelector({ selectedCountry, onCountrySelect, countries, placeholder = "Clicca qui per selezionare un paese" }: CountrySelectorProps) {
+export function CountrySelector({ selectedCountry, onCountrySelect, countries, placeholder }: CountrySelectorProps) {
   const translateCountry = useCountryTranslation()
+  const t = useTranslations('ESim.smartFilter')
   const [searchTerm, setSearchTerm] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -319,7 +321,7 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries, p
               className="flex-1 rounded-none bg-blue-50 text-blue-600"
             >
               <Globe className="w-4 h-4 mr-2" />
-              Paese
+              {t('country')}
             </Button>
           </div>
 
@@ -336,7 +338,7 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries, p
               )}
               <Input
                 type="text"
-                placeholder={selectedCountry ? translateCountry(selectedCountry) : placeholder}
+                placeholder={selectedCountry ? translateCountry(selectedCountry) : (placeholder || t('countryPlaceholder'))}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onFocus={() => {
