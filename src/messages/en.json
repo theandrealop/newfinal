@@ -169,6 +169,7 @@
           },
           "results": {
             "title": "Results ({count} offers found)",
+            "resultsFound": "Results found",
             "totalData": "Total data",
             "validFor": "Valid for",
             "days": "days",
@@ -176,7 +177,15 @@
             "dataOnly": "Data only",
             "price": "Price",
             "goTo": "Go to",
-            "readReview": "Read review"
+            "readReview": "Read review",
+            "unlimited": "Unlimited"
+          },
+          "sorting": {
+            "cheapest": "Cheapest",
+            "bestPricePerGB": "Best price/GB",
+            "moreGB": "More GB",
+            "longestValidity": "Longest validity",
+            "provider": "Provider"
           },
           "currency": {
             "currency": "Currency"

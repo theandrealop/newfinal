@@ -264,7 +264,7 @@ export function EsimComparisonTable() {
                         <div className="grid grid-cols-3 gap-3 text-sm text-gray-700">
                           <div>
                             <div className="text-xs text-gray-500">{t('totalData')}</div>
-                            <div className="font-semibold">{typeof offer.gb === 'string' ? offer.gb : `${offer.gb} GB`}</div>
+                            <div className="font-semibold">{typeof offer.gb === 'string' ? (offer.gb.toLowerCase().includes('illimitati') ? t('unlimited') : offer.gb) : `${offer.gb} GB`}</div>
                           </div>
                           <div>
                             <div className="text-xs text-gray-500">{t('validFor')}</div>

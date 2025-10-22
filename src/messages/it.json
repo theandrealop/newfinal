@@ -169,6 +169,7 @@
           },
           "results": {
             "title": "Risultati ({count} offerte trovate)",
+            "resultsFound": "Risultati trovati",
             "totalData": "Dati totali",
             "validFor": "Valido per",
             "days": "giorni",
@@ -176,7 +177,15 @@
             "dataOnly": "Solo dati",
             "price": "Prezzo",
             "goTo": "Vai a",
-            "readReview": "Leggi la recensione"
+            "readReview": "Leggi la recensione",
+            "unlimited": "Illimitati"
+          },
+          "sorting": {
+            "cheapest": "Il più economico",
+            "bestPricePerGB": "Miglior prezzo/GB",
+            "moreGB": "Maggiore GB",
+            "longestValidity": "Validità più lunga",
+            "provider": "Provider"
           },
           "currency": {
             "currency": "Valuta"

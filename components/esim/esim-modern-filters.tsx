@@ -16,6 +16,7 @@ import {
   Building
 } from 'lucide-react'
 import { SortOption, SortOrder } from '@/types/esim'
+import { useTranslations } from 'next-intl'
 
 interface EsimModernFiltersProps {
   sortBy: SortOption
@@ -23,36 +24,36 @@ interface EsimModernFiltersProps {
   onSortChange: (sortBy: SortOption, sortOrder: SortOrder) => void
 }
 
-const sortOptions = [
+const getSortOptions = (t: any) => [
   {
     key: 'prezzo' as SortOption,
-    label: 'Il più economico',
+    label: t('sorting.cheapest'),
     icon: DollarSign,
-    shortLabel: 'Economico'
+    shortLabel: t('sorting.cheapest')
   },
   {
     key: 'prezzo-per-gb' as SortOption,
-    label: 'Miglior prezzo/GB',
+    label: t('sorting.bestPricePerGB'),
     icon: Sparkles,
-    shortLabel: 'Prezzo/GB'
+    shortLabel: t('sorting.bestPricePerGB')
   },
   {
     key: 'dati' as SortOption,
-    label: 'Maggiore GB',
+    label: t('sorting.moreGB'),
     icon: Database,
-    shortLabel: 'Più GB'
+    shortLabel: t('sorting.moreGB')
   },
   {
     key: 'validita' as SortOption,
-    label: 'Validità più lunga',
+    label: t('sorting.longestValidity'),
     icon: Clock,
-    shortLabel: 'Più giorni'
+    shortLabel: t('sorting.longestValidity')
   },
   {
     key: 'provider' as SortOption,
-    label: 'Provider',
+    label: t('sorting.provider'),
     icon: Building,
-    shortLabel: 'Provider'
+    shortLabel: t('sorting.provider')
   }
 ]
 
@@ -61,6 +62,8 @@ export function EsimModernFilters({
   sortOrder,
   onSortChange
 }: EsimModernFiltersProps) {
+  const t = useTranslations('ESim')
+  
   const handleSort = (newSortBy: SortOption) => {
     let newSortOrder: SortOrder = 'asc'
     
@@ -72,6 +75,7 @@ export function EsimModernFilters({
     onSortChange(newSortBy, newSortOrder)
   }
 
+  const sortOptions = getSortOptions(t)
   const getCurrentSortOption = () => {
     return sortOptions.find(option => option.key === sortBy) || sortOptions[0]
   }
@@ -86,7 +90,7 @@ export function EsimModernFilters({
           {/* Left: Info text */}
           <div className="flex-1 min-w-0">
             <div className="text-sm text-gray-600 truncate">
-              Risultati trovati
+              {t('results.resultsFound')}
             </div>
           </div>
 
