@@ -178,7 +178,9 @@
             "price": "Prezzo",
             "goTo": "Vai a",
             "readReview": "Leggi la recensione",
-            "unlimited": "Illimitati"
+            "unlimited": "Illimitati",
+            "noOffersFound": "Nessuna offerta trovata con i filtri selezionati.",
+            "removeFilters": "Rimuovi filtri"
           },
           "sorting": {
             "cheapest": "Il più economico",

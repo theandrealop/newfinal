@@ -178,7 +178,9 @@
             "price": "Price",
             "goTo": "Go to",
             "readReview": "Read review",
-            "unlimited": "Unlimited"
+            "unlimited": "Unlimited",
+            "noOffersFound": "No offers found with the selected filters.",
+            "removeFilters": "Remove filters"
           },
           "sorting": {
             "cheapest": "Cheapest",

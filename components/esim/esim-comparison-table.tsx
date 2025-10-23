@@ -347,7 +347,7 @@ export function EsimComparisonTable() {
             </div>
           ) : (
             <div className="text-center py-8">
-              <p className="text-gray-500">Nessuna offerta trovata con i filtri selezionati.</p>
+              <p className="text-gray-500">{t('noOffersFound')}</p>
               <Button
                 variant="outline"
                 onClick={() => {
@@ -358,7 +358,7 @@ export function EsimComparisonTable() {
                 }}
                 className="mt-4"
               >
-                Rimuovi filtri
+                {t('removeFilters')}
               </Button>
             </div>
           )}
