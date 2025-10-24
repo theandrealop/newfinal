@@ -14,6 +14,7 @@ import { CurrencySelector } from './currency-selector'
 import { useCurrency } from '@/hooks/use-currency'
 import { useTranslations } from 'next-intl'
 import { useCountryTranslation } from '@/lib/country-translations'
+import { getHolaflyAffiliateLink } from '@/lib/holafly-affiliate-mapping'
 
 export function EsimComparisonTable() {
   const t = useTranslations('ESim.results')
@@ -147,10 +148,15 @@ export function EsimComparisonTable() {
     return reviewLinks[provider] || null
   }
 
-  const getProviderWebsite = (provider: string) => {
+  const getProviderWebsite = (provider: string, country?: string) => {
+    // Special handling for Holafly to use country-specific affiliate links
+    if (provider.toLowerCase() === 'holafly') {
+      return getHolaflyAffiliateLink(country);
+    }
+
     const websites: Record<string, string> = {
       'Airalo': 'https://finanza.me/airalo',
-      'Holafly': 'https://finanza.me/holafly',
+      'Holafly': 'https://esim.holafly.com/it/?discount=FINANZAPERSONALE&utm_source=affiliate&utm_medium=Andrea%20Loperfido&utm_campaign=3417596&irgwc=1&tw_source=impact&tw_campaign=3417596&tw_term=2006335', // Fallback for generic Holafly
       'Saily': 'https://finanza.me/saily',
       'Ubigi': 'https://finanza.me/ubigi',
       'Nomad': 'https://finanza.me/nomad',
@@ -316,7 +322,7 @@ export function EsimComparisonTable() {
                               </div>
                             </div>
                             
-                            <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white" onClick={() => window.open(getProviderWebsite(offer.provider), '_blank')}>
+                            <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white" onClick={() => window.open(getProviderWebsite(offer.provider, offer.paese), '_blank')}>
                               Vai a {offer.provider}
                             </Button>
                           </div>
@@ -334,7 +340,7 @@ export function EsimComparisonTable() {
                               )}
                             </div>
 
-                            <Button className="w-full bg-[#03464b] hover:bg-[#02363a] text-white" onClick={() => window.open(getProviderWebsite(offer.provider), '_blank')}>
+                            <Button className="w-full bg-[#03464b] hover:bg-[#02363a] text-white" onClick={() => window.open(getProviderWebsite(offer.provider, offer.paese), '_blank')}>
                               {t('goTo')} {offer.provider}
                             </Button>
                           </div>

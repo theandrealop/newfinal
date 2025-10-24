@@ -6,6 +6,7 @@ import { ExternalLink, Star, TrendingDown, Copy, Check, Tag } from 'lucide-react
 import { esimService } from '@/lib/esim-service'
 import { EsimOffer } from '@/types/esim'
 import Link from 'next/link'
+import { getHolaflyAffiliateLink } from '@/lib/holafly-affiliate-mapping'
 
 interface ProviderPageProps {
   params: {
@@ -69,10 +70,15 @@ export default async function ProviderPage({ params }: ProviderPageProps) {
     return logos[provider] || '/images/providers/default-logo.png'
   }
 
-  const getProviderWebsite = (provider: string) => {
+  const getProviderWebsite = (provider: string, country?: string) => {
+    // Special handling for Holafly to use country-specific affiliate links
+    if (provider.toLowerCase() === 'holafly') {
+      return getHolaflyAffiliateLink(country);
+    }
+
     const websites: Record<string, string> = {
       'Airalo': 'https://finanza.me/airalo',
-      'Holafly': 'https://finanza.me/holafly',
+      'Holafly': 'https://esim.holafly.com/it/?discount=FINANZAPERSONALE&utm_source=affiliate&utm_medium=Andrea%20Loperfido&utm_campaign=3417596&irgwc=1&tw_source=impact&tw_campaign=3417596&tw_term=2006335', // Fallback for generic Holafly
       'Saily': 'https://finanza.me/saily',
       'Ubigi': 'https://finanza.me/ubigi',
       'Nomad': 'https://finanza.me/nomad',

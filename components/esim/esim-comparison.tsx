@@ -60,7 +60,7 @@ export function EsimComparison() {
         satisfaction: 9.0
       },
       reviewUrl: '/recensioni/holafly',
-      websiteUrl: 'https://finanza.me/holafly'
+      websiteUrl: 'https://esim.holafly.com/it/?discount=FINANZAPERSONALE&utm_source=affiliate&utm_medium=Andrea%20Loperfido&utm_campaign=3417596&irgwc=1&tw_source=impact&tw_campaign=3417596&tw_term=2006335'
     },
     {
       name: 'Yesim',
