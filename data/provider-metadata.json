@@ -1,0 +1,170 @@
+[
+  {
+    "id": "airalo",
+    "name": "Airalo",
+    "logo": "/images/providers/airalo-logo.png",
+    "description": "Airalo è uno dei principali provider di eSIM globali, con copertura in oltre 190 paesi. Offre piani regionali e globali con attivazione istantanea.",
+    "website": "https://www.airalo.com/it/?irgwc=1&afsrc=1&utm_source=impact&utm_medium=affiliate&utm_campaign=Andrea+Loperfido"
+  },
+  {
+    "id": "holafly",
+    "name": "Holafly",
+    "logo": "/images/providers/holafly-logo.png",
+    "description": "Holafly specializzato in eSIM per viaggiatori, con piani illimitati e supporto multilingua. Ideale per soggiorni prolungati.",
+    "website": "https://esim.holafly.com/it/?discount=FINANZAPERSONALE&utm_source=affiliate&utm_medium=Andrea%20Loperfido&utm_campaign=3417596&irgwc=1&tw_source=impact&tw_campaign=3417596&tw_term=2006335"
+  },
+  {
+    "id": "nomad",
+    "name": "Nomad",
+    "logo": "/images/providers/nomad-logo.png",
+    "description": "Nomad offre eSIM trasferibili e piani flessibili. Perfetto per viaggiatori che cambiano spesso destinazione.",
+    "website": "https://finanza.me/nomad"
+  },
+  {
+    "id": "truphone",
+    "name": "Truphone",
+    "logo": "/images/providers/truphone-logo.png",
+    "description": "Truphone è un provider consolidato con eSIM globali e piani business. Ottima copertura in Europa e Nord America.",
+    "website": "https://truphone.com"
+  },
+  {
+    "id": "gigsky",
+    "name": "GigSky",
+    "logo": "/images/providers/gigsky-logo.png",
+    "description": "GigSky offre eSIM per oltre 190 paesi con attivazione immediata. Interfaccia semplice e supporto 24/7.",
+    "website": "https://finanza.me/gigsky"
+  },
+  {
+    "id": "esimdb",
+    "name": "eSIMdb",
+    "logo": "/images/providers/esimdb-logo.png",
+    "description": "eSIMdb è un aggregatore che confronta offerte di diversi provider. Ideale per trovare la migliore tariffa.",
+    "website": "https://esimdb.com"
+  },
+  {
+    "id": "simoptions",
+    "name": "SimOptions",
+    "logo": "/images/providers/simoptions-logo.png",
+    "description": "SimOptions offre eSIM di operatori locali in tutto il mondo. Prezzi competitivi e copertura locale.",
+    "website": "https://finanza.me/simoptions"
+  },
+  {
+    "id": "ubigi",
+    "name": "Ubigi",
+    "logo": "/images/providers/ubigi-logo.png",
+    "description": "Ubigi specializzato in eSIM per Europa e Asia. Ottimi piani per viaggi business e turistici.",
+    "website": "https://finanza.me/ubigi"
+  },
+  {
+    "id": "esimgo",
+    "name": "eSIMGo",
+    "logo": "/images/providers/esimgo-logo.png",
+    "description": "eSIMGo offre piani regionali e globali con attivazione istantanea. Interfaccia intuitiva e prezzi trasparenti.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "alosim",
+    "name": "AloSIM",
+    "logo": "/images/providers/alosim-logo.png",
+    "description": "AloSIM è un provider emergente con eSIM per oltre 170 paesi. Prezzi competitivi e supporto clienti reattivo.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "saily",
+    "name": "Saily",
+    "logo": "/images/providers/saily-logo.png",
+    "description": "Saily è un provider europeo con copertura globale e prezzi competitivi. Offre eSIM per oltre 190 paesi.",
+    "website": "https://finanza.me/saily"
+  },
+  {
+    "id": "gomoworld",
+    "name": "GoMoWorld",
+    "logo": "/images/providers/gomoworld-logo.png",
+    "description": "GoMoWorld offre eSIM per oltre 200 destinazioni con piani prepagati a partire da €3.99. Attivazione in secondi.",
+    "website": "https://finanza.me/gomoworld"
+  },
+  {
+    "id": "yesim",
+    "name": "YeSim",
+    "logo": "/images/providers/yesim-logo.png",
+    "description": "YeSim è un provider emergente con prezzi molto competitivi e copertura in oltre 150 paesi.",
+    "website": "https://finanza.me/yesim"
+  },
+  {
+    "id": "firsty",
+    "name": "Firsty",
+    "logo": "/images/providers/default-logo.png",
+    "description": "Firsty offre eSIM globali con attivazione istantanea e supporto multilingua per viaggiatori internazionali.",
+    "website": "https://finanza.me/firsty"
+  },
+  {
+    "id": "jetpac",
+    "name": "Jetpac",
+    "logo": "/images/providers/jetpac-logo.png",
+    "description": "Jetpac Global offre eSIM per viaggiatori con copertura globale e piani flessibili.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "3",
+    "name": "3",
+    "logo": "/images/providers/3-logo.png",
+    "description": "3 è un provider di eSIM con copertura globale e piani competitivi per viaggiatori internazionali.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "dtac",
+    "name": "dtac",
+    "logo": "/images/providers/dtac-logo.png",
+    "description": "dtac è un operatore thailandese che offre eSIM per viaggiatori con copertura in Thailandia e Asia.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "iij",
+    "name": "IIJ",
+    "logo": "/images/providers/iij-logo.png",
+    "description": "IIJ è un provider giapponese di eSIM con copertura in Giappone e Asia, noto per la qualità del servizio.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "maya",
+    "name": "Maya",
+    "logo": "/images/providers/maya-logo.png",
+    "description": "Maya offre eSIM globali con piani flessibili e prezzi competitivi per viaggiatori internazionali.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "nextlink",
+    "name": "NextLink",
+    "logo": "/images/providers/nextlink-logo.png",
+    "description": "NextLink è un provider di eSIM con copertura globale e piani regionali per viaggiatori business e turistici.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "roamvault",
+    "name": "RoamVault",
+    "logo": "/images/providers/roamvault-logo.png",
+    "description": "RoamVault offre eSIM per viaggiatori con copertura globale e piani prepagati a prezzi competitivi.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "sparks",
+    "name": "Sparks",
+    "logo": "/images/providers/sparks-logo.png",
+    "description": "Sparks è un provider di eSIM con copertura globale e piani flessibili per viaggiatori internazionali.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "tsimtech",
+    "name": "TSimTech",
+    "logo": "/images/providers/tsimtech-logo.png",
+    "description": "TSimTech offre eSIM per viaggiatori con copertura globale e piani competitivi per diverse destinazioni.",
+    "website": "https://finanza.me/mobimatter"
+  },
+  {
+    "id": "roamless",
+    "name": "Roamless",
+    "logo": "/images/providers/roamless-logo.png",
+    "description": "Roamless è un provider di eSIM con copertura globale e piani flessibili per viaggiatori internazionali.",
+    "website": "https://finanza.me/mobimatter"
+  }
+]

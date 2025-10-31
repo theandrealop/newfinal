@@ -1,0 +1,57 @@
+/* Disabilita completamente tutte le animazioni dei dropdown Radix UI */
+[data-radix-select-content] {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+[data-radix-select-content][data-state="open"] {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+[data-radix-select-content][data-state="closed"] {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Disabilita anche le animazioni del trigger */
+[data-radix-select-trigger] {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Disabilita le animazioni del portal */
+[data-radix-portal] {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Disabilita tutte le classi di animazione Tailwind sui componenti Radix */
+[data-radix-select-content].animate-in,
+[data-radix-select-content].animate-out,
+[data-radix-select-content].fade-in,
+[data-radix-select-content].fade-out,
+[data-radix-select-content].zoom-in,
+[data-radix-select-content].zoom-out,
+[data-radix-select-content].slide-in,
+[data-radix-select-content].slide-out {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Disabilita anche le animazioni sui viewport */
+[data-radix-select-viewport] {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Disabilita le animazioni sui separatori */
+[data-radix-select-separator] {
+  animation: none !important;
+  transition: none !important;
+}

@@ -1,0 +1,1317 @@
+{
+    "Homepage": {
+      "title": "Compare eSIMs and Cheap Flights",
+      "subtitle": "Find the best eSIMs for travel and cheap flights. Save on roaming and transport.",
+      "emailPlaceholder": "Your email",
+      "subscribeButton": "Subscribe",
+      "submitting": "...",
+      "lovedBy": "Loved",
+      "users": "by 20k+",
+      "rating": "rating",
+      "newOffer": "New deal!",
+      "romeTokyo": "Rome - Tokyo",
+      "price": "€389 RT",
+      "savings": "Save 65% off the regular price",
+      "tiredOfSearching": "Tired of searching for flight deals?",
+      "makeTravelEasier": "Punti Furbi makes travel easier",
+      "trackPrices": "Track prices for all your trips",
+      "trackPricesDesc": "Enter your trip details: we monitor prices and notify you when they change.",
+      "discoverOffers": "Discover flight deals →",
+      "dreamDestinations": "Deals to your dream destinations",
+      "dreamDestinationsDesc": "Get alerts on price drops and error fares. We find the best deals; you just book.",
+      "readGuides": "Read travel guides →",
+      "bookFlight": "Book your flight anywhere",
+      "bookFlightDesc": "Like a deal? Book directly with the airline, with no middlemen or markups.",
+      "compareEsim": "Compare travel eSIMs →",
+      "subscribe": "Subscribe",
+      "discoverServices": "Discover our services",
+      "everythingYouNeed": "Everything you need to travel and save",
+      "compareEsimTitle": "Compare eSIMs",
+      "compareEsimDesc": "Find the best eSIM for your trips. Compare prices, coverage, and features.",
+      "compareEsimButton": "Compare eSIMs",
+      "cheapFlightsTitle": "Cheap Flights",
+      "cheapFlightsDesc": "Discover the best flight deals. We track prices for you.",
+      "seeOffers": "See Deals",
+      "travelGuidesTitle": "Travel Guides",
+      "travelGuidesDesc": "Read our tips and guides to travel better and save money.",
+      "readBlog": "Read Blog",
+      "joinMillions": "Join millions of travelers who save",
+      "ratedExcellent": "Rated excellent on TrustPilot",
+      "newsletterSignup": "Subscribe to the Newsletter",
+      "Testimonials": {
+        "marco": "I found the perfect family vacation thanks to Punti Furbi! Saved over €600.",
+        "giulia": "Incredible! I managed to fly to New York for half the usual price.",
+        "alessandro": "Punti Furbi alerts saved me thousands of euros on flights to Japan.",
+        "carla": "I can finally afford to travel often thanks to Punti Furbi's deals!",
+        "luca": "With Punti Furbi I discovered destinations I never thought I could afford.",
+        "sofia": "Punti Furbi notifications are always timely and have saved me hundreds of euros."
+      }
+    },
+    "Navigation": {
+      "home": "Home",
+      "cheapFlights": "Cheap flights",
+      "esim": "eSIM",
+      "blog": "Blog",
+      "premium": "Premium",
+      "elite": "Elite",
+      "subscribe": "Subscribe"
+    },
+    "Footer": {
+      "followUs": "Follow us on social",
+      "company": "Company",
+      "aboutUs": "About us",
+      "contact": "Contact",
+      "legal": "Legal",
+      "termsOfUse": "Terms of use",
+      "privacyPolicy": "Privacy policy",
+      "proudlyMade": "Proudly made in Italy",
+      "tagline": "Punti Furbi - Your eSIM comparison tool for smart travel",
+      "copyright": "© 2024-2025 Punti Furbi. All rights reserved.",
+      "disclosure": "Advertiser disclosure:",
+      "disclosureText": "Instead of ad banners and paywalls, we earn through affiliate links to various eSIM service providers featured on the site. While we do our best to explore the market to find the best offers, we cannot consider every possible product available to you. Our wide range of trusted affiliate partners allows us to provide detailed, impartial, solution-oriented recommendations for every type of consumer question and problem. This lets us match our users with the most suitable providers and, in turn, match our providers with new customers, creating a win-win for all parties. However, although some of our links may earn us a commission, this never affects the independence and integrity of our opinions, recommendations, and ratings."
+    },
+    "Common": {
+      "loading": "Loading...",
+      "error": "Error",
+      "retry": "Retry",
+      "close": "Close",
+      "open": "Open",
+      "save": "Save",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "search": "Search",
+      "filter": "Filter",
+      "sort": "Sort",
+      "view": "View",
+      "edit": "Edit",
+      "delete": "Delete",
+      "add": "Add",
+      "remove": "Remove",
+      "select": "Select",
+      "all": "All",
+      "none": "None",
+      "yes": "Yes",
+      "no": "No",
+      "ok": "OK"
+    },
+    "VoliEconomici": {
+      "title": "Cheap Flights",
+      "subtitle": "Discover the best flight deals and save on your trips",
+      "activeOffers": "Active Deals",
+      "terminatedOffers": "Ended Deals",
+      "viewOffer": "View Deal",
+      "bookNow": "Book Now",
+      "bookNowButton": "Book now",
+      "discount": "Discount",
+      "originalPrice": "Original price",
+      "newPrice": "New price",
+      "dates": "Dates",
+      "airline": "Airline",
+      "stops": "Stops",
+      "duration": "Duration",
+      "description": "Description",
+      "noOffers": "No deals available at the moment",
+      "loading": "Loading deals...",
+      "error": "Error loading deals",
+      "selectAirport": "Select your departure airport",
+      "offersAvailable": "deals available from",
+      "featuredOffers": "Featured deals",
+      "featuredSubtitle": "Top picks selected for you",
+      "terminated": "Ended",
+      "offerTerminated": "Deal ended",
+      "offerNotAvailable": "This deal is no longer available",
+      "dontMiss": "Don't miss the next deals",
+      "subscribeText": "Subscribe for free and receive real-time alerts on the best flight deals",
+      "subscribeButton": "Subscribe free",
+      "perPerson": "RT per person",
+      "directFlight": "Direct flight",
+      "nonStop": "Non-stop flight",
+      "oneStop": "1 stop",
+      "multipleStops": "Multiple stops"
+    },
+        "ESim": {
+          "title": "eSIM for Travel",
+          "subtitle": "Compare the best eSIMs to travel without roaming limits",
+          "heroTitle": "Compare eSIM: Find the perfect data plan for your trip",
+          "heroSubtitle": "Compare prices, coverage and features of all major eSIM providers. Find the most convenient rate for your destination.",
+          "stats": {
+            "countries": "Countries covered",
+            "providers": "Providers compared",
+            "activation": "Instant activation", 
+            "hiddenCosts": "Hidden costs"
+          },
+          "smartFilter": {
+            "title": "Find the best eSIM package",
+            "subtitle": "Compare prices and find the perfect offer for your trip",
+            "whereGoing": "WHERE ARE YOU GOING?",
+            "countryPlaceholder": "Click here to select a country",
+            "country": "Country",
+            "howLong": "HOW LONG IS YOUR TRIP?",
+            "selectDuration": "Select duration",
+            "lessThanWeek": "Less than a week",
+            "oneTwoWeeks": "1-2 weeks",
+            "fifteenTwentyNine": "15-29 days",
+            "thirtyPlus": "30 days or more",
+            "howMuchData": "HOW MUCH DATA DO YOU NEED?",
+            "showAll": "Show all",
+            "fiveGBPlus": "5 GB or more",
+            "tenGBPlus": "10 GB or more",
+            "twentyGBPlus": "20 GB or more",
+            "fiftyGBPlus": "50 GB or more",
+            "hundredGBPlus": "100 GB or more",
+            "unlimitedData": "Unlimited data",
+            "compareButton": "Compare eSIM",
+            "partnerProviders": "Partner providers",
+            "partnerDescription": "We collaborate with the best eSIM providers in the world"
+          },
+          "results": {
+            "title": "Results ({count} offers found)",
+            "resultsFound": "Results found",
+            "totalData": "Total data",
+            "validFor": "Valid for",
+            "days": "days",
+            "planType": "Plan type",
+            "dataOnly": "Data only",
+            "price": "Price",
+            "goTo": "Go to",
+            "readReview": "Read review",
+            "unlimited": "Unlimited",
+            "noOffersFound": "No offers found with the selected filters.",
+            "removeFilters": "Remove filters"
+          },
+          "sorting": {
+            "cheapest": "Cheapest",
+            "bestPricePerGB": "Best price/GB",
+            "moreGB": "More GB",
+            "longestValidity": "Longest validity",
+            "provider": "Provider"
+          },
+          "currency": {
+            "currency": "Currency"
+          },
+      "databaseStats": {
+        "totalOffers": "7383",
+        "coveredCountries": "210",
+        "providers": "16",
+        "avgPrice": "25.85"
+      },
+      "compareButton": "Compare eSIMs",
+      "learnMore": "Learn more",
+      "features": {
+        "title": "Why choose eSIM?",
+        "noRoaming": "No more expensive roaming",
+        "noRoamingDesc": "Avoid shocking roaming bills with affordable local rates",
+        "instantActivation": "Instant activation",
+        "instantActivationDesc": "Activate your eSIM in minutes, wherever you are",
+        "globalCoverage": "Global coverage",
+        "globalCoverageDesc": "Browse in 190+ countries with the best local networks",
+        "secureConnection": "Secure connection",
+        "secureConnectionDesc": "Protect your data with encrypted connections",
+        "onlinePurchase": "Online purchase",
+        "onlinePurchaseDesc": "Buy online and get your eSIM instantly by email",
+        "multiSim": "Multi-SIM support",
+        "multiSimDesc": "Multiple numbers on one device"
+      },
+      "deviceCompatibility": {
+        "title": "eSIM Device Compatibility",
+        "desc": "Check if your device supports eSIM with our practical brand-by-brand guides.",
+        "devices": [
+          {
+            "model": "iPhone 12 mini",
+            "brand": "Apple",
+            "compatibility": "Full",
+            "features": ["eSIM", "Dual SIM", "5G", "Hotspot"],
+            "setup": "Settings > Cellular > Add Cellular Plan"
+          },
+          {
+            "model": "Samsung Galaxy S24",
+            "brand": "Samsung",
+            "compatibility": "Full",
+            "features": ["eSIM", "Dual SIM", "5G", "Hotspot"],
+            "setup": "Settings > Connections > SIM manager"
+          },
+          {
+            "model": "Pixel 7a",
+            "brand": "Google",
+            "compatibility": "Full",
+            "features": ["eSIM", "Dual SIM", "5G", "Hotspot"],
+            "setup": "Settings > Network & Internet > SIMs"
+          },
+          {
+            "model": "Apple Watch Series 9",
+            "brand": "Apple",
+            "compatibility": "Limited",
+            "features": ["eSIM", "Cellular", "Number sharing"],
+            "setup": "Apple Watch app > Cellular"
+          },
+          {
+            "model": "Samsung Galaxy A54",
+            "brand": "Samsung",
+            "compatibility": "Partial",
+            "features": ["eSIM", "Dual SIM", "4G"],
+            "setup": "Settings > Connections > SIM manager"
+          }
+        ]
+      },
+      "plans": {
+        "title": "Popular eSIM Plans",
+        "viewAll": "See all plans",
+        "durations": [
+          {
+            "title": "Italy 7-day eSIM - Best",
+            "price": "€8-15",
+            "data": "5-20 GB",
+            "provider": "Saily",
+            "features": ["Instant activation", "5G", "Hotspot", "SMS"],
+            "idealFor": ["Long weekends", "Short trips", "City breaks"]
+          },
+          {
+            "title": "Italy Weekend eSIM - Budget",
+            "price": "€5-10",
+            "data": "3-10 GB",
+            "provider": "Nomad",
+            "features": ["Low price", "Quick activation", "4G/5G"],
+            "idealFor": ["Short weekends", "Lightning trips", "Tight budgets"]
+          },
+          {
+            "title": "Italy 3-month eSIM - Unlimited",
+            "price": "€45-80",
+            "data": "Unlimited",
+            "provider": "Holafly",
+            "features": ["Unlimited data", "5G", "Hotspot", "24/7 support"],
+            "idealFor": ["Long stays", "Temporary work", "Study abroad"]
+          },
+          {
+            "title": "Italy Daily eSIM - Cost",
+            "price": "€2-5",
+            "data": "1-3 GB",
+            "provider": "Ubigi",
+            "features": ["Instant activation", "Fixed price", "4G"],
+            "idealFor": ["Day trips", "Business trips", "eSIM testing"]
+          },
+          {
+            "title": "Italy Monthly eSIM - Popular",
+            "price": "€15-30",
+            "data": "10-50 GB",
+            "provider": "Airalo",
+            "features": ["Great value for money", "5G", "Hotspot", "Top-up"],
+            "idealFor": ["Monthly travel", "Vacations", "Temporary work"]
+          },
+          {
+            "title": "Italy 6-month eSIM - Value",
+            "price": "€80-150",
+            "data": "50-100 GB",
+            "provider": "Saily",
+            "features": ["Half-year discount", "5G", "Hotspot", "Dedicated support"],
+            "idealFor": ["Long stays", "Temporary work", "Studies"]
+          }
+        ]
+      },
+      "specialSolutions": {
+        "title": "eSIM for Specific Segments",
+        "students": {
+          "provider": "Saily",
+          "priceRange": "€5-12",
+          "duration": "1-6 months",
+          "features": ["Student pricing", "EU coverage", "Multilingual support"],
+          "advantages": ["Special discounts", "Flexible plans"]
+        },
+        "family": {
+          "provider": "Airalo",
+          "priceRange": "€8-20",
+          "duration": "7-30 days",
+          "features": ["Family bundles", "Hotspot sharing", "Parental controls"],
+          "advantages": ["Family discounts", "Shared data"]
+        },
+        "senior": {
+          "provider": "Holafly",
+          "priceRange": "€15-25",
+          "duration": "7-30 days",
+          "features": ["Phone support", "Assisted setup", "Unlimited plans"],
+          "advantages": ["Phone support", "24/7 assistance"]
+        },
+        "kids": {
+          "provider": "Nomad",
+          "priceRange": "€6-15",
+          "duration": "7-30 days",
+          "features": ["Parental controls", "Usage limits", "Content filters"],
+          "advantages": ["Usage control", "Time/data limits"]
+        },
+        "business": {
+          "provider": "Ubigi",
+          "priceRange": "€12-30",
+          "duration": "7-90 days",
+          "features": ["Priority support", "Business invoicing", "VPN"],
+          "advantages": ["Priority support", "Business invoicing"]
+        },
+        "frequent": {
+          "provider": "Saily",
+          "priceRange": "€10-25",
+          "duration": "30-365 days",
+          "features": ["Global coverage", "Annual plans", "Auto top-up"],
+          "advantages": ["Coverage in 190+ countries", "Annual plans"]
+        }
+      },
+      "howToChoose": {
+        "briefTrips": "Choose daily or weekly plans to save",
+        "mediumTrips": "Monthly plans = best value for money",
+        "longStays": "Half-year plans with discounts/top-ups"
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "whatIsESim": "What is an eSIM?",
+        "whatIsESimAnswer": "An eSIM is a digital SIM embedded in your device that lets you activate data plans without a physical SIM.",
+        "howToActivate": "How do I activate an eSIM?",
+        "howToActivateAnswer": "Download the provider's app, scan the QR code, and follow the instructions. Activation takes just a few minutes.",
+        "deviceCompatibility": "Is my device compatible?",
+        "deviceCompatibilityAnswer": "Most modern smartphones support eSIM. Check your device specs to be sure.",
+        "questions": [
+          {
+            "q": "What is an eSIM?",
+            "a": "An eSIM is a digital SIM integrated into your device: you can activate data plans without a physical SIM."
+          },
+          {
+            "q": "How do I activate an eSIM?",
+            "a": "Download the provider app, scan the QR code, and follow the instructions. It takes just a few minutes."
+          },
+          {
+            "q": "Is my device compatible?",
+            "a": "Most recent smartphones support eSIM. Check the specifications to be sure."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Start Traveling Smart",
+        "subtitle": "Choose the perfect eSIM plan for your travel needs",
+        "getStarted": "Get Started"
+      },
+      "newsletter": {
+        "title": "Subscribe to Newsletter",
+        "subtitle": "Get the best flight deals directly in your email inbox",
+        "emailPlaceholder": "Your email",
+        "subscribeButton": "Subscribe",
+        "submitting": "Submitting...",
+        "footer": "Free forever • No credit card required",
+        "errorMessage": "An error occurred. Please try again later."
+      },
+      "troubleshooting": {
+        "title": "eSIM Troubleshooting - Fix Common Problems",
+        "subtitle": "Solve the most common eSIM problems. Complete guide for activation, configuration and error resolution.",
+        "commonIssues": [
+          {
+            "title": "eSIM QR code won't scan",
+            "priority": "Critical",
+            "solution": "Make sure the camera is clean and the QR code is well lit"
+          },
+          {
+            "title": "eSIM activation failed",
+            "priority": "Critical",
+            "solution": "Check your internet connection and the data you entered"
+          },
+          {
+            "title": "eSIM not working in Italy",
+            "priority": "Medium",
+            "solution": "Check APN settings and coverage"
+          },
+          {
+            "title": "eSIM expired",
+            "priority": "Medium",
+            "solution": "Buy a new plan or extend the existing one"
+          },
+          {
+            "title": "Dual SIM eSIM - Network conflict",
+            "priority": "Low",
+            "solution": "Properly configure dual SIM settings"
+          },
+          {
+            "title": "Slow eSIM speeds",
+            "priority": "Medium",
+            "solution": "Check 5G coverage and network settings"
+          }
+        ],
+        "cantResolve": "Can't resolve the problem?",
+        "providerSupport": "Provider Support",
+        "providerSupportDesc": "Contact your eSIM provider support directly",
+        "contactSupport": "Contact Support",
+        "restartDevice": "Restart Device",
+        "restartDeviceDesc": "Often a simple restart solves many problems",
+        "restartGuide": "Restart Guide",
+        "checkCompatibility": "Check Compatibility",
+        "checkCompatibilityDesc": "Make sure your device supports eSIM",
+        "compatibilityTest": "Compatibility Test",
+        "problems": {
+          "qrCode": {
+            "title": "eSIM QR code won't scan",
+            "quickFix": "Quick solution: Make sure the camera is clean and the QR code is well lit"
+          },
+          "activationFailed": {
+            "title": "eSIM activation failed",
+            "quickFix": "Quick solution: Check your internet connection and the data you entered"
+          },
+          "notWorkingItaly": {
+            "title": "eSIM not working in Italy",
+            "quickFix": "Quick solution: Check APN settings and coverage"
+          },
+          "expired": {
+            "title": "eSIM expired",
+            "quickFix": "Quick solution: Buy a new plan or extend the existing one"
+          },
+          "dualSimConflict": {
+            "title": "eSIM dual SIM - Network conflict",
+            "quickFix": "Quick solution: Properly configure dual SIM settings"
+          },
+          "slowSpeed": {
+            "title": "eSIM slow speed",
+            "quickFix": "Quick solution: Check 5G coverage and network settings"
+          }
+        }
+      },
+      "providerComparison": [
+        {
+          "provider": "Saily",
+          "score": "9.2",
+          "details": "European provider with global coverage and competitive prices",
+          "countries": "190",
+          "priceRange": "€8-15",
+          "duration": "7-30 days"
+        },
+        {
+          "provider": "Airalo",
+          "score": "8.9",
+          "details": "Global leader with the widest country coverage",
+          "countries": "200",
+          "priceRange": "€10-20",
+          "duration": "7-365 days"
+        },
+        {
+          "provider": "Holafly",
+          "score": "8.7",
+          "details": "Specialized in unlimited data for travelers",
+          "countries": "160",
+          "priceRange": "€15-30",
+          "duration": "5-90 days"
+        },
+        {
+          "provider": "Yesim",
+          "score": "8.5",
+          "details": "Emerging provider with very competitive prices",
+          "countries": "150",
+          "priceRange": "€6-12",
+          "duration": "7-30 days"
+        },
+        {
+          "provider": "Nomad",
+          "score": "8.3",
+          "details": "Flexible with customizable plans",
+          "countries": "165",
+          "priceRange": "€8-18",
+          "duration": "1-30 days"
+        },
+        {
+          "provider": "Ubigi",
+          "score": "8.1",
+          "details": "Specialized in Asia and the Pacific",
+          "countries": "120",
+          "priceRange": "€7-15",
+          "duration": "7-30 days"
+        },
+        {
+          "provider": "GoMoWorld",
+          "score": "8.4",
+          "details": "Prepaid plans from €3.99 with activation in seconds",
+          "countries": "200",
+          "priceRange": "€4-15",
+          "duration": "7-30 days"
+        },
+        {
+          "provider": "Firsty",
+          "score": "8.2",
+          "details": "Global eSIMs with instant activation and multilingual support",
+          "countries": "180",
+          "priceRange": "€6-18",
+          "duration": "7-30 days"
+        }
+      ],
+          "aboutTrust": {
+            "title": "About, trust and transparency",
+            "subtitle": "Why trust Punti Furbi for your eSIM choices",
+            "whyTrust": "Why trust Punti Furbi?",
+            "mission": "Our mission is to help you find the best eSIM offers with transparency and independence",
+            "stats": {
+              "users": "More than 15 million users",
+              "usersDesc": "Our community of travelers has chosen us to find the best eSIM offers worldwide.",
+              "tests": "Independent tests",
+              "testsDesc": "Our experts personally test every eSIM service to ensure accurate and unbiased reviews.",
+              "opinions": "Unbiased opinions",
+              "opinionsDesc": "Commissions do not influence our opinions. We only recommend services we truly believe are valid.",
+              "support": "Dedicated support",
+              "supportDesc": "Our support team is always available to help you choose the perfect eSIM for your needs."
+            },
+            "numbers": {
+              "title": "Our numbers speak for us",
+              "countries": "Countries covered",
+              "providers": "Providers tested",
+              "reviews": "Verified reviews",
+              "support": "Support available"
+            },
+            "links": {
+              "about": "About us",
+              "contact": "Contact",
+              "privacy": "Privacy Policy",
+              "terms": "Terms of use"
+            },
+            "footer": "Punti Furbi is an independent comparison site. We may receive commissions when you purchase through our links, but this does not affect our judgments."
+          },
+          "databaseStats": {
+            "title": "Our eSIM Database",
+            "subtitle": "Constantly updated with the best market offers",
+            "totalOffers": "Total Offers",
+            "offersAvailable": "Available offers",
+            "coveredCountries": "Countries Covered",
+            "destinationsAvailable": "Available destinations",
+            "providers": "Providers",
+            "verifiedPartners": "Verified partners",
+            "avgPrice": "Average Price",
+            "perOffer": "Per offer",
+            "bestOffer": "🏆 Cheapest Offer",
+            "bestOfferDesc": "Firsty - Morocco(Unlimited GB, 1 day)",
+            "bestOfferPrice": "€0"
+          },
+          "whyUse": {
+            "title": "Why use an eSIM?",
+            "description": "eSIMs offer a completely digital solution for mobile connectivity, more practical and convenient than traditional SIMs. With eSIM data plans you can stay connected without interruption during your travels, using other devices like tablets and laptops immediately after activation. Unlimited data plans allow you to browse freely, while data connection remains stable thanks to local provider networks.",
+            "noPhysicalSim": {
+              "title": "No physical SIM",
+              "description": "No more SIM cards to manage. eSIMs are integrated into the device and activate digitally. They can be activated in 24 hours with proper use of the QR code, eliminating the need for a physical SIM card."
+            },
+            "globalCoverage": {
+              "title": "Global coverage",
+              "description": "Works in over 190 countries with a single eSIM. Perfect for frequent travelers. After activating the eSIM, coverage may vary by country, but always guarantees a stable data connection through local networks."
+            },
+            "instantActivation": {
+              "title": "Instant activation",
+              "description": "Connected in seconds. Just scan a QR code to activate your eSIM."
+            },
+            "advancedSecurity": {
+              "title": "Advanced security",
+              "description": "Impossible to steal physically. eSIMs are protected by advanced encryption."
+            },
+            "onlinePurchase": {
+              "title": "Online purchase",
+              "description": "No more queues in stores. Buy online and get your eSIM instantly by email."
+            },
+            "multiSimSupport": {
+              "title": "Multi-SIM support",
+              "description": "Multiple numbers on one device. Keep your main SIM and add eSIMs for travel."
+            }
+          },
+          "deviceCompatibility": {
+            "title": "eSIM Device Compatibility",
+            "subtitle": "Find out if your device supports eSIM and how to configure it. Complete guide for iPhone, Samsung, Pixel and smartwatch.",
+            "howToCheck": {
+              "title": "How to Check eSIM Compatibility",
+              "checksToDo": "Checks to Do",
+              "checks": {
+                "0": "Verify the device was purchased after 2018",
+                "1": "Check manufacturer technical specifications",
+                "2": "Verify the device is unlocked",
+                "3": "Make sure the software is updated"
+              },
+              "quickTest": "Quick Test",
+              "iphoneTest": "iPhone:\n\nGo to Settings > General > Info and look for \"eSIM\"",
+              "androidTest": "Android:\n\nSettings > Connections > SIM manager",
+              "smartwatchTest": "Smartwatch:\n\nCheck if it's the Cellular/LTE model"
+            }
+          },
+          "targetGroups": {
+            "title": "eSIM for Specific Targets",
+            "subtitle": "Personalized eSIM solutions for every type of traveler. Students, families, seniors, business: find the perfect solution for you.",
+            "students": {
+              "title": "eSIM for Erasmus Students",
+              "provider": "Saily",
+              "description": "Affordable eSIM solutions for students in European mobility",
+              "price": "€5-12",
+              "duration": "1-6 months",
+              "features": {
+                "0": "Student pricing",
+                "1": "EU coverage",
+                "2": "Multilingual support",
+                "3": "Simplified documentation"
+              },
+              "advantages": {
+                "0": "Special discounts for students",
+                "1": "Flexible plans for semesters"
+              },
+              "cta": "Discover Solutions"
+            },
+            "senior": {
+              "title": "eSIM for Seniors - Organized Travel",
+              "provider": "Holafly",
+              "description": "Simple and reliable eSIMs for senior travelers",
+              "price": "€15-25",
+              "duration": "7-30 days",
+              "features": {
+                "0": "Phone support",
+                "1": "Assisted setup",
+                "2": "Unlimited plans",
+                "3": "24/7 assistance"
+              },
+              "advantages": {
+                "0": "Dedicated phone support",
+                "1": "Assisted setup"
+              },
+              "cta": "Discover Solutions"
+            },
+            "family": {
+              "title": "eSIM for Families - 4 People",
+              "provider": "Airalo",
+              "description": "Family packages with data sharing and parental controls",
+              "price": "€8-20",
+              "duration": "7-30 days",
+              "features": {
+                "0": "Family packages",
+                "1": "Hotspot sharing",
+                "2": "Parental controls",
+                "3": "Centralized management"
+              },
+              "advantages": {
+                "0": "Family package discounts",
+                "1": "Data sharing between devices"
+              },
+              "cta": "Discover Solutions"
+            },
+            "kids": {
+              "title": "eSIM for Kids - Parental Control",
+              "provider": "Nomad",
+              "description": "Safe eSIMs for children with advanced parental controls",
+              "price": "€6-15",
+              "duration": "7-30 days",
+              "features": {
+                "0": "Parental controls",
+                "1": "Usage limits",
+                "2": "Content filters",
+                "3": "Real-time monitoring"
+              },
+              "advantages": {
+                "0": "Complete consumption control",
+                "1": "Time and data limits"
+              },
+              "cta": "Discover Solutions"
+            },
+            "business": {
+              "title": "eSIM for Business - Work Travel",
+              "provider": "Ubigi",
+              "description": "Professional eSIM solutions for business travel",
+              "price": "€12-30",
+              "duration": "7-90 days",
+              "features": {
+                "0": "Priority support",
+                "1": "Business invoicing",
+                "2": "Corporate VPN",
+                "3": "Automatic backup"
+              },
+              "advantages": {
+                "0": "24/7 priority support",
+                "1": "Business invoicing"
+              },
+              "cta": "Discover Solutions"
+            },
+            "frequent": {
+              "title": "eSIM for Frequent Travelers",
+              "provider": "Saily",
+              "description": "Global eSIMs for those who travel frequently around the world",
+              "price": "€10-25",
+              "duration": "30-365 days",
+              "features": {
+                "0": "Global coverage",
+                "1": "Annual plans",
+                "2": "Auto top-up",
+                "3": "Dedicated app"
+              },
+              "advantages": {
+                "0": "Coverage in 190+ countries",
+                "1": "Convenient annual plans"
+              },
+              "cta": "Discover Solutions"
+            },
+            "howToChoose": {
+              "title": "How to Choose the Right Solution",
+              "students": {
+                "title": "For Students and Young People",
+                "features": {
+                  "0": "Discounted prices and flexible plans",
+                  "1": "Multilingual support for studies abroad",
+                  "2": "Simplified documentation"
+                }
+              },
+              "families": {
+                "title": "For Families and Seniors",
+                "features": {
+                  "0": "Dedicated phone support",
+                  "1": "Parental controls for children",
+                  "2": "Convenient family packages"
+                }
+              }
+            }
+          },
+          "durationPlans": {
+            "title": "eSIM Plans by Duration",
+            "subtitle": "Choose the perfect eSIM plan for your trip duration. From daily to six-monthly, find the most convenient solution.",
+            "sevenDays": {
+              "title": "Italy 7-day eSIM - Best",
+              "description": "Perfect for long weekends and short trips",
+              "price": "€8-15",
+              "data": "5-20 GB",
+              "bestProvider": "Saily",
+              "features": {
+                "0": "Instant activation",
+                "1": "5G",
+                "2": "Hotspot",
+                "3": "SMS"
+              },
+              "idealFor": {
+                "0": "Long weekends",
+                "1": "Short trips",
+                "2": "City breaks"
+              },
+              "savings": "Up to 60% vs roaming",
+              "cta": "Compare 7-day Plans",
+              "popularity": "Very Popular"
+            },
+            "weekend": {
+              "title": "Italy Weekend eSIM - Budget",
+              "description": "Budget solution for 2-3 day weekends",
+              "price": "€5-10",
+              "data": "3-10 GB",
+              "bestProvider": "Nomad",
+              "features": {
+                "0": "Low price",
+                "1": "Quick activation",
+                "2": "4G/5G"
+              },
+              "idealFor": {
+                "0": "Short weekends",
+                "1": "Lightning trips",
+                "2": "Tight budgets"
+              },
+              "savings": "Up to 70% vs roaming",
+              "cta": "Compare Weekend Plans",
+              "popularity": "Popular"
+            },
+            "threeMonths": {
+              "title": "Italy 3-month eSIM - Unlimited",
+              "description": "Long plan with unlimited data for extended stays",
+              "price": "€45-80",
+              "data": "Unlimited",
+              "bestProvider": "Holafly",
+              "features": {
+                "0": "Unlimited data",
+                "1": "5G",
+                "2": "Hotspot",
+                "3": "24/7 support"
+              },
+              "idealFor": {
+                "0": "Long stays",
+                "1": "Temporary work",
+                "2": "Study abroad"
+              },
+              "savings": "Up to 50% vs monthly plans",
+              "cta": "Compare 3-month Plans",
+              "popularity": "Popular"
+            },
+            "daily": {
+              "title": "Italy Daily eSIM - Cost",
+              "description": "Daily plan for one-day trips",
+              "price": "€2-5",
+              "data": "1-3 GB",
+              "bestProvider": "Ubigi",
+              "features": {
+                "0": "Instant activation",
+                "1": "Fixed price",
+                "2": "4G"
+              },
+              "idealFor": {
+                "0": "Day trips",
+                "1": "Business trips",
+                "2": "eSIM testing"
+              },
+              "savings": "Up to 80% vs roaming",
+              "cta": "Compare Daily Plans",
+              "popularity": "Niche"
+            },
+            "monthly": {
+              "title": "Italy Monthly eSIM - Popular",
+              "description": "The most popular plan for one-month trips",
+              "price": "€15-30",
+              "data": "10-50 GB",
+              "bestProvider": "Airalo",
+              "features": {
+                "0": "Great value for money",
+                "1": "5G",
+                "2": "Hotspot",
+                "3": "Top-up"
+              },
+              "idealFor": {
+                "0": "Monthly travel",
+                "1": "Vacations",
+                "2": "Temporary work"
+              },
+              "savings": "Up to 65% vs roaming",
+              "cta": "Compare 1-month Plans",
+              "popularity": "Very Popular"
+            },
+            "sixMonths": {
+              "title": "Italy 6-month eSIM - Value",
+              "description": "Six-month plan with significant discounts",
+              "price": "€80-150",
+              "data": "50-100 GB",
+              "bestProvider": "Saily",
+              "features": {
+                "0": "Half-year discount",
+                "1": "5G",
+                "2": "Hotspot",
+                "3": "Dedicated support"
+              },
+              "idealFor": {
+                "0": "Long stays",
+                "1": "Temporary work",
+                "2": "Studies"
+              },
+              "savings": "Up to 40% vs monthly plans",
+              "cta": "Compare 6-month Plans",
+              "popularity": "Niche"
+            },
+            "howToChooseDuration": {
+              "title": "How to Choose the Right Duration",
+              "shortTrips": {
+                "title": "Short Trips (1-7 days)",
+                "description": "Choose daily or weekly plans to maximize savings"
+              },
+              "mediumTrips": {
+                "title": "Medium Trips (1-3 months)",
+                "description": "Monthly plans offer the best value for money"
+              },
+              "longStays": {
+                "title": "Long Stays (3+ months)",
+                "description": "Six-month plans with significant discounts and top-ups"
+              }
+            }
+          },
+          "videoSection": {
+            "title": "Video and Visual",
+            "subtitle": "Discover everything you need to know about eSIMs in our complete video",
+            "videoTitle": "Airalo vs Holafly: Which is the Best eSIM?",
+            "videoDescription": "Updated Review & Real Data to choose the best eSIM",
+            "playButton": "Play",
+            "watchOnYouTube": "Watch on YouTube",
+            "shareButton": "Share",
+            "whatYouWillLearn": "What you will learn in this video:",
+            "learnings": {
+              "0": "How eSIMs work and differences with traditional SIMs",
+              "1": "How to choose the best provider for your destination",
+              "2": "Step-by-step activation process",
+              "3": "Tips to save on roaming costs",
+              "4": "Troubleshooting the most common problems"
+            }
+          },
+          "howItWorks": {
+            "title": "What is an eSIM? How does it really work?",
+            "subtitle": "Discover everything you need to know about eSIMs and compare with traditional SIMs",
+            "whatIsEsim": {
+              "title": "What is an eSIM?",
+              "description": "An eSIM (embedded SIM) is a virtual SIM integrated into the device that allows you to activate data plans without having to physically insert a SIM card.",
+              "integrated": "Integrated into the device",
+              "noPhysicalCard": "No physical card to manage"
+            },
+            "howEsimWorks": {
+              "title": "How do eSIMs work?",
+              "description": "Activation is simple and fast: you buy the eSIM online, receive a QR code or activation link, and the eSIM activates automatically.",
+              "step1": "Buy online",
+              "step2": "Receive QR code via email",
+              "step3": "Scan and activate"
+            },
+            "prosCons": {
+              "esim": {
+                "title": "eSIM Pros & Cons",
+                "advantages": {
+                  "title": "Advantages ✅",
+                  "0": "No physical SIM card to manage",
+                  "1": "Instant activation",
+                  "2": "More secure (impossible to steal)",
+                  "3": "Multi-SIM support",
+                  "4": "Simple online purchase",
+                  "5": "Often cheaper than roaming"
+                },
+                "disadvantages": {
+                  "title": "Disadvantages ❌",
+                  "0": "Not all devices support eSIM",
+                  "1": "Difficult to transfer to another device",
+                  "2": "Some providers have limitations",
+                  "3": "Technical support may be limited"
+                }
+              },
+              "physicalSim": {
+                "title": "Physical SIM Pros & Cons",
+                "advantages": {
+                  "title": "Advantages ✅",
+                  "0": "Universal compatibility",
+                  "1": "Easy to transfer between devices",
+                  "2": "Consolidated technical support",
+                  "3": "No software dependency"
+                },
+                "disadvantages": {
+                  "title": "Disadvantages ❌",
+                  "0": "Physical card to manage and not lose",
+                  "1": "More complex activation",
+                  "2": "Can be stolen or damaged",
+                  "3": "Often more expensive for roaming",
+                  "4": "Device space limitations"
+                }
+              }
+            },
+            "whichToChoose": {
+              "title": "Which to choose?",
+              "description": "eSIMs are the best choice for modern travelers thanks to their practicality, security and convenience. However, make sure your device supports eSIMs before buying one.",
+              "checkCompatibility": "Check your device compatibility in settings"
+            }
+          },
+          "providerComparison": {
+            "title": "Compare BEST eSIMs",
+            "subtitle": "Compare the main eSIM providers and find the perfect one for your needs",
+            "notSure": "Not sure which one to choose?",
+            "readReviews": "Read our detailed reviews for each provider and discover which one best fits your travel needs.",
+            "compareAll": "Compare all providers",
+            "readReview": "Read review",
+            "reviewsAndComparisons": "Reviews and detailed comparisons",
+            "detailedArticles": "Detailed articles on the main eSIM providers with real tests and updated opinions"
+          },
+          "blogArticles": {
+            "title": "Reviews and detailed comparisons",
+            "subtitle": "Detailed articles on the main eSIM providers with real tests and updated opinions",
+            "loading": "Loading eSIM guides...",
+            "relatedGuides": "Related guides",
+            "relatedGuidesSubtitle": "Articles and useful guides to deepen your knowledge of the eSIM world",
+            "seeAllGuides": "See all eSIM guides"
+          },
+          "faq": {
+            "title": "eSIM FAQ - Frequently Asked Questions",
+            "subtitle": "Find answers to the most common eSIM questions. Troubleshooting, compatibility, features and comparisons to help you choose the right solution.",
+            "troubleshooting": {
+              "title": "Troubleshooting and Common Problems",
+              "qrCode": "eSIM QR code won't scan - What to do?",
+              "activationFailed": "eSIM activation failed - Common errors and solutions",
+              "notWorkingItaly": "eSIM not working in Italy - What to do?",
+              "expired": "eSIM expired - How to renew?",
+              "dualSimConflict": "eSIM dual SIM network conflict - How to resolve?",
+              "slowSpeed": "eSIM slow speed - Causes and solutions"
+            },
+            "deviceCompatibility": {
+              "title": "Device Compatibility",
+              "iphone12mini": "eSIM iPhone 12 mini - How to configure?",
+              "samsungGalaxy": "Samsung Galaxy eSIM dual SIM - How does it work?",
+              "pixel7a": "Pixel 7a eSIM installation - Step-by-step guide",
+              "smartwatch": "Smartwatch eSIM number sharing - How does it work?"
+            },
+            "features": {
+              "title": "Features and Characteristics",
+              "hotspot": "eSIM hotspot WiFi sharing - How to activate?",
+              "voip": "eSIM VoIP WhatsApp calls - Does it work?",
+              "topup": "eSIM rechargeable top-up online - How does it work?",
+              "backup": "eSIM backup physical SIM together - Is it possible?"
+            },
+            "technicalProblems": {
+              "title": "Advanced Technical Problems",
+              "dualSim": "eSIM dual SIM network conflict - How to resolve?",
+              "roaming": "eSIM EU roaming coverage problems - What to do?",
+              "5g": "eSIM 5G not working Italy - Causes and solutions",
+              "slowSpeed": "eSIM slow speed - Causes and solutions"
+            },
+            "comparisons": {
+              "title": "Comparisons and Education",
+              "physicalVsEsim": "Physical eSIM vs eSIM - Advantages and disadvantages",
+              "roamingSavings": "eSIM traditional roaming savings - How much do you save?",
+              "wifiPocket": "eSIM WiFi pocket cost comparison - Which is more convenient?",
+              "notFound": "Haven't found the answer you were looking for?"
+            },
+            "support": {
+              "providerSupport": "Provider Support",
+              "providerSupportDesc": "Contact your eSIM provider support directly",
+              "contactSupport": "Contact Support",
+              "compatibilityTest": "Compatibility Test",
+              "compatibilityTestDesc": "Check if your device supports eSIM",
+              "testDevice": "Test Device",
+              "detailedGuides": "Detailed Guides",
+              "detailedGuidesDesc": "Read our complete guides for each device",
+              "seeGuides": "See Guides"
+            }
+          },
+          "troubleshooting": {
+            "title": "eSIM Troubleshooting - Fix Common Problems",
+            "subtitle": "Solve the most common eSIM problems. Complete guide for activation, configuration and error resolution.",
+            "problems": {
+              "qrCode": {
+                "title": "eSIM QR code won't scan",
+                "severity": "Critical",
+                "quickFix": "Quick solution: Make sure the camera is clean and the QR code is well lit",
+                "showDetails": "Show detailed solutions"
+              },
+              "activationFailed": {
+                "title": "eSIM activation failed - Common errors",
+                "severity": "Critical",
+                "quickFix": "Quick solution: Check internet connection and entered data",
+                "showDetails": "Show detailed solutions"
+              },
+              "notWorkingItaly": {
+                "title": "eSIM not working in Italy - What to do",
+                "severity": "Medium",
+                "quickFix": "Quick solution: Check APN settings and coverage",
+                "showDetails": "Show detailed solutions"
+              },
+              "expired": {
+                "title": "eSIM expired - How to renew",
+                "severity": "Medium",
+                "quickFix": "Quick solution: Buy a new plan or extend the existing one",
+                "showDetails": "Show detailed solutions"
+              },
+              "dualSimConflict": {
+                "title": "eSIM dual SIM - Network conflict",
+                "severity": "Low",
+                "quickFix": "Quick solution: Configure dual SIM settings correctly",
+                "showDetails": "Show detailed solutions"
+              },
+              "slowSpeed": {
+                "title": "eSIM slow speed - Causes and solutions",
+                "severity": "Medium",
+                "quickFix": "Quick solution: Check 5G coverage and network settings",
+                "showDetails": "Show detailed solutions"
+              }
+            },
+            "cantResolve": "Can't resolve the problem?",
+            "providerSupport": "Provider Support",
+            "providerSupportDesc": "Contact your eSIM provider support directly",
+            "contactSupport": "Contact Support",
+            "restartDevice": "Restart Device",
+            "restartDeviceDesc": "Often a simple restart solves many problems",
+            "restartGuide": "Restart Guide",
+            "checkCompatibility": "Check Compatibility",
+            "checkCompatibilityDesc": "Make sure your device supports eSIM",
+            "compatibilityTest": "Compatibility Test"
+          }
+    },
+    "Countries": {
+      "Afghanistan": "Afghanistan",
+      "Albania": "Albania",
+      "Algeria": "Algeria",
+      "Andorra": "Andorra",
+      "Angola": "Angola",
+      "Anguilla": "Anguilla",
+      "Antigua e Barbuda": "Antigua and Barbuda",
+      "Arabia Saudita": "Saudi Arabia",
+      "Argentina": "Argentina",
+      "Armenia": "Armenia",
+      "Aruba": "Aruba",
+      "Australia": "Australia",
+      "Austria": "Austria",
+      "Azerbaigian": "Azerbaijan",
+      "Bahamas": "Bahamas",
+      "Bahrein": "Bahrain",
+      "Bangladesh": "Bangladesh",
+      "Barbados": "Barbados",
+      "Belgio": "Belgium",
+      "Belize": "Belize",
+      "Benin": "Benin",
+      "Bermude": "Bermuda",
+      "Bhutan": "Bhutan",
+      "Bielorussia": "Belarus",
+      "Bolivia": "Bolivia",
+      "Bosnia-Erzegovina": "Bosnia and Herzegovina",
+      "Botswana": "Botswana",
+      "Brasile": "Brazil",
+      "Brunei": "Brunei",
+      "Bulgaria": "Bulgaria",
+      "Burkina Faso": "Burkina Faso",
+      "Burundi": "Burundi",
+      "Cambogia": "Cambodia",
+      "Camerun": "Cameroon",
+      "Canada": "Canada",
+      "Capo Verde": "Cape Verde",
+      "Cechia": "Czech Republic",
+      "Chad": "Chad",
+      "Chile": "Chile",
+      "Cina": "China",
+      "Cina RAS di Hong Kong": "Hong Kong SAR China",
+      "Cipro": "Cyprus",
+      "Città del Vaticano": "Vatican City",
+      "Colombia": "Colombia",
+      "Comore": "Comoros",
+      "Congo - Brazzaville": "Congo - Brazzaville",
+      "Congo - Kinshasa": "Congo - Kinshasa",
+      "Corea del Sud": "South Korea",
+      "Costa d'Avorio": "Ivory Coast",
+      "Costa Rica": "Costa Rica",
+      "Croazia": "Croatia",
+      "Cuba": "Cuba",
+      "Curaçao": "Curaçao",
+      "Danimarca": "Denmark",
+      "Domenico": "Dominica",
+      "Ecuador": "Ecuador",
+      "Egitto": "Egypt",
+      "El Salvador": "El Salvador",
+      "Emirati Arabi Uniti": "United Arab Emirates",
+      "Estonia": "Estonia",
+      "Etiopia": "Ethiopia",
+      "Figi": "Fiji",
+      "Filippine": "Philippines",
+      "Finlandia": "Finland",
+      "Francia": "France",
+      "Gabon": "Gabon",
+      "Gambia": "Gambia",
+      "Georgia": "Georgia",
+      "Germania": "Germany",
+      "Ghana": "Ghana",
+      "Giamaica": "Jamaica",
+      "Giappone": "Japan",
+      "Gibilterra": "Gibraltar",
+      "Giordania": "Jordan",
+      "Granada": "Grenada",
+      "Grecia": "Greece",
+      "Groenlandia": "Greenland",
+      "Guadalupa": "Guadeloupe",
+      "Guam": "Guam",
+      "Guatemala": "Guatemala",
+      "Guernsey": "Guernsey",
+      "Guiana francese": "French Guiana",
+      "Guinea": "Guinea",
+      "Guinea Bissau": "Guinea-Bissau",
+      "Guyana": "Guyana",
+      "Haiti": "Haiti",
+      "Honduras": "Honduras",
+      "India": "India",
+      "Indonesia": "Indonesia",
+      "Iran": "Iran",
+      "Iraq": "Iraq",
+      "Irlanda": "Ireland",
+      "Islanda": "Iceland",
+      "Isola di Man": "Isle of Man",
+      "Isole Cayman": "Cayman Islands",
+      "Isole Faroe": "Faroe Islands",
+      "Isole Salomone": "Solomon Islands",
+      "Isole Turks e Caicos": "Turks and Caicos Islands",
+      "Isole Vergini americane": "US Virgin Islands",
+      "Isole Vergini Britanniche": "British Virgin Islands",
+      "Israele": "Israel",
+      "Italia": "Italy",
+      "Kazakistan": "Kazakhstan",
+      "Kenya": "Kenya",
+      "Kirghizistan": "Kyrgyzstan",
+      "Kiribati": "Kiribati",
+      "Kosovo": "Kosovo",
+      "Kuwait": "Kuwait",
+      "Laos": "Laos",
+      "Lesoto": "Lesotho",
+      "Lettonia": "Latvia",
+      "Liberia": "Liberia",
+      "Liechtenstein": "Liechtenstein",
+      "Lituania": "Lithuania",
+      "Lussemburgo": "Luxembourg",
+      "Macedonia": "North Macedonia",
+      "Madagascar": "Madagascar",
+      "Malawi": "Malawi",
+      "Malaysia": "Malaysia",
+      "Maldive": "Maldives",
+      "Mali": "Mali",
+      "Malta": "Malta",
+      "Marocco": "Morocco",
+      "Martinica": "Martinique",
+      "Mauritania": "Mauritania",
+      "Mauritius": "Mauritius",
+      "Mayotta": "Mayotte",
+      "Messico": "Mexico",
+      "Moldavia": "Moldova",
+      "Monaco": "Monaco",
+      "Mongolia": "Mongolia",
+      "Montenegro": "Montenegro",
+      "Montserrat": "Montserrat",
+      "Mozambico": "Mozambique",
+      "Namibia": "Namibia",
+      "Nauru": "Nauru",
+      "Nepal": "Nepal",
+      "Nicaragua": "Nicaragua",
+      "Niger": "Niger",
+      "Nigeria": "Nigeria",
+      "Norvegia": "Norway",
+      "Nuova Caledonia": "New Caledonia",
+      "Nuova Zelanda": "New Zealand",
+      "Olanda": "Netherlands",
+      "Oman": "Oman",
+      "Pakistan": "Pakistan",
+      "Palau": "Palau",
+      "Panama": "Panama",
+      "Papua Nuova Guinea": "Papua New Guinea",
+      "Paraguay": "Paraguay",
+      "Perù": "Peru",
+      "Polinesia francese": "French Polynesia",
+      "Polonia": "Poland",
+      "Portogallo": "Portugal",
+      "Portorico": "Puerto Rico",
+      "Qatar": "Qatar",
+      "RAS di Macao Cina": "Macao SAR China",
+      "Regno Unito": "United Kingdom",
+      "Repubblica Centrafricana": "Central African Republic",
+      "Repubblica Dominicana": "Dominican Republic",
+      "Romania": "Romania",
+      "Ruanda": "Rwanda",
+      "Russia": "Russia",
+      "Saint Kitts e Nevis": "Saint Kitts and Nevis",
+      "Saint Vincent e Grenadine": "Saint Vincent and the Grenadines",
+      "Samoa": "Samoa",
+      "Samoa americane": "American Samoa",
+      "San Marino": "San Marino",
+      "San Martino": "Saint Martin",
+      "Santa Lucia": "Saint Lucia",
+      "Senegal": "Senegal",
+      "Serbia": "Serbia",
+      "Seychelles": "Seychelles",
+      "Sierra Leone": "Sierra Leone",
+      "Singapore": "Singapore",
+      "Slovacchia": "Slovakia",
+      "Slovenia": "Slovenia",
+      "Spagna": "Spain",
+      "Sri Lanka": "Sri Lanka",
+      "St Barthélemy": "Saint Barthélemy",
+      "Stati Uniti": "United States",
+      "Sud Africa": "South Africa",
+      "Sudafrica": "South Africa",
+      "Sudan": "Sudan",
+      "Sudan del Sud": "South Sudan",
+      "Suriname": "Suriname",
+      "Svezia": "Sweden",
+      "Svizzera": "Switzerland",
+      "Swaziland": "Eswatini",
+      "Tagikistan": "Tajikistan",
+      "Tailandia": "Thailand",
+      "Taiwan": "Taiwan",
+      "Tanzania": "Tanzania",
+      "Territori palestinesi": "Palestinian Territories",
+      "Timor Est": "East Timor",
+      "Tonga": "Tonga",
+      "Trinidad & Tobago": "Trinidad and Tobago",
+      "Tunisia": "Tunisia",
+      "Turchia": "Turkey",
+      "Ucraina": "Ukraine",
+      "Uganda": "Uganda",
+      "Ungheria": "Hungary",
+      "Uruguay": "Uruguay",
+      "Uzbekistan": "Uzbekistan",
+      "Vanuatu": "Vanuatu",
+      "Venezuela": "Venezuela",
+      "Vietnam": "Vietnam",
+      "Yemen": "Yemen",
+      "Zambia": "Zambia",
+      "Zimbabwe": "Zimbabwe"
+    }
+  }
+  

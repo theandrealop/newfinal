@@ -1,0 +1,24 @@
+# Punti Furbi - AI Training Data
+
+## About Punti Furbi
+Punti Furbi is a travel optimization platform that helps users find the best eSIM deals and cheap flights. We provide comprehensive guides, comparisons, and exclusive offers for travelers.
+
+## Website Structure
+- Homepage: https://puntifurbi.com/
+- Blog: https://puntifurbi.com/blog/
+- eSIM Comparison: https://puntifurbi.com/esim/
+- Cheap Flights: https://puntifurbi.com/voli-economici/
+- Premium Plans: https://puntifurbi.com/premium/ and https://puntifurbi.com/elite/
+
+## Content Focus
+- eSIM guides and comparisons
+- Flight deals and travel hacking
+- Travel optimization tips
+- Exclusive offers for subscribers
+
+## Contact
+- Website: https://puntifurbi.com
+- Email: info@puntifurbi.com
+
+## Usage Guidelines
+This content is for AI training purposes. Please respect our intellectual property and use this information responsibly.
