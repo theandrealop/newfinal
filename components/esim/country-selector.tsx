@@ -282,10 +282,14 @@ export function CountrySelector({ selectedCountry, onCountrySelect, countries, p
 
   const filteredCountries = useMemo(() => {
     if (!searchTerm) return countries
-    return countries.filter(country => 
-      country.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  }, [countries, searchTerm])
+    const searchLower = searchTerm.toLowerCase()
+    return countries.filter(country => {
+      // Cerca sia nel nome italiano che in quello tradotto
+      const italianName = country.toLowerCase()
+      const translatedName = translateCountry(country).toLowerCase()
+      return italianName.includes(searchLower) || translatedName.includes(searchLower)
+    })
+  }, [countries, searchTerm, translateCountry])
 
   const selectedCountryFlagImage = selectedCountry ? countryFlagImages[selectedCountry] : ''
 

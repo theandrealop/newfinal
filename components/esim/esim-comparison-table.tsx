@@ -202,7 +202,7 @@ export function EsimComparisonTable() {
       'Sim Local': 'https://simlocal.com',
       'Roamless': 'https://finanza.me/mobimatter',
       'Menalink': 'https://menalink.com',
-      'Firsty': 'https://finanza.me/firsty',
+      'Firsty': 'https://mywebconect.com/?a=1955&c=8789&p=r&s1=',
       'eSIMGo': 'https://finanza.me/mobimatter',
       '3': 'https://finanza.me/mobimatter',
       'dtac': 'https://finanza.me/mobimatter',
